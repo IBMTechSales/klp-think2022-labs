@@ -200,8 +200,6 @@ VM. Launch the Transformation Advisor tool using the steps below.
 
     ![](./images/media/image8.png)
 
-    <br/>
-
 2.  Launch the **Transformation Advisor** with commands:
 
         cd /home/ibmdemo/TA_LOCAL/transformation-advisor-local-2.5.0
@@ -210,18 +208,13 @@ VM. Launch the Transformation Advisor tool using the steps below.
 
     Wait for Transformation Advisor to initialize and display the action menu list.
 
-    <br/>
-
 3.  Type **5** and press **Enter** to start the **Transformation
     Advisor**.
 
     ![](./images/media/image9.png)
 
-    <br/>
-
-4.  The **Transformation Advisor** application is started, right-click
-    the application URL link and select **Open Link** to launch it in a
-    web browser window
+  
+4.  The **Transformation Advisor** application is started, right-click the application URL link and select **Open Link** to launch it in a web browser window
 
     ![](./images/media/image10.png)
  
