@@ -1263,15 +1263,15 @@ Additionally, the AIPL tool must reference the customized version of the final_g
     
     a.  The web partition should include two **Member classes:**
 
-    > - HitCount
-    > - SnoopServlet
+    - HitCount
+    - SnoopServlet
     
     b.  The web partition invokes one class method residing outside of
         this partition:
 
-    > - Outside partition: **partition0**
-    > - Class Name **IncrementAction**
-    > - Methods: **getTheValue** and **increment**
+    - Outside partition: **partition0**
+    - Class Name **IncrementAction**
+    - Methods: **getTheValue** and **increment**
     
     <br/>
 
@@ -1441,10 +1441,7 @@ generated.
     - **Proxy** classes are created for calling out to a class to an outside partition via REST API.
 
     - **Service** class, IncrementActionService is created based on the web partition calling to the IncrementAction class in partition0 via REST API.
-    
-      > - Mono2Micro Cardinal tool also generated a Service Class for the
-        “Increment” class. However, as mentioned earlier, this service
-        class is not actually used in our case.
+        - Mono2Micro Cardinal tool also generated a Service Class for the “Increment” class. However, as mentioned earlier, this service class is not actually used in our case.
 
     - **Original** classes are the classes that already existed in the monolith and will remain in the web partition. In this case, the Increment, IncrementAction, and IncrementSSB classes will remain in the partition0.
 
