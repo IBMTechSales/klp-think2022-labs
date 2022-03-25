@@ -615,7 +615,7 @@ The migration plan includes a migration bundle of generated deployment
 artifact that accelerate the deployment of the application to Liberty in
 a container-based cloud deployment.
 
-### 1.9 Explore the migration bundle for the Mod Resorts application**
+### 1.9 Explore the migration bundle for the Mod Resorts application
 
 Transformation Advisor will display details about the **migration
 bundle** that it generated to accelerate the modernization of
@@ -656,7 +656,7 @@ expedite the app deployment to OpenShift Platform.
  
     ![](./images/media/image62.png)
 
-### 1.10 Summary**
+### 1.10 Summary
 
 In this lab, you learned how to evaluate the existing Java application
 using IBM Cloud Transformation Advisor. As a part of IBM Application
