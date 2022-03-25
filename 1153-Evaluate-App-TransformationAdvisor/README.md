@@ -407,48 +407,40 @@ collection data into Transformation Advisor for analysis.
 have already been done, and the resulting AppSrv01.zip file is provided
 for you in the lab environment.
 
-1.  Go back to Transformation Advisor page in web browser, click the
-    **Server1** link to go to the Recommendations page.
+1.  Go back to Transformation Advisor page in web browser, click the **Server1** link to go to the Recommendations page.
 
-> ![ta server1 link](./images/media/image28.png)
+    ![ta server1 link](./images/media/image28.png)
 
 2.  From the Evaluation / Server1 workspace, upload the
     “**AppSrv01.zip**” data collection file
 
-<!-- end list -->
+    a.  Click the **Upload** button to upload a data collection file 
+    
+    ![](./images/media/image29.png)
 
-1.  Click the **Upload** button to upload a data collection file
+    b.  From the Upload Data page, click the **Drop or add file** link
 
-> ![](./images/media/image29.png)
+    ![](./images/media/image30.png)
 
-2.  From the Upload Data page, click the **Drop or add file** link
+    c.  Navigate to the location of the data collection file and add the **AppSrv01.zip** file. Then click the **Open** button on the Download page.
 
-> ![](./images/media/image30.png)
+        Home \> ibmdemo \> Student \> labs \> TA-lab \> AppSrv01.zip
+ 
+    ![](./images/media/image31.png)
 
-3.  Navigate to the location of the data collection file and add the
-    **AppSrv01.zip** file. Then click the **Open** button on the
-    Download page.
+    d.  The **AppSrv01.zip** data collection file is now ready to be uploaded. Click the **Upload** button to continue.
 
-> Home \> ibmdemo \> Student \> labs \> TA-lab \> AppSrv01.zip
-> 
-> ![](./images/media/image31.png)
+    ![](./images/media/image32.png)
+ 
+    Once the data collection has been uploaded to Transformation Advisor, you are redirected back to the TA Recommendations screen. 
+    
+    Notice that the **Profile** shown is for the **AppSrv01** profile from the WebSphere Application Server.
 
-4.  The **AppSrv01.zip** data collection file is now ready to be
-    uploaded. Click the **Upload** button to continue.
+    ![](./images/media/image33.png)
+ 
+    In the next section, you will use Transformation Advisor to view the application data analysis that was collected.
 
-> ![](./images/media/image32.png)
-> 
-> Once the data collection has been uploaded to Transformation Advisor,
-> you are redirected back to the TA Recommendations screen. Notice that
-> the **Profile** shown is for the **AppSrv01** profile from the
-> WebSphere Application Server.
-> 
-> ![](./images/media/image33.png)
-> 
-> In the next section, you will use Transformation Advisor to view the
-> application data analysis that was collected.
-
-## 6.7 Evaluate On-Premises Java Applications
+### 1.7 Evaluate On-Premises Java Applications
 
 In this section, you are going to use the Transformation Advisor UI to
 view the application data analysis results that was collected in the
