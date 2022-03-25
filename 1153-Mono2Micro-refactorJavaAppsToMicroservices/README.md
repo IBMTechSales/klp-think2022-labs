@@ -2010,7 +2010,7 @@ transformation process yourself.
 
     - The container must be included in the **defaultappNetwork** that you defined earlier. The back-end microservice will also join this network allowing the services to communicate with one another.
 
-        docker run --name=defaultapp-web --hostname=defaultapp-web --network=defaultappNetwork -d -p 9095:9080 defaultapp-web:latest
+          docker run --name=defaultapp-web --hostname=defaultapp-web --network=defaultappNetwork -d -p 9095:9080 defaultapp-web:latest
 
         docker ps
 
