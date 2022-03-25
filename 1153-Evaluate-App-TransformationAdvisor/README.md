@@ -291,7 +291,7 @@ Transformation Advisor web page.
 
     <br/>
 
-## 6.5 Simulate running the Transformation Advisor Data Collector utility
+## 1.5 Simulate running the Transformation Advisor Data Collector utility
 
 After downloading the zipped Data Collector utility, its needs to be
 unpacked it and run against a WebSphere Application server (WAS) to
@@ -313,9 +313,7 @@ Now, let’s simulate the steps to run the data collector.
 
 2.  Extract the data collector utility using the following command:
 
-    |                                                                     |
-    | ------------------------------------------------------------------- |
-    | ***tar xvfz transformationadvisor-Linux\_Evaluation\_Server1.tgz*** |
+        tar xvfz transformationadvisor-Linux_Evaluation_Server1.tgz
 
     The data collector utility will be extracted to ***/home/ibmdemo/Downloads*/transformationadvisor-2.5.0** directory.
 
@@ -323,52 +321,38 @@ Now, let’s simulate the steps to run the data collector.
 
 3.  Return to the Transformation Advisor UI in the Web browser to view the section on “**Run the Tool**”, which shows the command to run on the WebSphere environment.
     
-    1.  From the **Data Collector** page, scroll down to the “**Run
-        Tool**” section.
+    a.  From the **Data Collector** page, scroll down to the “**Run Tool**” section.
 
-> The data collector command that would be executed is based on the
-> **domain** and **analysis type** selections you make in this section.
-> 
-> ![](./images/media/image20.png)
+    The data collector command that would be executed is based on the  **domain** and **analysis type** selections you make in this section.
 
-4.  Choose the **IBM WebSphere** Domain. Other domains include other
-    JAVA EE runtimes IBM MQ. The data collector tool command changes
-    based on this selection.
+    ![](./images/media/image20.png)
 
-> ![](./images/media/image21.png)
+4.  Choose the **IBM WebSphere** Domain. Other domains include other JAVA EE runtimes IBM MQ. The data collector tool command changes based on this selection.
+
+    ![](./images/media/image21.png)
 
 5.  Select the Analysis type of “**Apps and Configuration**”
 
-> Selecting **Apps & Configuration** ensures that the application data
-> and server configuration data is collected. The server configuration
-> data is extremely helpful in Transformation Advisor to generate
-> deployment artifacts in the migration bundle, which we will explore
-> later in the lab.
-> 
-> ![](./images/media/image22.png)
+    Selecting **Apps & Configuration** ensures that the application data and server configuration data is  collected. The server configuration data is extremely helpful in Transformation Advisor to generate deployment artifacts in the migration bundle, which we will explore later in the lab.
 
-6.  Review the data collector command that is shown based on your
-    selections.
+    ![](./images/media/image22.png)
 
-> ![](./images/media/image23.png)
+6.  Review the data collector command that is shown based on your selections.
 
-If you were going to run the command, there are a few additional things
-that need to happen.
+    ![](./images/media/image23.png)
 
-  - Replace the \<WEBSPHERE\_HOME\_DIR\> and \<PROFILE\_NAME\> variables
-    with the values from the WebSphere environment
+    If you were going to run the command, there are a few additional things that need to happen.
 
-  - If the WebSphere environment is not connected to the VM where
-    Transformation Advisor is running, then the data collector utility
-    that was downloaded must be copied and unpacked to the WebSphere
-    environment.
+    - Replace the <WEBSPHERE\_HOME\_DIR\> and <PROFILE\_NAME\> variables with the values from the WebSphere environment
 
-### 6.5.1 FOR ILLUSTRATIVE PURPOSES ONLY: Simulation of running the Transformation Advisor Data Collector utility
+    - If the WebSphere environment is not connected to the VM where Transformation Advisor is running, then the data collector utility that was downloaded must be copied and unpacked to the WebSphere environment.
+
+### 1.5.1 FOR ILLUSTRATIVE PURPOSES ONLY: Simulation of running the Transformation Advisor Data Collector utility
 
 <table>
 <tbody>
 <tr class="odd">
-<td><img src="./images/media/image24.png" style="width:0.60625in;height:0.60625in" alt="sign-caution" /></td>
+<td><img src="./images/media/image24.png" style="width:1.60625in;height:1.60625in" alt="sign-caution" /></td>
 <td><p><strong>Important:</strong></p>
 <p>This section is for illustrative purposes only.</p>
 <p>DO NOT RUN THE COMMANDS shown!</p></td>
