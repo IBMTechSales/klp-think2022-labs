@@ -116,13 +116,9 @@ AIPL generated microservice recommendations.
 **Cardinal**. The program with deep knowledge of the semantics of the
 Java programming language. Cardinal uses the recommendations from AIPL.
 
-Cardinal performs these important capabilities:
-
-  a.  Provides detailed invocation analyses of the recommended
-    microservices
-
-  b.  Generates a significant portion of the code needed to realize the
-    recommended microservices in containers
+**Cardinal** performs these important capabilities:
+  > - Provides detailed invocation analyses of the recommended     microservices
+  >  - Generates a significant portion of the code needed to realize the recommended microservices in containers
 
 
 ### **Mono2Micro usage flow**
@@ -156,7 +152,7 @@ end-to-end process.
 
 One (1) Linux VM has been provided for this lab.
 
-> ![](./images/media/image8.png)
+> ![](./images/media/image8a.png)
 > 
 > The **Workstation** VM has the following software installed:
 
@@ -172,7 +168,7 @@ One (1) Linux VM has been provided for this lab.
 
   - The **Workstation** is VM Linux CentOS version 7
 
-> The login credentials for the **Workstation** VM are:
+  - The login credentials for the **Workstation** VM are:
 > 
 > User ID: **ibmadmin**
 > 
@@ -186,20 +182,20 @@ One (1) Linux VM has been provided for this lab.
 1.  If the VM is **<span class="underline">not</span>** already started,
     start it by clicking the **Play** button.
 
-> ![](./images/media/image9.png)
+    ![](./images/media/image9a.png)
 
 2.  After the VM is started, click the **Workstation** VM icon to access
     it.
 
-> ![](./images/media/image10.png)
+    ![](./images/media/image10a.png)
 
 3.  If you see a screen displaying only “**ibmadmin**”, or a Time/Date .
     Click on the screen to get to the password prompt to login. The
     password for the ibmadmin user is “**passw0rd**”
 
-> ![](./images/media/image11.png)
-> 
-> ![](./images/media/image12.png)
+    ![](./images/media/image11.png)
+ 
+    ![](./images/media/image12.png)
 
 The login credentials for the **Workstation** VM are:
 
@@ -213,7 +209,9 @@ From the Skytap menu bar, click on the “**Fit to Size**”
 ![](./images/media/image13.png) icon. This will enlarge the viewing area
 to fit the size of your browser window.
 
-> ![](./images/media/image14.png)
+![](./images/media/image14.png)
+
+<br/>
 
 # **PART 1: Introduction to the Application and resources used for this lab**
 
@@ -229,8 +227,8 @@ The Default application contains a web module called
 The Default Application provides two servlets that are invoked from an
 HTML page in the application
 
-  - SnoopServlet
-  - HitCount
+  > - SnoopServlet
+  > - HitCount
 
 
 ![](./images/media/image15.png)
@@ -243,11 +241,9 @@ servlet returns the following information:
 **Hit Count** demonstrates how to increment a counter using a variety of
 methods, including:
 
-  - A servlet instance variable
-
-  - An HTTP session
-
-  - An enterprise bean
+  > - A servlet instance variable
+  > - An HTTP session
+  > - An enterprise bean
 
 ![](./images/media/image17.png)
 
@@ -263,18 +259,15 @@ database.
 
 The basic steps in this section include:
 
-  - Introduce the structure of the GitHub repository resources used in
+  > - Introduce the structure of the GitHub repository resources used in
     the lab
-
-  - Clone the **GitHub repository** that contains the resources required
-    for the lab
+  > - Clone the **GitHub repository** that contains the resources required for the lab
 
 The **GitHub repository** contains all the source code and files needed
 to perform all the steps for using Mono2micro to transform the monolith
 application used in this lab, to microservices.
 
-Structure of the m2m-ws-sample GitHub repository: (details in the README
-within the GitHub repo):
+The filesystem structure of the m2m-ws-sample GitHub repository is shown below: (details are in the README within the GitHub repo):
 
 **Monolith source code:** ./defaultapplication/monolith
 
@@ -291,12 +284,9 @@ within the GitHub repo):
 The GitHub repo includes all the artifacts needed to complete this lab
 on your local workstation.
 
-  - The DefaultApplication Source Code
-
-  - The newly constructed dockerfiles to build and run the microservices
-    in containers
-
-  - The updated POM files that have been reduced to contain only the
+  > - The DefaultApplication Source Code
+  > - The newly constructed dockerfiles to build and run the microservices in containers
+  > - The updated POM files that have been reduced to contain only the
     resources needed for the individual microservice
 
 <table>
@@ -313,15 +303,10 @@ on your local workstation.
     
     a.  Open a Terminal window and run the following commands:
 
-    <table>
-    <tbody>
-    <tr class="odd">
-    <td><p>cd /home/ibmadmin</p>
-    <p>git clone https://github.com/kpostreich/m2m-ws-sample</p></td>
-    </tr>
-    </tbody>
-    </table>
+        cd /home/ibmadmin
 
+        git clone https://github.com/kpostreich/m2m-ws-sample
+    
     ![](./images/media/image18.png)
 
     <br/>
@@ -329,15 +314,10 @@ on your local workstation.
 2.  Change to the workshop directory that contains the cloned repository
     artifacts. Then list the directory contents.
 
-    <table>
-    <tbody>
-    <tr class="odd">
-    <td><p>cd /home/ibmadmin/m2m-ws-sample</p>
-    <p>ls -l</p></td>
-    </tr>
-    </tbody>
-    </table>
-
+        cd /home/ibmadmin/m2m-ws-sample
+        
+        ls -l
+    
     <br/>
 
 # **PART 2: Use Mono2Micro to analyze the Java EE monolith application and recommend microservices partitions**
@@ -373,10 +353,10 @@ on your local workstation.
 
 All the four Mono2Micro container images are available from Dockerhub
   
-    https://hub.docker.com/r/ibmcom/mono2micro-bluejay
-    https://hub.docker.com/r/ibmcom/mono2micro-aipl
-    https://hub.docker.com/r/ibmcom/mono2micro-ui
-    https://hub.docker.com/r/ibmcom/mono2micro-cardinal
+> - https://hub.docker.com/r/ibmcom/mono2micro-bluejay
+> - https://hub.docker.com/r/ibmcom/mono2micro-aipl
+> - https://hub.docker.com/r/ibmcom/mono2micro-ui
+> - https://hub.docker.com/r/ibmcom/mono2micro-cardinal
 
 
 1. Download all the Mono2Micro images by issuing the docker pull     commands:
@@ -468,23 +448,19 @@ instrument it, and produce the analysis in two .json files.
 
     In addition to instrumenting the source, Bluejay creates two **.json** files in the in the **monolith-klu** directory:
 
-    - refTable.json
-    - symTable.json
+    > - refTable.json
+    > - symTable.json
  
-    <br/>
-
     These json file capture various details and metadata about each Java class such as:
 
-    - method signatures
-    - class variables and types
-    - class containment dependencies (when one classes uses another class as a instance variable type, or method return/argument type)
-    - class inheritance
-    - package dependencies
-    - source file locations
-    - etc.
+    > - method signatures
+    > - class variables and types
+    > - class containment dependencies (when one classes uses another class as a instance variable type, or method return/argument type)
+    > - class inheritance
+    > - package dependencies
+    > - source file locations
+    > - etc.
     
-    <br/>
-
     This static analysis therefore gathers a detailed overview of the Java code in the monolith, for use by Mono2Micro’s AI analyzer tool to come up with recommendations on how to partition the monolith application.
 
     Furthermore, this information is also used by Mono2Micro’s code generation tool to generate the foundation and plumbing code for implementing each partition as microservices.
@@ -547,8 +523,8 @@ achieve maximum code coverage in the tests.
 
 **<u>Test cases for DefaultApplication</u>**
 
-  - Run the Snoop action
-  - Run the HitCount action
+  > - Run the Snoop action
+  > - Run the HitCount action
 
 ## 2.3.1 Deploy the instrumented application to Liberty for testing
 
@@ -645,7 +621,7 @@ monolith.
 
         java -cp commons-net-3.6.jar:json-simple-1.1.jar:. Flicker -no_ntp
 
-    Notice that Flicker is just waiting for you to provide a “**Label**” or name of the test case to run. You will do that in the next step.
+    > Notice that Flicker is just waiting for you to provide a “**Label**” or name of the test case to run. You will do that in the next step.
 
     ![](./images/media/image26.png)
 
@@ -702,25 +678,24 @@ monolith.
 
     b. From the Web Browser, click on the **Hit Count** link in the DefaultApplication HTML page.
 
-    Hit count displays a JSP page with several options that demonstrate a variety of methods to increment a counter, while maintaining state.
+    > Hit count displays a JSP page with several options that demonstrate a variety of methods to increment a counter, while maintaining state.
 
     c.  Run **hitcount**, choosing each of the following options from the application in the web browser:
 
-    -  Servlet instance variable
-    -  Session state (create if necessary)
-    -  Existing session state only
+    > -  Servlet instance variable
+    > -  Session state (create if necessary)
+    > -  Existing session state only
 
-    <br/>
-
+    
     d.  Run **hitcount**, choosing the following option from the application in the web browser:
 
-     &nbsp;&nbsp;&nbsp;&nbsp;**Enterprise Java Bean (JPA)**
+    > **Enterprise Java Bean (JPA)**
 
-    When choosing the **EJB** option, you also must select one of the following **Transaction Types**, radio buttons:
+    > When choosing the **EJB** option, you also must select one of the following **Transaction Types**, radio buttons:
 
-    - None
-    - Commit
-    - Rollback
+    > - None
+    > - Commit
+    > - Rollback
 
     This action invokes an EJB and uses JPA to persist the increment state to a Derby database.
 
@@ -731,9 +706,9 @@ monolith.
 
     f.  In Flicker, enter **STOP**, to stop Flickers stopwatch for the test case
 
-    **Note:** **STOP** must be in upper-case and is **Case Sensitive**.
+    > **Note:** **STOP** must be in upper-case and is **Case Sensitive**.
  
-    Flicker has now captured the START and STOP timestamps for the use cases, which corresponds to the timestamps recorded in the Liberty log file from the instrumented version of the DefaultApplication.
+    > Flicker has now captured the START and STOP timestamps for the use cases, which corresponds to the timestamps recorded in the Liberty log file from the instrumented version of the DefaultApplication.
  
     ![](./images/media/image34.png)
 
@@ -826,13 +801,8 @@ Let’s review the data that has been collected on the monolith:
     information about the java classes and their relationships via
     static analysis of the code:
 
-<!-- end list -->
-
-  - refTable.json
-
-  - symTable.json
-
-<!-- end list -->
+    > - refTable.json
+    > - symTable.json
 
 2.  **Flicker** generated one or more context json files that contains
     use case names/labels and their start and stop times
@@ -860,10 +830,10 @@ collected on a monolith applicated as done in the previous section.
 Once you have completed the executing all the test scenarios, you should
 have the following categories of data collected:
 
-  - symTable.json
-  - refTable.json
-  - one or more json files generated by Flicker, and
-  - one or more log files containing the runtime traces
+  > - symTable.json
+  > - refTable.json
+  > - one or more json files generated by Flicker, and
+  > - one or more log files containing the runtime traces
 
 ## 2.6.1 Prepare the input directories for running the AIPL tool 
 
@@ -877,10 +847,10 @@ directory structure for you.
 The **/home/ibmadmin/m2m-ws-sample/defaultapplication/application-data/**
 directory contains the subdirectories within which the data files are placed:
 
-  - **contexts/** One or more **context .json** files generated while running the **Flicker** tool alongside the use case runs
-  - **logs/** One or more **console logs** from the application server as the instrumented monolith was run through the various use cases
-  - **tables/** The two table **.json** files generated by the **Bluejay** tool
-  - **config.ini** Optional file to configure various parameters for the analysis tool. If one doesn’t exist, AIPL generates one for you with default values.
+  > - **contexts/** One or more **context .json** files generated while running the **Flicker** tool alongside the use case runs
+  > - **logs/** One or more **console logs** from the application server as the instrumented monolith was run through the various use cases
+  > - **tables/** The two table **.json** files generated by the **Bluejay** tool
+  > - **config.ini** Optional file to configure various parameters for the analysis tool. If one doesn’t exist, AIPL generates one for you with default values.
 
   ![](./images/media/image39.png)
 
@@ -934,6 +904,8 @@ generate microservices recommendations.
 4.  Continue to the next section. You will explore the generated reports
     later in the lab.
 
+    <br/>
+
 ## 2.6.3 Use the mono2micro UI to view and manipulate the partitioning recommendations generated from the AIPL tool 
 
 Let’s now take a look at the partitioning recommendations Mono2Micro
@@ -971,7 +943,7 @@ generated by loading the **final_graph.json** in the graph UI.
 
     e. As illustrated below, the UI displays the initial recommendations for partitioning the application into microservices.
 
-    **Note:** You can use the mouse to **drag** the **partition** circles to position them where you like on the canvas, as llustrated below.
+    > **Note:** You can use the mouse to **drag** the **partition** circles to position them where you like on the canvas, as llustrated below.
  
     ![](./images/media/image44.png)
 
@@ -992,8 +964,8 @@ generated by loading the **final_graph.json** in the graph UI.
 
 The Default Application contains two major Java components in the application.
 
-  - Snoop Servlet
-  - HitCount application
+  > - Snoop Servlet
+  > - HitCount application
 
 In addition to the Java components, the application also contains HTML, JSP, and other web resources.
 
@@ -1083,7 +1055,7 @@ In this exercise, we will ensure that the Web components (Servlets, HTML, JSP, e
     
     a.  Double-click on the Unobserved group to display the classes. 
     
-    This is a group of classes that Mono2Micro analyzed but were not included in any of the test cases.
+    > This is a group of classes that Mono2Micro analyzed but were not included in any of the test cases.
 
     ![](./images/media/image48.png)
 
@@ -1092,6 +1064,8 @@ In this exercise, we will ensure that the Web components (Servlets, HTML, JSP, e
     - **EndpointIT** is a class that exists in the Junit Tests in the Java project. We did not run the Junit tests as part of the test cases.
     Therefore, it is expected that this class is not included in any of
     the partitions.
+
+    <br/>
 
     The initial partitioning recommendations are a starting point and generated taking into consideration based on the business logic and natural seams that were discovered during the analysis.
 
@@ -1135,11 +1109,11 @@ graph to the desired state.
 Tweaking the business logic recommendations is straight forward using
 the UI, and includes these basic steps, which you will do next:
 
-1)  **Rename partition1 to web**. This is not required but illustrates
+> 1)  **Rename partition1 to web**. This is not required but illustrates
     the capability to create partitions with names that make sense. This
     is useful during the code generation phase.
 
-2)  **Move HitCount Servlet (Service Entry) class to the web
+> 2)  **Move HitCount Servlet (Service Entry) class to the web
     partition**. All the Servlets and other front-end components should
     be here.
 
@@ -1323,6 +1297,8 @@ Additionally, the AIPL tool must reference the customized version of the final_g
     > - **IncrementAction**
     > - **Increment:**
 
+    <br/>
+
     > **Note:** this class is not actually used as an external facing class based on our application flow. Mono2Micro discovered an *indirect** call to the increment class, after exiting the HitCount Servlet. So, it created this class as external facing, in the event it was needed by the new microservices. In a future release of Mono2Micro, we expect to see these types of “indirect” or inferred calls to be distinguished between the known direct calls in the  application business logic flow.
  
     > **This results in a service class being generated by the Cardinal tool. However, no harm, as it simply will not get called by the HitCount application logic.**
@@ -1385,14 +1361,12 @@ In Part 3 of the lab, you will:
 
     <br/>
 
-After going through the microservice recommendations generated by the mono2micro-aipl container,you can use Mono2Micro to automatically generate API services and related code to realize the microservice recommendations.
+After going through the microservice recommendations generated by the mono2micro-aipl container, you can use Mono2Micro to automatically generate API services and related code to realize the microservice recommendations.
 
 This is accomplished by executing the **Cardinal** component available as the mono2micro-cardinal container.
 
 Cardinal automatically performs three crucial tasks for the architects
-and developers in the
-
-refactoring endeavor of realizing partitions (microservices
+and developers in the refactoring endeavor of realizing partitions (microservices
 recommendations) as microservices.
 
 **<u>The tasks performed by Cardinal can be listed as follows:</u>**
@@ -1548,8 +1522,8 @@ The actual folder name is dependent upon the input paths specified on
 when running the cardinal command. In our case, the actual folder names
 are:
 
-  - monolith-web
-  - monolith-partition0
+  > - monolith-web
+  > - monolith-partition0
 
 The root folder for the generated source files is also dependent on the
 input paths specified when running the cardinal tool.
