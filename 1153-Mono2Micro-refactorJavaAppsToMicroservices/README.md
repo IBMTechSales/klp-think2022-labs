@@ -2381,11 +2381,9 @@ Fully exploring all the resources in detail is beyond the scope of this lab. You
     
     a.  **Original** classes: The original classes are copied directly from the original monolith application:
 
-    > - Increment.java
-
-    > - IncrementAction.java
-
-    > - IncrementSSB.java
+    - Increment.java
+    - IncrementAction.java
+    - IncrementSSB.java
 
 
     ![](./images/media/image110.png)
