@@ -2012,7 +2012,7 @@ transformation process yourself.
 
           docker run --name=defaultapp-web --hostname=defaultapp-web --network=defaultappNetwork -d -p 9095:9080 defaultapp-web:latest
 
-        docker ps
+          docker ps
 
     > **Note:** The application is exposed on port **9095** and running on port 9080 in the container.
 
@@ -2024,7 +2024,7 @@ transformation process yourself.
 
     This container is the back-end service. It contains EJB and JPA components that persists data to the Derby database, when the user executes the HitCount service with the EJB option.
  
-    **Tip:** Ensure you are in the **/home/ibmadmin/m2m-ws-sample/defaultapplication/microservices/defaultapp-partition0** folder before running the docker build.
+    > **Tip:** Ensure you are in the **/home/ibmadmin/m2m-ws-sample/defaultapplication/microservices/defaultapp-partition0** folder before running the docker build.
 
     The **default-partition0** folder contains the dockerfile used to build the back-end microservice.
 
@@ -2034,11 +2034,11 @@ transformation process yourself.
 
     The dockerfile performs these basic tasks:
 
-    > - Uses the projects pom.xml file to do a Maven build, which produces the deployable EAR.
+    - Uses the projects pom.xml file to do a Maven build, which produces the deployable EAR.
 
-    > - Copies the EAR file and OpenLiberty Server configuration file to the appropriate location in the Docker container for the microservice to start once the container is started.
+    - Copies the EAR file and OpenLiberty Server configuration file to the appropriate location in the Docker container for the microservice to start once the container is started.
 
-    > - Copies the Derby Database library and database files to the    container
+    - Copies the Derby Database library and database files to the container
 
     ![](./images/media/image88.png)
 
@@ -2048,25 +2048,24 @@ transformation process yourself.
 
     Notice the command line options that are required for the microservice to run properly.
 
-    > - The partition-partition0 container exposes port 9096.This is only
+    - The partition-partition0 container exposes port 9096.This is only
     necessary if we want to hit the Service interface directly while
     testing.
 
-    > - The container must be included in the **defaultappNetwork** that you defined earlier.
+    - The container must be included in the **defaultappNetwork** that you defined earlier.
 
-        docker run --name=defaultapp-partition0 --hostname=defaultapp-partition0 --network=defaultappNetwork -d -p 9096:9080 defaultapp-partition0:latest
+          docker run --name=defaultapp-partition0 --hostname=defaultapp-partition0 --network=defaultappNetwork -d -p 9096:9080 defaultapp-partition0:latest
 
-        docker ps
+          docker ps
 
     ![](./images/media/image89.png)
 
 
-    **Note:** The application is exposed on port **9096** and running on port 9080 in the container
+    > **Note:** The application is exposed on port **9096** and running on port 9080 in the container
 
     <br/>
 
-8.  Inspect Docker’s **defaultappNetwork** and ensure both microservices
-    are joined in the network
+8.  Inspect Docker’s **defaultappNetwork** and ensure both microservices are joined in the network
 
         docker inspect defaultappNetwork
 
