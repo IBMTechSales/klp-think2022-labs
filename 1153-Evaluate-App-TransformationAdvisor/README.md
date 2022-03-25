@@ -285,8 +285,6 @@ Transformation Advisor web page.
 
     ![A screenshot of a cell phone Description automatically generated](./images/media/image18.png)
  
-    <br/>
-
     The zipped Data Collector utility file will be saved in **/home/ibmdemo/Downloads** directory of **Workstation** VM.
 
     Continue to the next section of the lab to simulate running the data collector utility.
@@ -303,38 +301,27 @@ from the WAS server.
 Now, let’s simulate the steps to run the data collector.
 
 1.  Go back to the terminal window and navigate the
-    **/home/ibmdemo/Downloads** directory and view its contents with
-    commands:
+    **/home/ibmdemo/Downloads** directory and view its contents with commands:
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p><em><strong>cd /home/ibmdemo/Downloads/</strong></em></p>
-<p><em><strong>ls -l | grep transformationadvisor</strong></em></p></td>
-</tr>
-</tbody>
-</table>
+        cd /home/ibmdemo/Downloads/
 
-> You can see the downloaded data collector utility file named
-> “**transformationadvisor-Linux\_Evaluation\_Server1.tgz**”
-> 
-> ![](./images/media/image19.png)
+        ls -l | grep transformationadvisor
+
+    You can see the downloaded data collector utility file named “**transformationadvisor-Linux_Evaluation_Server1.tgz**”
+
+    ![](./images/media/image19.png)
 
 2.  Extract the data collector utility using the following command:
 
-|                                                                     |
-| ------------------------------------------------------------------- |
-| ***tar xvfz transformationadvisor-Linux\_Evaluation\_Server1.tgz*** |
+    |                                                                     |
+    | ------------------------------------------------------------------- |
+    | ***tar xvfz transformationadvisor-Linux\_Evaluation\_Server1.tgz*** |
 
-The data collector utility will be extracted to
-***/home/ibmdemo/Downloads*/transformationadvisor-2.5.0** directory.
+    The data collector utility will be extracted to ***/home/ibmdemo/Downloads*/transformationadvisor-2.5.0** directory.
 
-> **Note:** At this point, the data collector is ready to execute
-> against a WebSphere environment.
+    > **Note:** At this point, the data collector is ready to execute against a WebSphere environment.
 
-3.  Return to the Transformation Advisor UI in the Web browser to view
-    the section on “**Run the Tool**”, which shows the command to run on
-    the WebSphere environment.
+3.  Return to the Transformation Advisor UI in the Web browser to view the section on “**Run the Tool**”, which shows the command to run on the WebSphere environment.
     
     1.  From the **Data Collector** page, scroll down to the “**Run
         Tool**” section.
