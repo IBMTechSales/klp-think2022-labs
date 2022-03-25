@@ -1467,8 +1467,8 @@ The actual folder name is dependent upon the input paths specified on
 when running the cardinal command. In our case, the actual folder names
 are:
 
-  > - monolith-web
-  > - monolith-partition0
+  - monolith-web
+  - monolith-partition0
 
 The root folder for the generated source files is also dependent on the
 input paths specified when running the cardinal tool.
@@ -1476,7 +1476,7 @@ input paths specified when running the cardinal tool.
 In this case, the monolith-web and monolith-partitio0 folders are
 generated here:
 
-**/home/ibmadmin/m2m-ws-sample/defaultapplication**
+> **/home/ibmadmin/m2m-ws-sample/defaultapplication**
 
 <table>
 <tbody>
@@ -1762,51 +1762,54 @@ partition will require unique configurations for its Microservice.
  
     **Build Image stage:**
 
-    > - Performs the Maven Build and package of the application based on the pom.xml files in the project.
+    - Performs the Maven Build and package of the application based on the pom.xml files in the project.
 
     **Production Image stage:**
 
-    > - Pulls the Universal base Image (UBI) of Open-Liberty Docker image
+    - Pulls the Universal base Image (UBI) of Open-Liberty Docker image
     from Dockerhub. The Universal Base Image is the supported images
     when deploying to RedHat Openshift.
 
-    > - Copy the EAR to the Liberty apps directory, where Liberty will
+    - Copy the EAR to the Liberty apps directory, where Liberty will
     automatically start when the container is started.
 
-    > - Copy the Liberty server configuration file to Liberty config
+    - Copy the Liberty server configuration file to Liberty config
     directory, which is used to configure the Liberty runtime.
 
-    > - As root user, I install curl as a tool for helping to debug
+    - As root user, I install curl as a tool for helping to debug
     connectivity between Docker containers. This is not required.
 
-    > - As root user, update the permissions on the shared resources folder in Liberty
+    - As root user, update the permissions on the shared resources folder in Liberty
+
+    <br/>
 
     **ENV Variables required by Mono2Micro**
  
     Additionally, each partition is passed environment variables specifying the end point URLs for JAX-RS web services in other partitions.
 
-    > - The Cardinal generated code uses these environment variables in the proxy code to call the JAX-RS services
+    - The Cardinal generated code uses these environment variables in the proxy code to call the JAX-RS services
 
-    > - It is important to note that for JAX-RS, URLs cannot contain
-    > underscores.
+    - It is important to note that for JAX-RS, URLs cannot contain  underscores.
 
+    <br/>
+    
     **<u>Example ENV Variable for the web partition:</u>**
 
     > **ENV APPLICATION_PARTITION0_REST_URL=http://defaultapp-partition0:9080/rest/**
 
-    > - When running in Docker, a docker network must be set up so that all partitions can communicate with each other. Yu did this in the> lab.
+    - When running in Docker, a docker network must be set up so that all partitions can communicate with each other. Yu did this in the> lab.
 
-    > - All partitions in this lab use port 9080 internally within the Docker environment, but expose themselves on separate ports externally to the host machine
+    - All partitions in this lab use port 9080 internally within the Docker environment, but expose themselves on separate ports externally to the host machine
 
-    > - Using this scheme as a base, a Kubernetes deployment can be set up on a cluster where each container acts a **Kubernetes service**
+    - Using this scheme as a base, a Kubernetes deployment can be set up on a cluster where each container acts a **Kubernetes service**
 
-    When running in Docker, the **hostname** must match the “**Name**” of the container as known in the Docker Network.
+    > When running in Docker, the **hostname** must match the “**Name**” of the container as known in the Docker Network.
 
-    > - Use command: “**docker network list”** to see the list of Docker> networks
+    - Use command: “**docker network list”** to see the list of Docker> networks
     
-    > - Use command: “**docker network inspect \<NETWORKNAME\>”** to  > see the container names in the Docker network.
+    - Use command: “**docker network inspect \<NETWORKNAME\>”** to  > see the container names in the Docker network.
 
-    > > \*\* Where <NETWORKNAME\> is the name of the Docker network to inspect
+    > \*\* Where <NETWORKNAME\> is the name of the Docker network to inspect
 
     ![](./images/media/image80.png)
 
