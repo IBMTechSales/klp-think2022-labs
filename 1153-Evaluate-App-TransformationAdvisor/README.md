@@ -434,7 +434,7 @@ for you in the lab environment.
  
     Once the data collection has been uploaded to Transformation Advisor, you are redirected back to the TA Recommendations screen. 
     
-    Notice that the **Profile** shown is for the **AppSrv01** profile from the WebSphere Application Server.
+    > Notice that the **Profile** shown is for the **AppSrv01** profile from the WebSphere Application Server.
 
     ![](./images/media/image33.png)
  
@@ -442,130 +442,92 @@ for you in the lab environment.
 
 ### 1.7 Evaluate On-Premises Java Applications
 
-In this section, you are going to use the Transformation Advisor UI to
-view the application data analysis results that was collected in the
-previous section.
+In this section, you are going to use the Transformation Advisor UI to view the application data analysis results that was collected in the previous section.
 
 1.  From the **Recommendations page**, you can see all applications
     analyzed from the WAS server are listed.
 
-> ![](./images/media/image34.png)
-> 
-> On the Recommendations page, the identified migration **source
-> environment** is shown in the **Profile** section, and the **target
-> environment** is shown in the **Preferred migration** section.
-> 
-> The data collector tool detects that the source environment is your
-> WebSphere Application Server profile.
-> 
-> The target environment is **Liberty Runtimes**, which is the default
-> target environment.
-> 
-> The Recommendations page also shows the summary analysis results for
-> all the apps in the AppSrv01 environment to be moved to a Liberty on
-> OpenShift environment. For each app, you can see these results:
+    ![](./images/media/image34.png)
+ 
+    On the Recommendations page, the identified migration **source environment** is shown in the **Profile** section, and the **target  environment** is shown in the **Preferred migration** section.
 
-  - Name
+    The data collector tool detects that the source environment is your WebSphere Application Server profile.
 
-  - Migration Target
+    The target environment is **Liberty Runtimes**, which is the default target environment.
+ 
+    The Recommendations page also shows the summary analysis results for all the apps in the AppSrv01 environment to be moved to a Liberty on OpenShift environment. For each app, you can see these results:
 
-  - Complexity
+    - Name
 
-  - Issues
+    - Migration Target
 
-  - Estimated development cost (in days)
+    - Complexity
 
-> For example, if you want to move the **modresorts-1\_0\_war.ear**
-> application to Open Liberty, the complexity level is Simple, which
-> indicates that the application code does not need to be changed before
-> it can be moved to cloud. The application has no dependency, has two
-> minor level issue and the estimated development effort is zero day
-> because no code change is required.
-> 
-> ![](./images/media/image35.png)
-> 
-> As you can see the default move to cloud environment is **Liberty
-> Runtimes**, however Transformation Advisor can also provide migration
-> options if you want to migrate your application to different target
-> environments as shown below:
-> 
-> ![](./images/media/image36.png)
-> 
-> In this lab you are focusing on identifying a good candidate
-> application for moving to Open Liberty on OpenShift environment.
+    - Issues
+
+    - Estimated development cost (in days)
+
+    For example, if you want to move the **modresorts-1\_0\_war.ear** application to Open Liberty, the complexity level is Simple, which indicates that the application code does not need to be changed before it can be moved to cloud. The application has no dependency, has two minor level issue and the estimated development effort is zero day because no code change is required.
+
+    ![](./images/media/image35.png)
+ 
+    As you can see the default move to cloud environment is **Liberty Runtimes**, however Transformation Advisor can also provide migration options if you want to migrate your application to different target environments as shown below:
+ 
+    ![](./images/media/image36.png)
+ 
+    In this lab you are focusing on identifying a good candidate application for moving to Open Liberty on  OpenShift environment.
 
 2.  Switch to the **Compatible Runtimes** view, which will show
     additional target runtime options, and their respective complexity
     of moving the application t that target environment.
 
-> ![](./images/media/image37.png)
-> 
-> For this lab, you will focus on the modernization of
-> **moderesorts-1.0\_war.ear** to Open Liberty. Next, you will look at
-> the analysis results for **moderesorts-1.0\_war.ear** application in
-> detail.
+    ![](./images/media/image37.png)
+ 
+    For this lab, you will focus on the modernization of **moderesorts-1.0_war.ear** to Open Liberty. Next, you will look at the analysis results for **moderesorts-1.0_war.ear** application in detail.
 
-3.  Click the **modresorts-1\_0\_war.ear** link targeting **Open
+3.  Click the **modresorts-1_0_war.ear** link targeting **Open
     Liberty** to expand its analysis results.
 
-> ![](./images/media/image38.png)
-> 
-> The first section in the detail analysis summary page is the
-> **Complexity section**. The overall complexity for the application is
-> **simple**, indicating that the application can be directly moved to
-> cloud without any code change.
-> 
-> ![](./images/media/image39.png)
+    ![](./images/media/image38.png)
+ 
+    The first section in the detail analysis summary page is the **Complexity section**. The overall complexity for the application is  **simple**, indicating that the application can be directly moved to cloud without any code change.
 
-4.  Scroll down to **Complexity Rules** section. You can see although
-    there is no code change required and no development cost, the
-    estimate migration over all develop cost is **0 days**. This
-    estimate is based on data from IBM Services engagements, which
-    includes migrating management, server configuration, and testing.
+    ![](./images/media/image39.png)
 
-> ![](./images/media/image40.png)
+4.  Scroll down to **Complexity Rules** section. You can see although there is no code change required and no development cost, the estimate migration over all develop cost is **0 days**. This estimate is based on data from IBM Services engagements, which includes migrating management, server configuration, and testing.
 
-5.  Expand the **Issues and issues details** section. You can see the
-    only minor potential issue listed is on configuring the application
-    in Docker container.
+    ![](./images/media/image40.png)
 
-> ![](./images/media/image41.png)
-> 
-> ![](./images/media/image42.png)
+5.  Expand the **Issues and issues details** section. You can see the only minor potential issue listed is on configuring the application in Docker container.
+
+    ![](./images/media/image41.png)
+ 
+    ![](./images/media/image42.png)
 
 6.  Next, scroll down to the bottom of the page and click the
-    **Technology Report** link, this opens a new browser window to show
-    the application Evaluation Report.
+    **Technology Report** link, this opens a new browser window to show the application Evaluation Report.
 
-> ![](./images/media/image43.png)
-> 
-> The **Technology report** lists all java technologies the application
-> used and whether these technologies are supported by a specific
-> WebSphere platform from Liberty for Java on IBM Cloud to WebSphere
-> traditional for z/OS. It is used to determine whether a particular
-> WebSphere product is suitable for an application.
-> 
-> ![](./images/media/image44.png)
-> 
-> As you can see from the report, the Mod Resorts application only uses
-> **Java Servlet** which is supported by all WebSphere editions.
+    ![](./images/media/image43.png)
+ 
+    The **Technology report** lists all java technologies the application used and whether these technologies are supported by a specific WebSphere platform from Liberty for Java on IBM Cloud to WebSphere traditional for z/OS. It is used to determine whether a particular WebSphere product is suitable for an application.
 
-7.  Go back to the Transformation Advisor page and click the **Analysis
-    Report** link.
+    ![](./images/media/image44.png)
 
-> ![](./images/media/image45.png)
+    As you can see from the report, the Mod Resorts application only uses **Java Servlet** which is supported by all WebSphere editions.
 
-1.  Click **OK** to continue.
+7.  Go back to the Transformation Advisor page and click the **Analysis Report** link.
 
-> ![ta analysis report ok](./images/media/image46.png)
-> 
-> Now you see the Detailed Migration Analysis Report opened in a new
-> browser window.
-> 
-> ![](./images/media/image47.png)
-> 
-> This is the deep-dive report which shows all issue found at the code
-> level.
+    ![](./images/media/image45.png)
+
+    a.  Click **OK** to continue.
+
+    ![ta analysis report ok](./images/media/image46.png)
+ 
+    Now you see the Detailed Migration Analysis Report opened in a new browser window.
+
+    ![](./images/media/image47.png)
+
+    This is the deep-dive report which shows all issue found at the code level.
 
 2.  Scroll down to **Detailed Results by Rule** section, you can see all
     the java technology issues identified based on different migration
