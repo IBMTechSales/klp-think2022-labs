@@ -1803,13 +1803,13 @@ partition will require unique configurations for its Microservice.
 
     - Using this scheme as a base, a Kubernetes deployment can be set up on a cluster where each container acts a **Kubernetes service**
 
-    > When running in Docker, the **hostname** must match the “**Name**” of the container as known in the Docker Network.
+      > When running in Docker, the **hostname** must match the “**Name**” of the container as known in the Docker Network.
 
     - Use command: “**docker network list”** to see the list of Docker> networks
     
     - Use command: “**docker network inspect \<NETWORKNAME\>”** to  > see the container names in the Docker network.
 
-    > \*\* Where <NETWORKNAME\> is the name of the Docker network to inspect
+      > \*\* Where <NETWORKNAME\> is the name of the Docker network to inspect
 
     ![](./images/media/image80.png)
 
