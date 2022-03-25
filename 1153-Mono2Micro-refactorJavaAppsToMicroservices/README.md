@@ -2135,7 +2135,7 @@ In this section, you will run the microservices based application, using the var
     The Snoop Servlet requires authentication, as defined in the OpenLiberty server configuration. The credentials to access the Snoop servlet is:
 
     > Username: **user1**
-
+    >
     > Password: **change1me**
  
     ![](./images/media/image94.png)
@@ -2165,31 +2165,17 @@ In this section, you will run the microservices based application, using the var
     </tbody>
     </table>
 
-4.  Here is a brief introduction to the multiple methods of running the
-    HitCount Service
+4.  Here is a brief introduction to the multiple methods of running the HitCount Service
 
-    - As illustrated below, selecting any of these three (3) options from
-    the application UI, the HitCount service runs using the local Web
-    Container session / state and runs the defaultapp-web (front-end)
-    microservice.
+    - As illustrated below, selecting any of these three (3) options from the application UI, the HitCount service runs using the local Web Container session / state and runs the defaultapp-web (front-end) microservice.
+      - Servlet instance variable
+      - Session state (create if necessary)
+      - Existing session state only
 
-    <br/>
-
-    > a. Servlet instance variable
-
-    > b. Session state (create if necessary)
-    
-    > c. Existing session state only
-
-    - Selecting **the Enterprise Java Bean (JPA)** option from the
-    application, the Web front-end microservice calls out to the
-    back-end microservice.
-
-    <br/>
-
-    > d. Enterprise Java Bean (JPA)
+    - Selecting **the Enterprise Java Bean (JPA)** option from the application, the Web front-end microservice calls out to the back-end microservice.
+      - Enterprise Java Bean (JPA)
  
-    > It calls the IncrementAction REST service in the defaultapp-container0  container. The REST endpoint invokes an EJB which uses JPA to persist to the Derby database. Using this option also requires a selection for **Transaction Type**.
+        > It calls the IncrementAction REST service in the defaultapp-container0  container. The REST endpoint invokes an EJB which uses JPA to persist to the Derby database. Using this option also requires a selection for **Transaction Type**.
 
     ![](./images/media/image17.png)
 
