@@ -363,45 +363,34 @@ Now, let’s simulate the steps to run the data collector.
 If the WebSphere Application Server and Transformation Advisor has
 connectivity, the data collector could be run as follows.
 
-1.  Example of the **Data Collector** utility command to start collect
-    the deployed applications information on the WebSphere Application
-    server.
+1.  Example of the **Data Collector** utility command to start collect the deployed applications information on the WebSphere Application server.
 
-|                                                                                    |
-| ---------------------------------------------------------------------------------- |
-| ***sudo ./bin/transformationadvisor -w /opt/IBM/WebSphere/AppServer -p AppSrv01*** |
+        sudo ./bin/transformationadvisor -w /opt/IBM/WebSphere/AppServer -p AppSrv01
+   
 
-2.  Type **1** to accept the license agreement and press **Enter**, as
-    illustrated below
+2.  Type **1** to accept the license agreement and press **Enter**, as illustrated below
 
-> ![A screenshot of a cell phone Description automatically
-> generated](./images/media/image25.png)
-> 
-> The utility will start to collect application data.
-> 
-> ![](./images/media/image26.png)
-> 
-> This process takes time to complete, depending on how many
-> applications are deployed on the WebSphere Application server.
-> 
-> When the collection utility competes, you will see a message “**Thank
-> you for uploading your data. You can proceed to the application UI for
-> doing further analysis.”**
-> 
-> Your application data is collected, it is saved as a zip file
-> “**AppSrv01.zip”**, as shown below.
-> 
-> ![](./images/media/image27.png)
-> 
-> In general, if your application server and the **Transformation
-> Advisor** are in the same network infrastructure, the collected data
-> will be automatically uploaded to **Transformation Advisor** for you
-> to view the analysis results.
-> 
-> Otherwise, you must manually upload the data to **Transformation
-> Advisor** before you can view the results.
+    ![A screenshot of a cell phone Description automatically> generated](./images/media/image25.png)
 
-## 6.6 Upload the data collection into Transformation Advisor
+    The utility will start to collect application data.
+
+    ![](./images/media/image26.png)
+ 
+    This process takes time to complete, depending on how many applications are deployed on the WebSphere Application erver.
+
+    When the collection utility competes, you will see a essage “**Thank you for uploading your data. You can proceed to the application UI for doing further analysis.”**
+
+    Your application data is collected, it is saved as a zip file “**AppSrv01.zip”**, as shown below.
+
+    ![](./images/media/image27.png)
+ 
+    In general, if your application server and the **Transformation  Advisor** are in the same network infrastructure, the collected data will be automatically uploaded to **Transformation Advisor** for you to view the analysis results.
+
+    Otherwise, you must manually upload the data to **Transformation Advisor** before you can view the results.
+
+
+
+### 1.6 Upload the data collection into Transformation Advisor
 
 In this section, you will upload the data collection zip file
 “**AppSrv01.zip**” from the WebSphere environment for analysis.
