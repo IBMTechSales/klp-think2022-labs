@@ -527,17 +527,17 @@ In this section, you are going to use the Transformation Advisor UI to view the 
 
     ![](./images/media/image47.png)
 
-    This is the deep-dive report which shows all issue found at the code level.
+    >This is the deep-dive report which shows all issue found at the code level.
 
     b.  Scroll down to **Detailed Results by Rule** section, you can see all the java technology issues identified based on different migration rules.
 
     ![](./images/media/image48.png)
  
-    For the Mod Resorts application, there are two warning rule regarding the application configuration in Docker containers.
+    > For the Mod Resorts application, there are two warning rule regarding the application configuration in Docker containers.
 
     c.  Click the **Show results** link next to the warning rules.
 
-    You can see the detail analysis of the issue at code level, in a specific class file and specific line. This helps developers to pinpoint where the issue is, or potential issue may be.
+    > You can see the detail analysis of the issue at code level, in a specific class file and specific line. This helps developers to pinpoint where the issue is, or potential issue may be.
  
     ![](./images/media/image49.png)
 
@@ -545,11 +545,11 @@ In this section, you are going to use the Transformation Advisor UI to view the 
 
     ![ta warning rules 3](./images/media/image50.png)
  
-    This expands the Rule Help section which provides recommended solutions on how to fix the issue.
+    > This expands the Rule Help section which provides recommended solutions on how to fix the issue.
 
     ![ta rule help](./images/media/image51.png)
  
-    For the Docker container configuration issue, the utility provides best practice suggestion to externalize the configuration for the container.
+    > For the Docker container configuration issue, the utility provides best practice suggestion to externalize the configuration for the container.
 
 8.  Go back to the Transformation Advisor page and click the **Inventory Report** link.
 
@@ -563,14 +563,13 @@ In this section, you are going to use the Transformation Advisor UI to view the 
 
     ![ta inventory report 2](./images/media/image54.png)
  
-    From the analysis reports you looked at above, you know that the Mod Resorts application is supported by Open Liberty which is the target environment, and the issue that the tool identified would not affect the application migration. You can confidently select the application as a good candidate for moving to Open Liberty in containers in the repackage process with minimum effort.
+    > From the analysis reports you looked at above, you know that the Mod Resorts application is supported by Open Liberty which is the target environment, and the issue that the tool identified would not affect the application migration. You can confidently select the application as a good candidate for moving to Open Liberty in containers in the repackage process with minimum effort.
 
-9.  Now you know that the Mod Resorts application can be moved to Liberty, you want to know if it is also a good candidate for
-    re-platform with traditional WebSphere in containers. To do that switch the target environment from **Compatible Liberty Runtime** to **WebSphere traditional**.
+9.  Now you know that the Mod Resorts application can be moved to Liberty, you want to know if it is also a good candidate for re-platform with traditional WebSphere in containers. To do that switch the target environment from **Compatible Liberty Runtime** to **WebSphere traditional**.
 
     ![](./images/media/image55.png)
  
-    As you can see from the TA recommendation that the Mod Resorts application is also a good candidate for re-hosting in WAS Base container on cloud. If you want to review the recommendation details, you can follow the same steps you did before to go over them.
+     As you can see from the TA recommendation that the Mod Resorts application is also a good candidate for re-hosting in WAS Base container on cloud. If you want to review the recommendation details, you can follow the same steps you did before to go over them.
  
     ![](./images/media/image56.png)
 
