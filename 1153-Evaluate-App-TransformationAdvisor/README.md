@@ -529,97 +529,63 @@ In this section, you are going to use the Transformation Advisor UI to view the 
 
     This is the deep-dive report which shows all issue found at the code level.
 
-2.  Scroll down to **Detailed Results by Rule** section, you can see all
-    the java technology issues identified based on different migration
-    rules.
+    b.  Scroll down to **Detailed Results by Rule** section, you can see all the java technology issues identified based on different migration rules.
 
-> ![](./images/media/image48.png)
-> 
-> For the Mod Resorts application, there are two warning rule regarding
-> the application configuration in Docker containers.
+    ![](./images/media/image48.png)
+ 
+    For the Mod Resorts application, there are two warning rule regarding the application configuration in Docker containers.
 
-3.  Click the **Show results** link next to the warning rules.
+    c.  Click the **Show results** link next to the warning rules.
 
-> You can see the detail analysis of the issue at code level, in a
-> specific class file and specific line. This helps developers to
-> pinpoint where the issue is, or potential issue may be.
-> 
-> ![](./images/media/image49.png)
+    You can see the detail analysis of the issue at code level, in a specific class file and specific line. This helps developers to pinpoint where the issue is, or potential issue may be.
+ 
+    ![](./images/media/image49.png)
 
-4.  Click the **Show rule help** link.
+    d.  Click the **Show rule help** link.
 
-> ![ta warning rules 3](./images/media/image50.png)
-> 
-> This expands the Rule Help section which provides recommended
-> solutions on how to fix the issue.
-> 
-> ![ta rule help](./images/media/image51.png)
-> 
-> For the Docker container configuration issue, the utility provides
-> best practice suggestion to externalize the configuration for the
-> container.
+    ![ta warning rules 3](./images/media/image50.png)
+ 
+    This expands the Rule Help section which provides recommended solutions on how to fix the issue.
 
-8.  Go back to the Transformation Advisor page and click the **Inventory
-    Report** link.
+    ![ta rule help](./images/media/image51.png)
+ 
+    For the Docker container configuration issue, the utility provides best practice suggestion to externalize the configuration for the container.
 
-> ![](./images/media/image52.png)
-> 
-> The **Inventory Report** shows up. This report helps you examine what
-> is in your application, including the number of modules, their
-> relationships, and the technologies in those modules. It also gives
-> you a view of all the utility JAR files in the application that tend
-> to accumulate over time. Potential deployment problems and performance
-> considerations are also included.
-> 
-> ![ta inventory report](./images/media/image53.png)
+8.  Go back to the Transformation Advisor page and click the **Inventory Report** link.
 
-1.  Scroll down to view this report which serves as good decision-making
-    tool to info you what is inside your application runtime, and to
-    help you to have a better understanding of the application runtime,
-    the components it has and the relationships among them.
+    ![](./images/media/image52.png)
+ 
+    The **Inventory Report** shows up. This report helps you examine what is in your application, including the number of modules, their relationships, and the technologies in those modules. It also gives you a view of all the utility JAR files in the application that tend to accumulate over time. Potential deployment problems and performance considerations are also included.
 
-> ![ta inventory report 2](./images/media/image54.png)
-> 
-> From the analysis reports you looked at above, you know that the Mod
-> Resorts application is supported by Open Liberty which is the target
-> environment, and the issue that the tool identified would not affect
-> the application migration. You can confidently select the application
-> as a good candidate for moving to Open Liberty in containers in the
-> repackage process with minimum effort.
+    ![ta inventory report](./images/media/image53.png)
 
-9.  Now you know that the Mod Resorts application can be moved to
-    Liberty, you want to know if it is also a good candidate for
-    re-platform with traditional WebSphere in containers. To do that
-    switch the target environment from **Compatible Liberty Runtime** to
-    **WebSphere traditional**.
+    a.  Scroll down to view this report which serves as good decision-making tool to info you what is inside your application runtime, and to help you to have a better understanding of the application runtime, the components it has and the relationships among them.
 
-> ![](./images/media/image55.png)
-> 
-> As you can see from the TA recommendation that the Mod Resorts
-> application is also a good candidate for re-hosting in WAS Base
-> container on cloud. If you want to review the recommendation details,
-> you can follow the same steps you did before to go over them.
-> 
-> ![](./images/media/image56.png)
+    ![ta inventory report 2](./images/media/image54.png)
+ 
+    From the analysis reports you looked at above, you know that the Mod Resorts application is supported by Open Liberty which is the target environment, and the issue that the tool identified would not affect the application migration. You can confidently select the application as a good candidate for moving to Open Liberty in containers in the repackage process with minimum effort.
+
+9.  Now you know that the Mod Resorts application can be moved to Liberty, you want to know if it is also a good candidate for
+    re-platform with traditional WebSphere in containers. To do that switch the target environment from **Compatible Liberty Runtime** to **WebSphere traditional**.
+
+    ![](./images/media/image55.png)
+ 
+    As you can see from the TA recommendation that the Mod Resorts application is also a good candidate for re-hosting in WAS Base container on cloud. If you want to review the recommendation details, you can follow the same steps you did before to go over them.
+ 
+    ![](./images/media/image56.png)
 
 10. **OPTIONAL:** Evaluate the CustomerOrderServicesApp.ear Application
 
-> You can follow the same procedure you did for the Mod Resorts
-> application to view the analysis results for any of the other
-> applications that was analyzed, such as
-> **CustomerOrderServicesApp.ear** application.
-> 
-> As you can see from the Summary list, the recommendations for the
-> application to move to cloud are as follows:
+    You can follow the same procedure you did for the Mod Resorts application to view the analysis results for any of the other applications that was analyzed, such as **CustomerOrderServicesApp.ear** application.
 
-  - The complexity level is Simple, for WebSphere Liberty and WebSphere
-    Traditional, which means that the application code can be deployed
-    to Liberty on OpenShift without any changes.
+    As you can see from the Summary list, the recommendations for the application to move to cloud are as follows:
 
-  - The estimated development effort is 0 day because no code changes
-    are needed.
+    - The complexity level is Simple, for WebSphere Liberty and WebSphere Traditional, which means that the application code can be deployed to Liberty on OpenShift without any changes.
 
-> ![](./images/media/image57.png)
+    - The estimated development effort is 0 day because no code changes are needed.
+
+    ![](./images/media/image57.png)
+
 
 ## 6.8 Overview of the Mod Resorts application
 
