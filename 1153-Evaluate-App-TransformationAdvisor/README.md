@@ -586,7 +586,7 @@ In this section, you are going to use the Transformation Advisor UI to view the 
     ![](./images/media/image57.png)
 
 
-## 6.8 Overview of the Mod Resorts application
+## 1.8 Overview of the Mod Resorts application
 
 From the insights gained from Transformation Advisor, you learned that
 the Mod Resorts is a simple EE application and is a good candidate for
@@ -615,8 +615,7 @@ The migration plan includes a migration bundle of generated deployment
 artifact that accelerate the deployment of the application to Liberty in
 a container-based cloud deployment.
 
-<span id="_Toc84424423" class="anchor"></span>**7. Explore the migration
-bundle for the Mod Resorts application**
+### 1.9 Explore the migration bundle for the Mod Resorts application**
 
 Transformation Advisor will display details about the **migration
 bundle** that it generated to accelerate the modernization of
@@ -627,11 +626,9 @@ OpenShift platform.
 
 The user can choose to create a migration bundle for either
 
-  - **binary** project of an application (uploading a WAR/EAR file and
-    its dependent libraries)
+  - **binary** project of an application (uploading a WAR/EAR file and its dependent libraries)
 
-  - **source code** project of an application, so that the application
-    source files can be modernized and maintained
+  - **source code** project of an application, so that the application source files can be modernized and maintained
 
 Now, let’s quickly explore a Migration Plan for the Mod Resorts
 application to see the artifacts that Transformation Advisor creates to
@@ -641,30 +638,25 @@ expedite the app deployment to OpenShift Platform.
     application analysis to display the menu choices and choose **View
     migration plan**:
 
-> ![](./images/media/image61.png)
+    ![](./images/media/image61.png)
 
-2.  Notice the contents of the migration bundle for the **Source code**
-    option.
+2.  Notice the contents of the migration bundle for the **Source code** option.
 
-> To accelerate the application modernization, the artifacts produced by
-> Transformation Advisor include:
+    To accelerate the application modernization, the artifacts produced by Transformation Advisor include:
 
-  - **server.xml**: the configuration for the Liberty server
+    - **server.xml**: the configuration for the Liberty server
 
-  - **pom.xml**: Build the application using Maven
+    - **pom.xml**: Build the application using Maven
 
-  - **Application CR**: Custom Resource for the application to be
-    deployed to OpenShift via the Open Liberty Operator
+    - **Application CR**: Custom Resource for the application to be deployed to OpenShift via the Open Liberty Operator
 
-  - **Dockerfile**: Create the Docker image for the application
+    - **Dockerfile**: Create the Docker image for the application
 
-> The user will be able to choose to **download** the artifacts as a
-> migration bundle or **push** the bundle contents into a GitHub
-> repository.
-> 
-> ![](./images/media/image62.png)
+    The user will be able to choose to **download** the artifacts as a migration bundle or **push** the bundle contents into a GitHub repository.
+ 
+    ![](./images/media/image62.png)
 
-<span id="_Toc84424424" class="anchor"></span>**8. Summary**
+### 1.10 Summary**
 
 In this lab, you learned how to evaluate the existing Java application
 using IBM Cloud Transformation Advisor. As a part of IBM Application
@@ -679,5 +671,4 @@ containers and helps minimize errors and risks and reduce time to
 market. To learn more about Application Modernization solutions, please
 continue with the rest of the lab series.
 
-**Congratulations\! You have successfully completed the lab “Evaluate
-On-Premises Java Apps with Transformation Advisor”.**
+**Congratulations! You have successfully completed the lab “Evaluate On-Premises Java Apps with Transformation Advisor”.**
