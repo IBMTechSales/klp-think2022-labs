@@ -1822,18 +1822,18 @@ partition will require unique configurations for its Microservice.
 
     **Build Image stage:**
 
-    > - Performs the Maven Build and package of the application based on the pom.xml files in the project.
+    - Performs the Maven Build and package of the application based on the pom.xml files in the project.
 
     **Production Image stage:**
  
     In addition to the steps that were performed in the web partition, these additional steps are required for the partition0 Microservice deployment.
 
-    > - Copies the Derby DB zip file to the shared resources folder for
+    - Copies the Derby DB zip file to the shared resources folder for
     Liberty. The Maven build has a step to unzip the Database contents.
 
-    > - Copies the Derby database JDBC library to Liberty’s shared resources folder
+    - Copies the Derby database JDBC library to Liberty’s shared resources folder
 
-    **Note:** The partition0 partition does not require any Mono2Micro ENV variables to be set since this partition does not make any REST API calls to other partitions.
+    > **Note:** The partition0 partition does not require any Mono2Micro ENV variables to be set since this partition does not make any REST API calls to other partitions.
 
     ![](./images/media/image81.png)
 
