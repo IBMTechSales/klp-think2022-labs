@@ -1939,14 +1939,9 @@ transformation process yourself.
 
     First, notice that there are two services. Mono2Micro places these services into logical partitions.
 
-    > - The “**web**” partition is the UI front-end microservice. It
-    includes the HTML, JSPs, and Servlets, all needed to run within the
-    same Web Container, according to JEE specifications.
+    - The “**web**” partition is the UI front-end microservice. It includes the HTML, JSPs, and Servlets, all needed to run within the same Web Container, according to JEE specifications.
 
-    > - The “**partition0**” partition (which I should rename) is the
-    backend service for the **IncrementAction** service. It contains an
-    EJB and JPA component that is responsible for persisting the data to
-    the embedded Derby database used by the microservice.
+    - The “**partition0**” partition (which I should rename) is the backend service for the **IncrementAction** service. It contains an EJB and JPA component that is responsible for persisting the data to the embedded Derby database used by the microservice.
 
     ![](./images/media/image84.png)
  
@@ -1973,7 +1968,7 @@ transformation process yourself.
 
     You will use Docker to build and run the microservices based application. For the Docker containers to communicate, a local Docker network is required.
 
-    **Tip:** Later, when you launch the Docker containers, you will specify the network for the containers to join, as command line options.
+    > **Tip:** Later, when you launch the Docker containers, you will specify the network for the containers to join, as command line options.
 
         docker network create defaultappNetwork
 
@@ -1999,9 +1994,9 @@ transformation process yourself.
 
     The dockerfile performs these basic tasks:
 
-    > - Uses the projects pom.xml file to do a Maven build, which produces the deployable EAR.
+    - Uses the projects pom.xml file to do a Maven build, which produces the deployable EAR.
 
-    > - Copies the EAR file and OpenLiberty Server configuration file to the appropriate location in the Docker container for the microservice to start once the container is started.
+    - Copies the EAR file and OpenLiberty Server configuration file to the appropriate location in the Docker container for the microservice to start once the container is started.
 
     ![](./images/media/image86.png)
 
@@ -2011,18 +2006,15 @@ transformation process yourself.
 
     Notice the command line options that are required for the microservice to run properly.
 
-    > - The partition-web container needs to expose port 9095 for the
-    application to be invoked from a web browser. The OpenLiberty sever
-    is configured to use HTTP port 9080 internally.
+    - The partition-web container needs to expose port 9095 for the  application to be invoked from a web browser. The OpenLiberty sever is configured to use HTTP port 9080 internally.
 
-    > - The container must be included in the **defaultappNetwork** that you defined earlier. The back-end microservice will also join this
-    network allowing the services to communicate with one another.
+    - The container must be included in the **defaultappNetwork** that you defined earlier. The back-end microservice will also join this network allowing the services to communicate with one another.
 
         docker run --name=defaultapp-web --hostname=defaultapp-web --network=defaultappNetwork -d -p 9095:9080 defaultapp-web:latest
 
         docker ps
 
-    **Note:** The application is exposed on port **9095** and running on port 9080 in the container.
+    > **Note:** The application is exposed on port **9095** and running on port 9080 in the container.
 
     ![](./images/media/image87.png)
 
