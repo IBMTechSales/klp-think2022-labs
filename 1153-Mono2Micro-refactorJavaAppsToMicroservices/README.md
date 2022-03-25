@@ -7,15 +7,12 @@
 
 ## Learning Objectives
 
-  - Learn how to perform the end-to-end process of using Mono2Micro to
-    analyze a Java EE monolith and transform it to Microservices
+  - Learn how to perform the end-to-end process of using Mono2Micro to analyze a Java EE monolith and transform it to Microservices
 
-  - Learn how to build and run the transformed microservices in
-    containers using Docker and OpenLiberty
+  - Learn how to build and run the transformed microservices in containers using Docker and OpenLiberty
 
 
-The following symbols appear in this document at places where additional
-guidance is available.
+The following symbols appear in this document at places where additional guidance is available.
 
 | Icon                                               | Purpose             | Explanation                                                                                                                                                |
 | -------------------------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -25,106 +22,61 @@ guidance is available.
 
 ## Why Do I need Mono2Micro?
 
-One of the best ways to modernize business applications is to refactor
-them into microservices, allowing each microservice to be then
-independently enhanced and scaled, providing agility and improved speed
-of delivery.
+One of the best ways to modernize business applications is to refactor them into microservices, allowing each microservice to be then independently enhanced and scaled, providing agility and improved speed of delivery.
 
-IBM Mono2Micro is an AI-based semi-automated toolset that uses novel
-machine learning algorithms and a first-of-its-kind code generation
-technology to assist you in that refactoring journey to full or partial
-microservices, all **without** **rewriting** **the Java application**
-and the business logic within.
+IBM Mono2Micro is an AI-based semi-automated toolset that uses novel machine learning algorithms and a irst-of-its-kind code generation technology to assist you in that refactoring journey to full or partial microservices, all **without** **rewriting** **the Java application** and the business logic within.
 
-It analyzes the monolith application in both a static and dynamic
-fashion, and then **provides recommendations for how the monolith can be
-partitioned** into groups of classes that can become potential
-microservices.
+It analyzes the monolith application in both a static and dynamic fashion, and then **provides recommendations for how the monolith can be partitioned** into groups of classes that can become potential microservices.
 
-Based on the partitioning, Mono2Micro also **generates the microservices
-foundation code and APIs** which alongside the existing monolith Java
-classes can be used to implement and deploy running microservices.
+Based on the partitioning, Mono2Micro also **generates the microservices foundation code and APIs** which alongside the existing monolith Java classes can be used to implement and deploy running microservices.
 
 ![](./images/media/image5.png)
 
 ## Getting Started with Mono2Micro
 
-Below is a high-level flow diagram of getting started with Mono2Micro in
-collecting data on an existing monolith application, and then running
-the AI analyzer tool to generate two kinds of recommendations as how to
-partition the application into recommended microservices.
+Below is a high-level flow diagram of getting started with Mono2Micro in collecting data on an existing monolith application, and then running the AI analyzer tool to generate two kinds of recommendations as how to partition the application into recommended microservices.
 
-1.  The data is collected from static code analysis, capturing **data
-    (Class) dependencies,** depicted in **[1]**.
+1.  The data is collected from static code analysis, capturing **data (Class) dependencies,** depicted in **[1]**.
 
-2.  Data is dynamically collected through **runtime trace logs** as the
-    instrumented monolith application is run through various **use case
-    scenarios** to exercise as much of the codebase as possible,
-    depicted in **[2]** & **[3]**.
+2.  Data is dynamically collected through **runtime trace logs** as the instrumented monolith application is run through various **use case scenarios** to exercise as much of the codebase as possible, depicted in **[2]** & **[3]**.
 
-Based on all three kinds of data, Mono2Micro generates a ***Natural
-Seams Partitioning*** recommendation that aims to partition and group
-the monolith classes such that there are minimal class containment
-dependencies and entanglements (i.e. classes calling methods outside
-their partitions) between the partitions.
+Based on all three kinds of data, Mono2Micro generates a ***Natural Seams Partitioning*** recommendation that aims to partition and group the monolith classes such that there are minimal class containment dependencies and entanglements (i.e. classes calling methods outside their partitions) between the partitions.
 
 The “Data Dependency Analysis” in [1] refers to this kind of
-dependency analysis between the Java classes. In effect, this breaks up
-the monolith along its natural seams with the least amount of
-disruption.
+dependency analysis between the Java classes. In effect, this breaks up the monolith along its natural seams with the least amount of disruption.
 
-Based on **[2]** and **[3]** alone, and not taking class containment
-dependencies and method call entanglements into account, Mono2Micro also
-generates a ***Business Logic Partitioning*** that might present more
-entanglements and dependencies between partitions, but ultimately
-provides a more useful partitioning of the monolith divided along
+Based on **[2]** and **[3]** alone, and not taking class containment dependencies and method call entanglements into account, Mono2Micro also generates a ***Business Logic Partitioning*** that might present more entanglements and dependencies between partitions, but ultimately provides a more useful partitioning of the monolith divided along
 functional and business logic capabilities.
 
 ![](./images/media/image6.png)
 
 ## How does Mono2Micro work?
 
-In this lab, you will use a simple JEE monolith application named
-DefaultApplication, and step through the entire Mono2Micro toolset, end
-to end, starting with the monolith and ending with a deployed and
-containerized microservices version of the same application.
+In this lab, you will use a simple JEE monolith application named DefaultApplication, and step through the entire Mono2Micro toolset, end to end, starting with the monolith and ending with a deployed and containerized microservices version of the same application.
 
-Mono2Micro consists of five components, each of them serving a specific
-purpose. The component and their uses are listed in the following:
+Mono2Micro consists of five components, each of them serving a specific purpose. The component and their uses are listed in the following:
 
-**Bluejay**. instruments the Java source code of monoliths. The
-instrumentation captures entry and exit of every Java method in the
-application.
+**Bluejay**. instruments the Java source code of monoliths. The instrumentation captures entry and exit of every Java method in the application.
 
-**Flicker**. A Java program that is used while running test cases that
-gathers runtime analysis data. Flick is used to align the start and end
-times of a use case with the timestamps generated from the instrumented
-code. This allows for Mono2Micro to track the code being executed in the
+**Flicker**. A Java program that is used while running test cases that gathers runtime analysis data. Flick is used to align the start and end times of a use case with the timestamps generated from the instrumented code. This allows for Mono2Micro to track the code being executed in the
 monolith to specific use cases.
 
-**AIPL**. The AI engine of Mono2Micro which uses machine learning and
-deep learning techniques on the user supplied runtime traces and
-metadata obtained from Bluejay and Flicker to generate microservice recommendations.
+**AIPL**. The AI engine of Mono2Micro which uses machine learning and deep learning techniques on the user supplied runtime traces and metadata obtained from Bluejay and Flicker to generate microservice recommendations.
 
 AIPL also produces a detailed report for the recommended microservices.
 
-**Mono2Micro UI**. The results obtained from AIPL are stored in user’s
-local storage. The results can be uploaded to Mono2Micro UI to display
-them in a graphical visualizer. The UI also allows you to modify the
-AIPL generated microservice recommendations.
+**Mono2Micro UI**. The results obtained from AIPL are stored in user’s local storage. The results can be uploaded to Mono2Micro UI to display them in a graphical visualizer. The UI also allows you to modify the AIPL generated microservice recommendations.
 
-**Cardinal**. The program with deep knowledge of the semantics of the
-Java programming language. Cardinal uses the recommendations from AIPL.
+**Cardinal**. The program with deep knowledge of the semantics of the Java programming language. Cardinal uses the recommendations from AIPL.
 
 **Cardinal** performs these important capabilities:
-  > - Provides detailed invocation analyses of the recommended     microservices
-  >  - Generates a significant portion of the code needed to realize the recommended microservices in containers
+  -  Provides detailed invocation analyses of the  recommended microservices
+  - Generates a significant portion of the code needed to realize the recommended microservices in containers
 
 
 ### **Mono2Micro usage flow**
 
-The illustration below shows how the Mono2Micro components fit into the
-end-to-end process.
+The illustration below shows how the Mono2Micro components fit into the end-to-end process.
 
 |                                         |                                                                                                                                        |
 | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -132,29 +84,25 @@ end-to-end process.
 
 1.  Use **Bluejay** to instrument the monolith application
 
-2.  Use **Flicker** and run test cases to capture runtime execution
-    Trace data in the server logs, based on the instrumented code,
-    updated by Bluejay.
+2.  Use **Flicker** and run test cases to capture runtime execution trace data in the server logs, based on the instrumented code, updated by Bluejay.
 
 3.  Use **AIPL** to analyze the data and produce recommended
     microservices based on Natural Seams and/or Business logic.
 
 4.  Use **Mono2Micro UI** to visualize the microservices
-    recommendations, and tweak the recommendations as needed to meet
-    your objectives.
+    recommendations, and tweak the recommendations as needed to meet your objectives.
 
-5.  Use **Cardinal** to generate the plumbing and service code needed to
-    realize the recommended microservices.
+5.  Use **Cardinal** to generate the plumbing and service code needed to realize the recommended microservices.
 
-> ![](./images/media/image7.png)
+    ![](./images/media/image7.png)
 
 ## The lab environment
 
 One (1) Linux VM has been provided for this lab.
 
-> ![](./images/media/image8a.png)
-> 
-> The **Workstation** VM has the following software installed:
+![](./images/media/image8a.png)
+ 
+The **Workstation** VM has the following software installed:
 
   - Docker 19.03.13
 
@@ -164,18 +112,17 @@ One (1) Linux VM has been provided for this lab.
 
   - OpenJDK 1.8.0
 
-<!-- end list -->
+
 
   - The **Workstation** is VM Linux CentOS version 7
 
   - The login credentials for the **Workstation** VM are:
-> 
-> User ID: **ibmadmin**
-> 
-> Password: **passw0rd (That is a numeric zero in passw0rd)**
-> 
-> **Note:** Use the Password above in the **Workstation** VM Terminal
-> for ***sudo*** in the Lab
+ 
+    > User ID: **ibmadmin**
+ 
+    > Password: **passw0rd (That is a numeric zero in passw0rd)**
+    > 
+    > **Note:** Use the Password above in the **Workstation** VM Terminal for ***sudo*** in the Lab
 
 ###  **Login to the Workstation VM and Get Started**
 
