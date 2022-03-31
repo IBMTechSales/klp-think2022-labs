@@ -158,6 +158,7 @@ The WebSphere Automation vulnerability manager checks the applicability of the n
 ### Clone the Git repository used for this lab and explore the contents
 
 1.	Clone the GitHub repo with the lab artifacts, then run the following command on your terminal:
+
     a.	Open a Terminal window on the VM, and ensure you are in the home directory of the user “ibmuser”
 
         cd /home/ibmuser
@@ -727,7 +728,7 @@ By doing so, IBM WebSphere Automation records this action and tracks when a fix 
 
      ![](./lab1-media/media/imagev3-57.png)
 
-    d.  Click on the **tWAS_9057_server** link under the **Servers** column. Then select Fix History to view the latest actions for that server
+    d.  Click on the **tWAS_9057_server** link under the **Servers** column. Then select **Fix History** to view the latest actions for that server
 
     > Note the Action of **Uninstalled** next to the FIXES that have been uninstalled by uninstalling the iFix
 
