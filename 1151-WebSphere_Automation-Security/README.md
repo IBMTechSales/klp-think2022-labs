@@ -422,7 +422,7 @@ In this section, you configure a traditional WebSphere Application Server to you
 
     ![dashboard tWAS1](./lab1-media/media/image28.png)
  
-    You should see that this server Risk Level is 10.0, with 14 or more unresolved CVEs. 
+    You should see that this server Risk Level is **10.0, with (+ more)** unresolved CVEs. The number of unresolved CVEs may differ from the screen shot. That is OK, as new vulnerabilities are continuously discovered. 
 
     **Note:** Somewhere at the top of that list is the much talked about LOG4J vulnerability, known as CVE-2021-44228, with a critical score of 10.  
  
@@ -462,8 +462,8 @@ Great, your traditional WebSphere server is configured. Let’s check the WebSph
 
     ![](./lab1-media/media/imagev3-31.png)
 
-    You should see that this server Risk Level is 10.0, with 14 or more unresolved CVEs.
- 
+    You should see that this server Risk Level is **10.0, with (+ more)** unresolved CVEs. The number of unresolved CVEs may differ from the screen shot. That is OK, as new vulnerabilities are continuously discovered
+
     > **Note:** Somewhere at the top of that list is the much talked about **LOG4J vulnerability**, known as **CVE-2021-44228**, with a critical score of **10**.
 
 
@@ -891,9 +891,9 @@ In this section, you configure Liberty Server version 20.0.0.9 to register to We
 
     <br>
 
-12.	Click on the “**+6 more**” under the Unresolved CVEs for the Liberty_20009_server, to see the list of the unresolved CVEs, including the CVE-2020-10693.
+12.	Click on the **(+ \<NUMBER\> more)** under the Unresolved CVEs for the Liberty_20009_server, to see the list of the unresolved CVEs, including the CVE-2020-10693.
 
-    Note that the +6 could be different if additional CVEs have been discovered since the time of this writing. 
+    > Note: The \<Number\> may be different than the screenshot. That is OK, as new vulnerabilities are continuously discovered. 
 
     ![app runtimes servers](./lab1-media/media/image48.png)
 
