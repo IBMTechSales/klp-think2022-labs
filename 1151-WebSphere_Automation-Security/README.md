@@ -4,7 +4,7 @@
 
 **Last updated:** April 2022
 
-**Duration:** 60 - 90 minutes
+**Duration:** 90 minutes
 
 Need support? Contact **Kevin Postreich**
 
@@ -87,10 +87,6 @@ Furthermore, this information can be exported to a CSV file to be shared amongst
 ## Accessing and starting the environment
 
 If you are doing this lab as part of an instructor led workshop (virtual or face to face), an environment has already been provisioned for you. The instructor will provide the details for accessing the lab environment.
-
-Otherwise, you will need to reserve an environment for the lab. You can obtain one here. Follow the on-screen instructions for the “**Reserve now**” option.
-
-<https://techzone.ibm.com/my/reservations/create/60da2c20e2cb7a001f656575>
 
 
 1.  When the demo environment is provisioned, use the provided username and password to access and start the environment. You should see the following screen:
