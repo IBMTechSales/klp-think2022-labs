@@ -64,7 +64,7 @@ One (1) Linux VM has been provided for this lab.
 
 ![](./images/media/image4a.png)
 
-> The **“Liberty vPOT … Desktop”** VM has the following software
+> The **“Workstation...”** VM has the following software
 > available:
 
   - Application Project with Liberty
@@ -73,21 +73,21 @@ One (1) Linux VM has been provided for this lab.
 
 <!-- end list -->
 
-  - The login credentials for the **Liberty vPOT … Desktop”** VM are:
+  - The login credentials for the **Worksation...”** VM are:
 
 > User ID: **ibmdemo**
 > 
 > Password: **passw0rd (That is a numeric zero in passw0rd)**
 
 
-###  **Login to the "Liberty vPOT … Desktop" VM and Get Started**
+###  **Login to the "Workstation..." VM and Get Started**
 
 1.  If the VM is **<span class="underline">not</span>** already started,
     start it by clicking the **Play** button.
 
     ![](./images/media/image5a.png)
 
-2.  After the VM is started, click the **“Liberty vPOT … Desktop”** VM
+2.  After the VM is started, click the **“Workstation...”** VM
     icon to access it.
 
     ![](./images/media/image6a.png)

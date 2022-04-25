@@ -448,6 +448,8 @@ In this section, use a provided script to register an additional traditional Web
 
     > **Note:** The script performs the same steps to register the 9056 server that you followed while registering the 9057 WebSphere server. Then the script starts the 9056 server.
 
+        chmod 777 /home/ibmuser/WAS-Automation-LabFiles/lab1-CVE/*.sh
+        
         /home/ibmuser/WAS-Automation-LabFiles/lab1-CVE/register-was-server.sh 9056
 
     ![](./lab1-media/media/imagev3-30.png)
