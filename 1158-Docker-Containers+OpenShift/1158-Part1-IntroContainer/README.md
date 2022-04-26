@@ -558,9 +558,9 @@ The configuration file for the server is in the **server.xml**.
 
 4. List the images to see that the new image `app` is built: 
    ```
-   docker images
+   docker images | grep '\<app\>\|websphere'
    ```
-   Note that the base image, `ibmcom/websphere-liberty` has also been pulled into the local registry.
+   Note: The base image, `ibmcom/websphere-liberty` has also been pulled into the local registry.
 
      ```
      REPOSITORY                            TAG                        IMAGE ID       CREATED         SIZE
