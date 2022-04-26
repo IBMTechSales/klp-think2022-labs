@@ -221,7 +221,7 @@ For this lab, WebSphere Automation is pre-installed on an OCP cluster. You have 
 
     ![cloudpack](./lab1-media/media/x-ibm-cloudpak.png)
 
-    a. In the upper right corner, click on the **grid** icon
+    a. In the upper right corner, click on the **cloudpak switcher** icon
 
     ![grid](./lab1-media/media/x-switch-automation.png)
 
@@ -229,7 +229,7 @@ For this lab, WebSphere Automation is pre-installed on an OCP cluster. You have 
 
     ![select-it](./lab1-media/media/x-select-automation.png)
 
-6.  At this point, you shoul dbe at the ***IBM Automation Welcome page*** 
+6.  At this point, you should be at the ***IBM Automation Welcome page*** 
 
     ![welcome page](./lab1-media/media/image14.png)
 
