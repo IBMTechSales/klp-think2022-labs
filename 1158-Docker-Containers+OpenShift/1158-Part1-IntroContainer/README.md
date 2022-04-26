@@ -619,13 +619,13 @@ The configuration file for the server is in the **server.xml**.
 	
     b. Note that this is a stripped down environment where many commands are not available. 
 	
-	   For example, try the following: 
+	For example, try the following commands: 
 
-  	   - `which ps` to see running processes.
-	   - `cd /logs` to find the log files.
-       - `cd /liberty/wlp` to find the location of the liberty install
-       - `cd /liberty/wlp/usr/servers/defaultServer` to find the server configuration. 
-       - `cd /opt/ibm/wlp/output/defaultServer` to find the workarea files required by the server runtime.
+  	 - **which ps** to see running processes
+	 - **cd /logs** to find the log files.
+     - **cd /liberty/wlp** to find the location of the liberty install
+     - **cd /liberty/wlp/usr/servers/defaultServer** to find the server configuration. 
+     - **cd /opt/ibm/wlp/output/defaultServer** to find the workarea files required by the server runtime
       
 	  
     <br>
