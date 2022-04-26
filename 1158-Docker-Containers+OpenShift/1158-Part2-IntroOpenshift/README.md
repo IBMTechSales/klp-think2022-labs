@@ -491,7 +491,7 @@ The `oc` command is already installed on your VM's terminal.
    
     <br/>
    
-2. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
+2. If you have not yet cloned the GitHub repo with the lab artifacts, in a previous lab, run the following command on your terminal:
    
         cd /home/ibmuser
 		
@@ -596,15 +596,13 @@ nodes                                 no                                        
     ```
 
 
-3.  List all pods within a namespace: `oc get pods -n kube-system`
+3.  List all pods within a namespace: `oc get pods -n myproject`
 
     ```
-    NAME                                             READY   STATUS    RESTARTS   AGE
-    calico-kube-controllers-549fdb8d79-khkvr         1/1     Running   0          25h
-    calico-node-jc6ln                                1/1     Running   0          24h
-    calico-node-t7zwg                                1/1     Running   0          24h
-    ...
+    NAME                       READY   STATUS    RESTARTS   AGE
+    example-5fb6876865-pqhcd   1/1     Running   0          21m
     ```
+     
 
 
 ### Projects
