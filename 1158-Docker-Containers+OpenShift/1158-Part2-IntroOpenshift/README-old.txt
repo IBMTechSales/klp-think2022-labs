@@ -326,7 +326,7 @@ A **service** enables the pods we just created to be load balanced within the Op
     
     a. Under spec.selector: 
 	
-      - change `MyApp` to `hello-openshift`
+      - change `MyApp` to `hello-openshift`. 
       - This is how the service will find the pods to load balance. Therefore, it matches the labels (`spec.selector.matchLabels`) that we used when creating the deployment for the hello-openshift application.
    
     <br/>   
@@ -402,7 +402,7 @@ A route exposes your internal endpoints outside your cluster's built-in firewall
 
     <br/>
 
-3. Access the route at the link provided under Location. The route location will open in a new browser tab.
+3. Access the route at the link provided under Location:
 
     ![Create Route](images/CreateRouteAccessRoute.jpg)
 
