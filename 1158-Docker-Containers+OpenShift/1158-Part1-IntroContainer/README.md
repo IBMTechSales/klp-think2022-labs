@@ -669,7 +669,7 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
 2. List the images again:
 
      ```
-     docker images
+     docker images | grep app
      ```
 
      And the output:
