@@ -1092,36 +1092,34 @@ oc get pods <pod name> -o yaml
          oc edit deployment example
        ```
       
-	  Under the `spec` section (not under the `status` section), change `replicas: 2` to `replicas: 1`, and **save** the change in the vi editor (by `:wq`).
+	  Under the `spec` section (not under the `status` section), change `replicas: 1` to `replicas: 2`, and **save** the change in the vi editor (by `:wq`).
 
       The output:
       ```
       deployment.extensions/example edited
       ```
 
-      **Note:** The above edits the copy that is stored in Openshift. You may also edit your local copy of `Deployment.yaml` and re-apply it.
+     **Note:** The above edits the copy that is stored in Openshift. You may also edit your local copy of `Deployment.yaml` and re-apply it.
 
       <br/>
 
-5. List the pods to show only 1 pod is running: `oc get pods`
+5. List the pods to show 2 pods runing afer issueing the previous commands: 
 
     ```
-    NAME                      READY   STATUS    RESTARTS   AGE
-    example-75778c488-c9jhd   1/1     Running   0          65m
+    oc get pods
+    ```
+
+    ```
+    NAME                       READY   STATUS    RESTARTS   AGE
+    example-5fb6876865-5vpwk   1/1     Running   0          20s
+    example-5fb6876865-xjbb6   1/1     Running   0          20m
     ```
 
 
-6. Cleanup:
+8. Cleanup:
     - `oc delete route example`
     - `oc delete service example`
     - `oc delete deployment example`
     - `oc get pods`  **Note:** You may have to do this a few times, to wait for the pods to be deleted.
 
 Congratulations, you have deployed your first application to Openshift via the command line.
-
-
-## Next
-
-Please follow the link to the next lab **Transformation Advisor - Application Assesssment**:
-
-- [Transformation Advisor - Application Assesssment](https://ibmtechsales.github.io/was-appmod/basic-labs/TA/)
