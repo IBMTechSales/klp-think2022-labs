@@ -8,10 +8,11 @@
   - [Prerequisites](#prerequisites)
   - [What is a Container](#what-is-a-container)
   - [Login to the VM](#login-to-the-vm)
-  - [Check your environment and clone the workshop GitHub project](#check-your-environment-and-clone-the-workshop-github-project)
+  - [Check your environment](#check-your-environment)
   - [Run a pre-built image](#run-a-pre-built-image)
   - [Build and Run Your Own Image](#build-and-run-your-own-image)
   - [Managing Image Versions](#managing-image-versions)
+  - [Extra Credit](#extra-credit)
   - [Next](#next)
 
 <a name="Background"> </a>
@@ -123,8 +124,8 @@ cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer
      docker images
      ```
    
-     **Note:** You may see some images that already exit on the VM, whch are used for different labs.  
-
+     **Note:** no container inages are listed at this point
+   
         REPOSITORY   TAG   IMAGE ID   CREATED   SIZE
 
     
@@ -282,7 +283,7 @@ cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer
 
      **Note:** within the container, each instance behaves as if it's running in its own virtual environment, and has opened the same ports. Outside of the container, different ports are opened.
 
-  <br/>
+     <br/>
 
 12. To export the file system of a running container: 
    ```
