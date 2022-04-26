@@ -217,7 +217,9 @@ For this lab, WebSphere Automation is pre-installed on an OCP cluster. You have 
 
     <br/>
 
-5.  If the **"IBM Cloudpak | Administration"** page appears, navigate to the IBM Automation page using the sub-steps below. Otherwise continue with the next step, as you are already at the **IBM Automation** page.  
+5.  If the **"IBM Cloudpak | Administration"** page appears, navigate to the **IBM Automation page** using the sub-steps below. Otherwise continue with the next step, as you should already be at the **IBM Automation** page.  
+
+    ![cloudpack](./lab1-media/media/x-ibm-cloudpak.png)
 
     a. In the upper right corner, click on the **grid** icon
 
