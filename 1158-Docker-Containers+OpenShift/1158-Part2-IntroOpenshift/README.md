@@ -1079,8 +1079,13 @@ oc get pods <pod name> -o yaml
          oc patch deployment example -p '{ "spec": { "replicas": 1 } }'
 
          oc get pods
-         ```
-   
+       ```
+      
+       ```
+       NAME                       READY   STATUS    RESTARTS   AGE
+       example-5fb6876865-xjbb6   1/1     Running   0          14m
+       ``` 
+
      - Interactive patch using the `edit` option of the command line through `vi` editor:
      
 	     ```
