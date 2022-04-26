@@ -393,7 +393,7 @@ cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer
 	docker stop hello1
     ```
 	
-21. Remove stopped containers, and note that there are no more containers:
+21. Remove stopped containers, and note that the hello1 and hello2 containers have been removed:
     
 	```
 	docker rm hello1
@@ -406,7 +406,7 @@ cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer
     a. View current images:
     
     ```
-    docker images
+    docker images | grep hello
     ```
 
         Example output:
@@ -455,7 +455,7 @@ The configuration file for the server is in the **server.xml**.
 
 1. Change directory to openshift-workshop-was/labs/Openshift/HelloContainer 
    ```
-   cd openshift-workshop-was/labs/Openshift/HelloContainer 
+   cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer 
    ```
 
 1. Review the provided `Containerfile` from the directory:
