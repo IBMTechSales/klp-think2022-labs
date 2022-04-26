@@ -620,7 +620,7 @@ nodes                                 no                                        
 2. Get current project: `oc project` (Note: current project may not be `myproject` shown below):
 
     ```
-    Using project "myproject" on server "https://c100-e.us-south.containers.cloud.ibm.com:32541".
+    Using project "default" on server "https://c100-e.us-south.containers.cloud.ibm.com:32541".
     ```
 
 3. Change to a specific project
@@ -632,7 +632,7 @@ nodes                                 no                                        
     ```
     Now using project "myproject" on server "https://api.demo.ibmdte.net:6443".
     ```
-    
+
 
 4. Create a new project and make it the current project: 
 ```
@@ -690,7 +690,7 @@ oc get project project1 -o yaml
 
 #### First Deployment
 
-1. In your web terminal session, under the directory where you clone the labs repository `(.../openshift-workshop-was/labs/Openshift/IntroOpenshift)`, you will find **Deployment.yaml**;  
+1. In your web terminal session, under the directory where you cloned the labs repository `(/home/ibmuser/openshift-workshop-was/labs/Openshift/IntroOpenshift)`, you will find **Deployment.yaml**;  
 
      For example:
      ```
@@ -992,9 +992,10 @@ oc get pods <pod name> -o yaml
     ```
 
 9. Create the service so that it's accessible and load balanced for pods with label `app: hello-openshift` within the `project1` namespace: 
-```
-oc apply -f Service.yaml
-```
+
+    ```
+    oc apply -f Service.yaml
+    ```
  
     The service is created
 
