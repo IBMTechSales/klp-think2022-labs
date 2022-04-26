@@ -623,7 +623,18 @@ nodes                                 no                                        
     Using project "myproject" on server "https://c100-e.us-south.containers.cloud.ibm.com:32541".
     ```
 
-3. Create a new project and make it the current project: 
+3. Change to a specific project
+
+    ```
+    oc project myproject
+    ```
+
+    ```
+    Now using project "myproject" on server "https://api.demo.ibmdte.net:6443".
+    ```
+    
+
+4. Create a new project and make it the current project: 
 ```
 oc new-project  project1
 ```   
