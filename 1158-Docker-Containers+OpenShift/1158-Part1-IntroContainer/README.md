@@ -12,7 +12,6 @@
   - [Run a pre-built image](#run-a-pre-built-image)
   - [Build and Run Your Own Image](#build-and-run-your-own-image)
   - [Managing Image Versions](#managing-image-versions)
-  - [Next](#next)
 
 <a name="Background"> </a>
 ## Background
@@ -832,8 +831,3 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
 
 
 Congratulations! You have completed the **Introduction to Containerization** lab.
-
-## Next
-Please follow the link to do the next lab **Introduction to Container Orchestration using Openshift**:
-
-  - [Introduction to Container Orchestration using Openshift](https://ibmtechsales.github.io/was-appmod/basic-labs/IntroOpenshift/)
