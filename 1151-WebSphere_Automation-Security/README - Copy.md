@@ -217,23 +217,13 @@ For this lab, WebSphere Automation is pre-installed on an OCP cluster. You have 
 
     <br/>
 
-5.  If the **"IBM Cloudpak | Administration"** page appears, navigate to the IBM Automation page using the sub-steps below. Otherwise continue with the next step, as you are already at the **IBM Automation** page.  
-
-    a. In the upper right corner, click on the **grid** icon
-
-    ![grid](./lab1-media/media/x-switch-automation.png)
-
-    b. Select **IBM Automation (WebSphere Automation)** from the menu
-
-    ![select-it](./lab1-media/media/x-select-automation.png)
-
-6.  At this point, you shoul dbe at the ***IBM Automation Welcome page*** 
+5.  The ***IBM Automation Welcome page*** appears.
 
     ![welcome page](./lab1-media/media/image14.png)
 
     <br>
 	
-7.  From the IBM Automation Welcome page, view the **Application Runtimes** that have been registered with IBM Automation
+6.  View the Application Runtimes that have been registered with IBM Automation
 
     a. Click on the**Navigation Menu** icon located at the upper left corner of the page
 
@@ -247,13 +237,13 @@ For this lab, WebSphere Automation is pre-installed on an OCP cluster. You have 
 
       <br/>
 
-8. The **Application runtimes – Security** page appears. There should be no data since there not any WebSphere / Liberty servers registered yet.
+7. The **Application runtimes – Security** page appears. There should be no data since there not any WebSphere / Liberty servers registered yet.
 
      ![App rutime](./lab1-media/media/image17.png)
 
      <br/>
 
-9.  Before you start to register servers to the Dashboard, you need to configure an email to received notifications about CVEs.
+8.  Before you start to register servers to the Dashboard, you need to configure an email to received notifications about CVEs.
     
     a. Select the **Notifications** menu item from the navigation list.
     
