@@ -1071,19 +1071,21 @@ oc get pods <pod name> -o yaml
     example-75778c488-rhjrx   1/1     Running   0          28s
     ```
 
-4. To reduce the number of pods, we can patch the resource in one of two ways:
+4. To cange the number of pods, you can patch the resource in one of two ways:
    
-     - Scripted patch using the `patch` option of the command line:
+     - Scripted patch using the `patch` option of the command line: This command reduces the number of pods to 1. 
       
 	     ```
          oc patch deployment example -p '{ "spec": { "replicas": 1 } }'
+
+         oc get pods
          ```
    
      - Interactive patch using the `edit` option of the command line through `vi` editor:
      
 	     ```
          oc edit deployment example
-         ```
+       ```
       
 	  Under the `spec` section (not under the `status` section), change `replicas: 2` to `replicas: 1`, and **save** the change in the vi editor (by `:wq`).
 
