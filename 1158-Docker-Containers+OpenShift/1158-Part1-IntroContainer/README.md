@@ -794,7 +794,7 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
     Successfully built 31b27169b3bc
     ```
 
-7. Tag it as  follows:
+7. Tag the new image as follows:
 
     ```
     docker tag app app:1
@@ -802,7 +802,7 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
     docker tag app app:1.4.0
     ```
 
-8. Verify the following: 
+8. Use the command `docker images | grep app` and verify the following: 
 
     - `1`, `1.4`, and `1.4.0` are the same image
     - `1.3` and `1.3.6` are the same image
