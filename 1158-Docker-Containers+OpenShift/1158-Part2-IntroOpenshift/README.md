@@ -1023,9 +1023,10 @@ oc get pods <pod name> -o yaml
     ```
 
 11. Apply the route to make the service reachable from outside the cluster: 
-```
-oc apply -f Route.yaml
-```
+    
+    ```
+    oc apply -f Route.yaml
+    ```
     
     The route is created
 
