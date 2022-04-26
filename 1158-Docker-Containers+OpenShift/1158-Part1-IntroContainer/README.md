@@ -729,7 +729,7 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
     Successfully tagged app:latest 
     ```
 
-4. Tag it as follows :
+4. Tag the imaage as follows :
 
     ```
     docker tag app app:1
@@ -737,10 +737,13 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
     docker tag app app:1.3.6
     ```
 
-5. Verify that these are the same images: `app:1`, `app:1.3`, `app:1.3.6`.
+5. Verify that these three images all have the same **IMAGE ID** indicating they are all the same image: `app:1`, `app:1.3`, `app:1.3.6`.
 
     ```
-	REPOSITORY                 TAG                        IMAGE ID       CREATED          SIZE
+    docker images | grep app 
+    ```
+	```
+    REPOSITORY                 TAG                        IMAGE ID       CREATED          SIZE
     app                        1                          6ae053c3a3de   42 seconds ago   537MB
     app                        1.3                        6ae053c3a3de   42 seconds ago   537MB
     app                        1.3.6                      6ae053c3a3de   42 seconds ago   537MB
