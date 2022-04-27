@@ -318,7 +318,7 @@ cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer
     The typical use case is to run a shell command, so you can use the shell to navigate within the container and run other commands.
     However, our image is tiny, and there is no built-in shell.
 
-    For the purpose of this lab, we'll execute the same command again: 
+    For the purpose of this lab, we'll execute the same command again by invoking the **hello-openshift** executable that we just extracted from the tar file: 
 	
 	```
 	docker exec -ti hello1 /hello-openshift . 
@@ -445,7 +445,9 @@ cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer
 ## Build and Run Your Own Image
 
 We use a podman `Containerfile`, which contains the instructions to create the new layers of your image. 
-For those familiar with docker, the `Containerfile` is equivalent to a `Dockerfile`.
+For those familiar with docker, the `Containerfile` is equivalent to a `Dockerfile`. 
+
+> **Note:** In addition to a Containerfile, you can also use existing docker Dockerfiles to create an image with podman
 
 Recall that an image contains the entire file system that you want to use to run your virtual process in a container.
 For this sample, we are building a new image for a Java EE web application **ServletApp.war**.
@@ -457,7 +459,7 @@ The configuration file for the server is in the **server.xml**.
    cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer 
    ```
 
-1. Review the provided `Containerfile` from the directory:
+2. Review the provided `Containerfile` from the directory:
     ```
     cat Containerfile
     ```
@@ -582,6 +584,10 @@ The configuration file for the server is in the **server.xml**.
      b. Check that it renders a page showing `Simple Servlet ran successfully`.
      
 	 c. Also point your browser to 9443:  `https://localhost:9443/app`
+
+     > **Hint:** Copy the URL including https, don’t just change 9080 to 9443
+
+     > Note: If you get a “security risk” banner due to the self-signed cert, just accept and continue. 
     
     ![hello openshift](images/buildyourown1.png)
 
@@ -668,7 +674,7 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
 2. List the images again:
 
      ```
-     docker images | grep app
+     docker images | grep '\<app\>'
      ```
 
      And the output:
