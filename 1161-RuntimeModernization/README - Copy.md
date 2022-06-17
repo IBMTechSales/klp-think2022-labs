@@ -497,7 +497,7 @@ Customer Order Services application uses DB2 as its database. To deploy it to Li
      ```
 
      Example output of **yaml** that will be used to deploy the application resources. 
-     ```yaml
+     ```
      apiVersion: v1
      data:
        DB_HOST: cos-db-liberty.db.svc
@@ -710,11 +710,11 @@ Customer Order Services application uses DB2 as its database. To deploy it to Li
          
 		 <br/>
 		 
-      - Navigate to the `Terminal` tab to view the files in the container
+       - Navigate to the `Terminal` tab to view the files in the container
        
-        ![olo pod3](extras/images/olo_pod3.jpg)   
+         ![olo pod3](extras/images/olo_pod3.jpg)   
      
-        <br/> 	 
+         <br/> 	 
 	 
 3. View the resources in the project `apps`:
     
@@ -810,7 +810,7 @@ Customer Order Services application uses DB2 as its database. To deploy it to Li
 
       - Navigate to the `YAML` tab to view the content of yaml.  
             
-		  **Note** the route is created through the controller of OpenLibertyApplication custom resource.
+			**Note** the route is created through the controller of OpenLibertyApplication custom resource.
          
            ![ola network route2](extras/images/ola-net-route2.jpg)   
        
@@ -854,24 +854,24 @@ Customer Order Services application uses DB2 as its database. To deploy it to Li
         
           <br/>  		
 		
-   c. View db `pod` details:
+     c. View db `pod` details:
         
-	  - Click on the **Pods** tab under **Workloads** from the left menu and select the pod starting with `cos-db-liberty`
+	   - Click on the **Pods** tab under **Workloads** from the left menu and select the pod starting with `cos-db-liberty`
        
           ![ol-db pod1](extras/images/oldb_pod_1.jpg)
       
           <br/>  	  
 	   
-    - Navigate to the `Logs` tab to view the database logs
-     - Navigate to the `Terminal` tab to view the files in the database container
+       - Navigate to the `Logs` tab to view the database logs
+       - Navigate to the `Terminal` tab to view the files in the database container
        
           ![ol-db pod2](extras/images/oldb_pod_2.jpg)
         
           <br/>  		
 		
-   d. View db `service` details:
+     d. View db `service` details:
         
-	  - Click on the **Services** tab under **Networking** from the left menu and select  `cos-db-liberty`
+	   - Click on the **Services** tab under **Networking** from the left menu and select  `cos-db-liberty`
        
           ![ol-db service1](extras/images/oldb_service_1.jpg)
 
@@ -915,24 +915,23 @@ Customer Order Services application uses DB2 as its database. To deploy it to Li
      kustomization.yaml  olapp-cos.yaml
      ```
 
-      - Each directory used for kustomization contains one `kustomization.yaml`
+       - Each directory used for kustomization contains one `kustomization.yaml`
 
          ```
          cat deploy/base/kustomization.yaml
          ```
 
-      - Content of kustomization.yaml:
+       - Content of kustomization.yaml:
 	 
          This is a simple kustomization directory that just lists the resources (yaml files) to be deployed.
-         
-         ```yaml
+         ```
          resources:
          - olapp-cos.yaml
          ```
 
-      - The `olapp-cos.yaml` file contains the **Open Liberty custom resource definition** to deploy the application and will be covered in detail later.
+       - The `olapp-cos.yaml` file contains the **Open Liberty custom resource definition** to deploy the application and will be covered in detail later.
 
-      <br/>
+       <br/>
 
 5. Take a look at the files in the `overlay-apps` directory. 
    ```
@@ -945,15 +944,14 @@ Customer Order Services application uses DB2 as its database. To deploy it to Li
      configmap.yaml  kustomization.yaml  secret-db-creds.yaml  secret-liberty-creds.yaml
      ```
    
-      - Take a look at the `kustomization.yaml` in the **overlay-apps** directory:
-    
-      ```
-      cat deploy/overlay-apps/kustomization.yaml
-      ```
+       - Take a look at the `kustomization.yaml` in the **overlay-apps** directory:
+       ```
+       cat deploy/overlay-apps/kustomization.yaml
+       ```
 
-      And the output:
+         And the output:
 
-      ```yaml
+         ```
          namespace: apps
          resources:
          - configmap.yaml
@@ -961,21 +959,20 @@ Customer Order Services application uses DB2 as its database. To deploy it to Li
          - secret-liberty-creds.yaml
          bases:
          - ./../base
-      ```
+         ```
 
-      Note that:
+        Note that:
         
-	  -  The namespace is defined. This means that all resources originating from this **overlay-apps** directory will be applied to the `apps` namespace.
-      
-    - Resources from the **base directory** will also be included.
-         - The configurations in this directory contain the overrides specific to this environment. 
-         - For a real environment, DO NOT store the secret yamls into source control. It is a security expsoure.  See extra credit section on how to secure your secrets.
+		  - The namespace is defined. This means that all resources originating from this **overlay-apps** directory will be applied to the `apps` namespace.
+          - Resources from the **base directory** will also be included.
+          - The configurations in this directory contain the overrides specific to this environment. 
+          - For a real environment, DO NOT store the secret yamls into source control. It is a security expsoure.  See extra credit section on how to secure your secrets.
           
-		 <br/>
+		  <br/>
 		  
-		 **Note:** You may define additional overlay directories for different environments, each with a different namespace. For example, overlay-staging, overlay-prod.
+		  **Note:** You may define additional overlay directories for different environments, each with a different namespace. For example, overlay-staging, overlay-prod.
    
-     <br/>   
+          <br/>   
    
 6. To preview the resources that will be applied for a specific override directory, use the `kustomize` option of the Openshift command line.
    ```
@@ -1001,14 +998,12 @@ Now, View the contents of the secrets in overlay-apps directory
 1. View the content of `secret-db-creds.yaml` file:
 
      The file `secret-db-creds.yaml` contains the credentials for the database.  It is injected into the container as an environment variable via the `secretRef` specification for the Open Liberty Operator.
-
      ```
      cat deploy/overlay-apps/secret-db-creds.yaml
      ```
      
 	 Example output:
-
-     ```yaml
+     ```
      kind: Secret
      apiVersion: v1
      metadata:
@@ -1026,8 +1021,7 @@ Now, View the contents of the secrets in overlay-apps directory
      cat deploy/overlay-apps/secret-liberty-creds.yaml
      ```
      Example output:
-     
-     ```yaml
+     ```
      kind: Secret
      apiVersion: v1
      metadata:
@@ -1068,7 +1062,7 @@ For our example, the values of the `configmap.yaml` are injected as environment 
 cat deploy/overlay-apps/configmap.yaml
 ```
 Example output:
-```yaml
+```
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -1094,7 +1088,7 @@ The `olapp-cos.yaml` file is the OpenLiberty Operator custom resource used to de
 
 The file `deploy/base/olapp-cos.yaml` defines the **OpenLibertyApplication** custom resource. 
 
-```yaml
+```
 apiVersion: openliberty.io/v1beta1
 kind: OpenLibertyApplication
 metadata:
@@ -1189,11 +1183,11 @@ spec:
 
      a. Ensure you are in directory `openshift-workshop-was/labs/Openshift/RuntimeModernization`
        
-	  ```
+	   ```
         cd openshift-workshop-was/labs/Openshift/RuntimeModernization
-    ```    
+       ```    
    
-      **Note:** The pre-installed resources such as Open Liberty Operator and DB2, are not removed.
+       **Note:** The pre-installed resources such as Open Liberty Operator and DB2, are not removed.
    
    
      b. delete the resouces 
