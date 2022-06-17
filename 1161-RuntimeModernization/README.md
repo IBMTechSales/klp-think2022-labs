@@ -617,18 +617,17 @@ Customer Order Services application uses DB2 as its database. To deploy it to Li
      oc get pod 
      ```
 
-        Example output of pod status:
-        ```
+      Example output of pod status:
+      ```
         NAME                   READY   STATUS    RESTARTS   AGE
         cos-596b4f849f-2fg4h   1/1     Running   0          18m
-        ```
+      ```
   
       - **TROUBESHOOTING:** If the pod doesn't display the expected `Running` status (for example, after 5 minutes), then delete the pod to restart it.
-      ```
-	  oc delete pod <pod name>  
-	    
-	  ```
-      **Note:** pod name is the string under NAME column from the output of `oc get pod`
+        ```
+	      oc delete pod <pod name>  
+	      ```
+     **Note:** pod name is the string under NAME column from the output of `oc get pod`
 
 
 ## Access the application (Hands-on)
