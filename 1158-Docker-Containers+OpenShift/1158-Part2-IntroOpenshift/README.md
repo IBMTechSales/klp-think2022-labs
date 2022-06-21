@@ -26,10 +26,10 @@ In this lab, we will introduce you to the basics of container Orchestration usin
    
      <br/>
    
-3. Login with **ibmuser** ID.
+3. Login with **ibmdemo** ID.
    
-    * Click on the **ibmuser** icon on the Ubuntu screen.
-    * When prompted for the password for **ibmuser**, enter "**engageibm**" as the password:
+    * Click on the **ibmdemo** icon on the Ubuntu screen.
+    * When prompted for the password for **ibmdemo**, enter "**passw0rd**" as the password:
          
 	  <br/>
 		 
@@ -67,7 +67,7 @@ In this lab, we will introduce you to the basics of container Orchestration usin
 4. Log in to the account using the following credentials:
    
      * Username: **ibmadmin**
-     * Password: **engageibm**
+     * Password: **passw0rd**
 
      ![console](images/loginconsole3.png)
 
@@ -493,7 +493,7 @@ The `oc` command is already installed on your VM's terminal.
    
 2. If you have not yet cloned the GitHub repo with the lab artifacts, in a previous lab, run the following command on your terminal:
    
-        cd /home/ibmuser
+        cd /home/ibmdemo
 		
 		git clone https://github.com/IBMTechSales/openshift-workshop-was 
 
@@ -501,7 +501,7 @@ The `oc` command is already installed on your VM's terminal.
 3. Change directory to:  `openshift-workshop-was/labs/Openshift/IntroOpenshift`
 
 
-        cd /home/ibmuser/openshift-workshop-was/labs/Openshift/IntroOpenshift
+        cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/IntroOpenshift
     
 
 ### Login to OpenShift
@@ -690,7 +690,7 @@ oc get project project1 -o yaml
 
 #### First Deployment
 
-1. In your web terminal session, under the directory where you cloned the labs repository `(/home/ibmuser/openshift-workshop-was/labs/Openshift/IntroOpenshift)`, you will find **Deployment.yaml**;  
+1. In your web terminal session, under the directory where you cloned the labs repository `(/home/ibmdemo/openshift-workshop-was/labs/Openshift/IntroOpenshift)`, you will find **Deployment.yaml**;  
 
      For example:
      ```
