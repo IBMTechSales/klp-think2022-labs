@@ -62,10 +62,10 @@ If you need more background on containers: https://www.docker.com/resources/what
    
      ![desktop VM](images/loginvm2.png)
    
-3. Login with **ibmuser** ID.
+3. Login with **ibmdemo** ID.
 
-    * Click on the **ibmuser** icon on the Ubuntu screen.
-    * When prompted for the password for **ibmuser**, enter "**engageibm**" as the password.
+    * Click on the **ibmdemo** icon on the Ubuntu screen.
+    * When prompted for the password for **ibmdemo**, enter "**passw0rd**" as the password.
 	
 	  <br>
      
@@ -103,14 +103,14 @@ If you need more background on containers: https://www.docker.com/resources/what
 
 3. From the terminal window  in the VM, and clone the lab to your local directory via:
 
-        cd /home/ibmuser
+        cd /home/ibmdemo
 		
 		git clone https://github.com/IBMTechSales/openshift-workshop-was.git
 
 
-4. Change directory to:  `/home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer`
+4. Change directory to:  `/home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer`
 ```
-cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer
+cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer
 ```
 
 <a name="Run_Prebuilt"> </a>
@@ -456,7 +456,7 @@ The configuration file for the server is in the **server.xml**.
 
 1. Change directory to openshift-workshop-was/labs/Openshift/HelloContainer 
    ```
-   cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer 
+   cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer 
    ```
 
 2. Review the provided `Containerfile` from the directory:
