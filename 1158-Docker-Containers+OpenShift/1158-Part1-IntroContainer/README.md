@@ -105,7 +105,7 @@ If you need more background on containers: https://www.docker.com/resources/what
 
         cd /home/ibmuser
 		
-		git clone https://github.com/IBMTechSales/openshift-workshop-was
+		git clone https://github.com/IBMTechSales/openshift-workshop-was.git
 
 
 4. Change directory to:  `/home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer`
