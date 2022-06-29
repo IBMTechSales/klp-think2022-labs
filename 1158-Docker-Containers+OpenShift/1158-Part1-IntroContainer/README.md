@@ -422,7 +422,7 @@ cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer
     ```
     docker rmi openshift/hello-openshift
     ```
-        Example output:
+      Example output:
     
         Untagged: openshift/hello-openshift:latest
         Untagged: openshift/hello-openshift@sha256:aaea76ff622d2f8bcb32e538e7b3cd0ef6d291953f3e7c9f556c1ba5baf47e2e
