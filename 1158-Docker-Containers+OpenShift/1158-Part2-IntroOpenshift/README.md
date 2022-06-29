@@ -148,7 +148,7 @@ The typical artifacts you will need to run an application in Openshift are:
 
     Here is the specification of the deployment in its entirety:
 
-    ```
+    ```yaml
     apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -204,7 +204,7 @@ The typical artifacts you will need to run an application in Openshift are:
 
 6. Here is a sample YAML after the deployment is created :
 
-    ```
+    ```yaml
     kind: Deployment
     apiVersion: apps/v1
     metadata:
@@ -351,7 +351,7 @@ A **service** enables the pods we just created to be load balanced within the Op
     ![Create Service After YAML ](images/CreateServiceAfterYAML.jpg)
 
     The YAML file looks like:
-    ```
+    ```yaml
     Kind: Service
     apiVersion: v1
     metadata:
