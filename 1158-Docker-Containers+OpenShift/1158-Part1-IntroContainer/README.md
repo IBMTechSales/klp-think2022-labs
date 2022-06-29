@@ -62,10 +62,10 @@ If you need more background on containers: https://www.docker.com/resources/what
    
      ![desktop VM](images/loginvm2.png)
    
-3. Login with **ibmdemo** ID.
+3. Login with **ibmuser** ID.
 
-    * Click on the **ibmdemo** icon on the Ubuntu screen.
-    * When prompted for the password for **ibmdemo**, enter "**passw0rd**" as the password.
+    * Click on the **ibmuser** icon on the Ubuntu screen.
+    * When prompted for the password for **ibmuser**, enter "**engageibm**" as the password.
 	
 	  <br>
      
@@ -103,14 +103,15 @@ If you need more background on containers: https://www.docker.com/resources/what
 
 3. From the terminal window  in the VM, and clone the lab to your local directory via:
 
-        cd /home/ibmdemo
+        cd /home/ibmuser
 		
 		git clone https://github.com/IBMTechSales/openshift-workshop-was.git
 
 
-4. Change directory to:  `/home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer`
+4. Change directory to the cloned local copy of the git repository. `/home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer`
+
 ```
-cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer
+cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer
 ```
 
 <a name="Run_Prebuilt"> </a>
@@ -148,7 +149,7 @@ cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer
 3. List available local images again: 
 
      ```
-     docker images
+     docker images | grep hello
      ```
    
      The **hello-openshift** image is now listed
@@ -204,7 +205,7 @@ cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer
 			]
     
 
-5. Run the image in an container: Notice the exposed ports (8083 and 8888)
+5. Run the image in an container: Notice the exposed ports (8083 and 8888) on the **docker run** command. 
    ```
    docker run --name hello1 -d -p 8083:8080 -p 8888:8888 openshift/hello-openshift
    ```
@@ -260,26 +261,26 @@ cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer
    docker logs hello1
    ```
 
-     And the output:
+   And the output:
 
-    ```
+   ```
     serving on 8888
     serving on 8080
-    ```
+   ```
 
 11. View the logs on the second container: 
    ```
    docker logs hello2
    ```
 
-     And the output:
+   And the output:
 
-     ```
+   ```
      serving on 8888
      serving on 8080
-     ```
+   ```
 
-     **Note:** within the container, each instance behaves as if it's running in its own virtual environment, and has opened the same ports. Outside of the container, different ports are opened.
+   **Note:** within the container, each instance behaves as if it's running in its own virtual environment, and has opened the same ports. Outside of the container, different ports are opened.
 
   <br/>
 
@@ -288,14 +289,16 @@ cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer
    docker export hello1 > hello1.tar
    ```
 
+   > **Note:** You can use the docker export command to export a container to another system as an image tar file. You also need to export separately any data volumes that the container uses.
+
 13. List the files on the file system: 
    ```
    tar -tvf hello1.tar
    ``` 
    
-     **Note** that this is a very small image.
+   **Note** that this is a very small image.
 
-       ```
+   ```
        -rwxr-xr-x 0/0               0 2020-04-29 16:48 .dockerenv
        drwxr-xr-x 0/0               0 2020-04-29 16:48 dev/
        -rwxr-xr-x 0/0               0 2020-04-29 16:48 dev/console
@@ -309,23 +312,22 @@ cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer
        -rwxr-xr-x 0/0         6089990 2018-04-18 10:22 hello-openshift
        drwxr-xr-x 0/0               0 2020-04-29 16:48 proc/
        drwxr-xr-x 0/0               0 2020-04-29 16:48 sys/
-       ```
+  ```
 
-14. Run another command in the running container. 
+14. Run commands in the running container. 
 
     You can reach into the running container to run another command. 
 
     The typical use case is to run a shell command, so you can use the shell to navigate within the container and run other commands.
     However, our image is tiny, and there is no built-in shell.
 
-    For the purpose of this lab, we'll execute the same command again by invoking the **hello-openshift** executable that we just extracted from the tar file: 
+    For the purpose of this lab, we'll execute the command to invoke **hello-openshift** executable that we just extracted from the tar file: 
 	
 	```
 	docker exec -ti hello1 /hello-openshift . 
     ```
 	
-	Running this command again in the same container results in an error, 
-    because there is already another copy running in the background that is bound to the ports 8080 and 8888:
+	**Note:** Running the command above in the same container results in an error, because there is already another copy running in the background that is bound to the ports 8080 and 8888:
 
     ```
     serving on 8888
@@ -334,7 +336,7 @@ cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer
     ...
     ```
 
-15. Stop the containers:
+15. Stop the containers that you have running:
     ```
     docker stop hello1
 	docker stop hello2
@@ -353,10 +355,10 @@ cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer
     
     ```
 
-17. List all containers, including stopped containers: 
+17. List the hello-openshift containers, including stopped containers: 
 
     ```
-	docker ps -a
+	docker ps -a | grep hello
 	```
  
     You should see the two cntainers listed, although not running; STATUS is **Exited**
@@ -408,7 +410,7 @@ cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer
     docker images | grep hello
     ```
 
-        Example output:
+    Example output:
    
     
         REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
@@ -435,7 +437,7 @@ cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer
     docker images | grep hello-openshift
     ```
     
-        Example output:
+      Example output:
 
         REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
         
@@ -456,7 +458,7 @@ The configuration file for the server is in the **server.xml**.
 
 1. Change directory to openshift-workshop-was/labs/Openshift/HelloContainer 
    ```
-   cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/HelloContainer 
+   cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer 
    ```
 
 2. Review the provided `Containerfile` from the directory:
@@ -464,7 +466,7 @@ The configuration file for the server is in the **server.xml**.
     cat Containerfile
     ```
 
-    Content of **Containerfile**:
+    Contents of **Containerfile**:
     ```
     FROM ibmcom/websphere-liberty:kernel-java8-ibmjava-ubi
     COPY server.xml  /config
@@ -626,7 +628,7 @@ The configuration file for the server is in the **server.xml**.
 	
 	For example, try the following commands: 
 
-  	 - **which ps** to see running processes
+  	 - **which ps** to see running processes (notice the **ps** command is not available)
 	 - **cd /logs** to find the log files.
      - **cd /liberty/wlp** to find the location of the liberty install
      - **cd /liberty/wlp/usr/servers/defaultServer** to find the server configuration. 
@@ -671,7 +673,7 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
      docker tag app app:1.3.5
      ```
 
-2. List the images again:
+2. List the  app images:
 
      ```
      docker images | grep '\<app\>'
@@ -689,14 +691,16 @@ Let's assume that the first version we will build for our environment is 1.3.5. 
 
     Note that all the different tags are currently associated with the same image, as they have the same image ID.
 
-    After tagging, the command `docker run app:<version> ...` or `docker pull app:<version> ...` resolves the available versions as follows:
+    After tagging, the command `docker run app:<version> ...` or `docker pull app:<version> ...` will resolve the available versions as follows:
 
     - `app:1` resolves to the latest 1.x.x version, which in this case is `1.3.5`.
     - `app:1.3` resolves to the latest 1.3.x version, which in this case is the `1.3.5`
     - `app:1.3.5` resolves to the exact version `1.3.5`.
 
     After you build a new patch image containing defect fixes, you want to manage the tags for the new image so that a
-    new `docker run app:<version> ...` or `docker pull app:<version> ...` command resolves the images as follows:
+    new `docker run app:<version> ...` or `docker pull app:<version> ...` command resolves the images as follows: 
+    
+    **Note:** You will test this in the next steps:
 
     - `app:1.3.5`: resolves to the existing `1.3.5` image.
     - `app:1.3.6`: resolves to the new image
