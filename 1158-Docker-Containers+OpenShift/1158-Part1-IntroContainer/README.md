@@ -136,7 +136,7 @@ cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer
         
      And the output:
 
-       ```
+     ```
        Using default tag: latest
        latest: Pulling from openshift/hello-openshift
        4f4fb700ef54: Pull complete 
@@ -144,7 +144,7 @@ cd /home/ibmuser/openshift-workshop-was/labs/Openshift/HelloContainer
        Digest: sha256:aaea76ff622d2f8bcb32e538e7b3cd0ef6d291953f3e7c9f556c1ba5baf47e2e
        Status: Downloaded newer image for openshift/hello-openshift:latest
        docker.io/openshift/hello-openshift:latest
-       ``` 
+     ``` 
 
 3. List available local images again: 
 
