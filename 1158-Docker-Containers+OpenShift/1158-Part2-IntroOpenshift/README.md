@@ -836,26 +836,26 @@ nodes                                 no                                        
     ```
 
 5. List the running pods created by the controller for the deployment: 
-```
-oc get pods
-```
+   ```
+   oc get pods
+   ```
 
-  The pods should be in the **Running** state
+   The pods should be in the **Running** state
 
-  ```
+   ```
     NAME                      READY   STATUS    RESTARTS   AGE
     example-75778c488-7k7q2   1/1     Running   0          3m37s
     example-75778c488-c9jhd   1/1     Running   0          3m37s
-  ```
+   ```
 
 6. List the details for one of the pods: 
-```
-oc get pods <pod name> -o yaml
-```
+   ```
+   oc get pods <pod name> -o yaml 
+   ```
 
-  **Note:** `<pod name>` is listed under `NAME` in the previous command's output.
+   **Note:** `<pod name>` is listed under `NAME` in the previous command's output.
 	
-  ```yaml
+   ```yaml
     apiVersion: v1
     kind: Pod
     metadata:
@@ -968,7 +968,7 @@ oc get pods <pod name> -o yaml
       - ip: 172.30.26.229
       qosClass: BestEffort
       startTime: "2020-01-30T20:37:28Z"
-  ```
+   ```
 
 7. Show the logs of one of the pods: `oc logs <pod name>`
 
