@@ -1,21 +1,19 @@
 # Evaluate Java Applications with Transformation Advisor
 
-This lab is a part of the **Teaching your monolith to dance** Application
-Modernization lab series which focuses on the evaluation, re-platforming
-and rehosting application modernization approaches and other application
-modernization related solutions. This lab provides fundamental hands-on
-experience of the evaluation process. It shows the value of using
-Transformation Advisor to evaluate on-premises Java applications and
-identify a migration candidate for moving to the cloud. When you
-complete this lab, you learn how to use this tool to quickly analyze
+This lab provides fundamental hands-on experience of Java application evaluation process as an initial step of an application modernization project. 
+
+It shows the value of using Transformation Advisor to evaluate on-premises Java applications and identify a migration candidate for moving to the cloud. 
+
+In this lab, you learn how to use this tool to quickly analyze
 on-premises Java applications without accessing their source code and to
-estimate the move to cloud efforts.
+estimate the effort and scope of moving a candidate application to Liberty and containers.
 
 **IBM Cloud Transformation Advisor** (Transformation Advisor) is an
 application modernization tool that is entitled through IBM WebSphere
 Hybrid Edition. Transformation Advisor helps you quickly evaluate
-on-premises Java EE applications for deployment to the cloud. The
-Transformation Advisor tool can
+on-premises Java EE applications for deployment to the cloud. 
+
+The Transformation Advisor tool can:
 
   - identify the Java EE programming models in the app.
 
@@ -25,15 +23,14 @@ Transformation Advisor tool can
   - highlight Java EE programming model and WebSphere API differences
     between the WebSphere profile types
 
-  - identify Java EE specification implementation differences that might
+  - identify Java and Java EE specification implementation differences that might
     affect the app
 
 Additionally, the tool provides a recommendation for the right-fit IBM
 WebSphere Application Server edition and offers advice, best practices,
 and potential solutions to assess the ease of moving apps to Liberty or
 newer versions of WebSphere traditional. It accelerates application
-migrating to cloud process, minimize errors and risks and reduce time to
-market.
+migrating to cloud process, minimize errors and risks, while reducing time to market.
 
 ## 1. Business Scenario
 
@@ -43,11 +40,7 @@ deployed to WebSphere Application Server (WAS) environment.
 ![](./images/media/image1.png)
 
 Your company wants to move these applications to a lightweight WebSphere
-Liberty server on cloud, but you are not sure how much effort the
-migration process might take. You decide to use the IBM Transformation
-Advisor to do a quick evaluation of these applications without their
-source code to identify a good candidate application to move to cloud
-based on the analysis result.
+Liberty server on a Kbernetes container-based platfrom. However, you are not sure how much effort the migration process might take. You decide to use the IBM Transformation Advisor to do a quick evaluation of these applications without their source code to identify good candidate application to move to your target OpenShift container-based platform.
 
 ## 2. Objective
 
@@ -56,8 +49,7 @@ The objectives of this lab are to:
   - learn how to collect Java application and configuration data using
     the Transformation Advisor Data Collector tool.
 
-  - learn how to use the Transformation Advisor to evaluate the move to
-    cloud efforts and to identify the good candidate for migration.
+  - learn how to use the Transformation Advisor to evaluate and scope the application modernization for candidate Java applications.
 
 ## 3. Prerequisites
 
@@ -66,13 +58,10 @@ lab:
 
   - Familiarity with basic Linux commands
 
-  - Have internet access
 
-  - Have a SkyTap App Mod Lab environment ready
+## 4. The Lab Environment
 
-## 4. What is Already Completed
-
-A six Linux VMs App Mod Lab environment has been provided for this lab.
+An App Mod Lab environment has been provided for this lab. It contains six VMs. 
 
 ![](./images/media/image2.png)
 
@@ -88,23 +77,23 @@ A six Linux VMs App Mod Lab environment has been provided for this lab.
     
       - dns VM
     
-      - nfs VM, with 3 master nodes / compute nodes (the master nodes
-        are serving as computer nodes as well).
+      - nfs VM
+      
+ -  **Note:** The 3 master nodes are also serving as compute nodes in the lab environment 
 
-  - The **desktop VM** is the one you will use to access and work with
-    OCP cluster in this lab.
+  - The **desktop VM** is the VM you will use to access and work with
+    OpenShift (OCP) cluster in this lab.
 
-  - The login credentials for the **desktop VM** are: User ID:
-    **ibmuser** Password: **engageibm**
+  - The login credentials for the **desktop VM** are:
+    -  User ID: **ibmuser** 
+    -  Password: **engageibm**
 
 ## 5. Lab Tasks
 
 In this lab, you access WebSphere Application Server to review the
-deployment of the JEE applications. Then you are going to the
+deployment of the JEE applications. Then you are going to use
 Transformation Advisor to identify a good candidate application for
-moving to cloud. To identify which Java EE programming models are on the
-server, you could run the Transformation Advisor Data Collector tool
-against the server.
+moving to WebSphere Liberty runing in containers. To identify which Java EE programming models are on the server, you could run the Transformation Advisor Data Collector tool against the server.
 
 The Transformation Advisor creates an inventory of the content and
 structure of each application and learn about problems that might occur
@@ -167,20 +156,19 @@ Here are the activities involved in this process:
 
     <br/>
 
-5.  Open a terminal window by clicking its icon from the Desktop
-    toolbar.
+5.  Open a terminal window by clicking its icon from the Desktop.
 
     ![terminal icon](./images/media/image7.png)
 
     <br/>
 
-6.  If this is your first time to run the lab series in this lab
-    environment, do the following to clone the GitHub repo containing
-    the lab artifacts. Otherwise, you can skip this step.
+6.  If you have not yet cloned the GitHub repo that contains the lab artifacts, in a previous lab, run the following command on your terminal. Otherwise, you can skip this step.
 
     a. In the terminal window, run the following command to clone the GitHub repository for this workshop.
  
-        git clone https://github.com/IBMTechSales/openshift-workshop-was
+        cd /home/ibmuser
+        
+        git clone https://github.com/IBMTechSales/openshift-workshop-was.git
  
     **Sample output**
  
@@ -197,7 +185,7 @@ Here are the activities involved in this process:
 In this task, you look at the sample applications deployed to the local
 WebSphere Application Server (WAS) environment. Through the application
 assessment phase, you are going to identify which applications would be
-the good candidate to move the cloud.
+the good candidate to modernize and potentially re-platfrom to WebSPhere Liberty and containers.
 
 1.  Start WebSphere Application Server
 
@@ -214,7 +202,7 @@ the good candidate to move the cloud.
 
     > ![](./images/media/image9.png)
  
-    c. Access the WAS Admin Console to view the application deployed by clicking the Firefox icon on the Desktop toolbar.
+    c. Access the WAS Admin Console to view the application deployed by clicking the Firefox icon on the Desktop.
 
     > ![firefox icon](./images/media/image10.png)
  
@@ -272,8 +260,7 @@ Advisor tool.
 
 The Transformation Advisor can evaluate any Java based applications. In
 this lab, you are going to use it to evaluate whether the on-premises
-WebSphere application, **Mod Resorts**, is suitable to move to cloud and
-what the effort might be to get it there.
+WebSphere application, **Mod Resorts**, is suitable to move to WebSphere Liberty and containers, and gain insights into the effort and scope to get it there.
 
 You can use Transformation Advisor Data Collector utility to get the
 application data and server configuration from the WebSphere Application
@@ -384,7 +371,7 @@ applications and their configuration data from WAS server.
     a. Type **1** to accept the license agreement and press **Enter**.
 
     > The utility starts to collect application data. This process takes
-    > sometimes to complete depending on how many applications deployed on
+    > some time to complete depending on how many applications deployed on
     > the WAS server. In this lab, it might be a few minutes. When it is
     > done, you see output like this:
  
@@ -406,26 +393,28 @@ applications and their configuration data from WAS server.
     analysis results. Otherwise, you must manually upload the data to
     Transformation Advisor before you can view them.
 
+     In this lab, WebSphere Applicatin Server and Transformation Advisor are on the same network, so the analysis results from the scan will automatically be uploaded to the Transformation Advisor UI. 
+    
+
 ### 6.6 Evaluate On-Premises Java Applications
 
 In this section, you are going to use the Transformation Advisor UI to
 view the application data analysis results that was collected in the
 previous section.
 
-1.  Go back to Transformation Advisor page in web browser, click the
+1.  Go back to Transformation Advisor page in the web browser, click the
     **Server1** link to go to the Recommendations page.
 
     ![ta server1 link](./images/media/image26.png)
 
     <br/>
  
-2. From the **Recommendations page**, you can see all applications deployed to the WAS server are listed.
+2. From the **Recommendations page**, you can see all applications that were analyzed on the WebSphere Application Server, and are listed in the  Transformation Advisor collection view.  
  
     ![](./images/media/image27.png)
  
     On the Recommendations page, the identified migration **source
-    environment** is shown in the **Profile** section, and the **target
-    environment** is shown in the **Preferred migration** section.
+    environment** is shown in the **Profile** section, and the **target    environment** is shown in the **Preferred migration** section.
  
     The data collector tool detects that the source environment is your
     WebSphere Application Server AppSrv01 profile.
@@ -434,8 +423,9 @@ previous section.
     target environment.
  
     The Recommendations page also shows the summary analysis results for
-    all the apps in the AppSrv01 environment to be moved to a Liberty on
-    OpenShift environment. For each app, you can see these results:
+    all the apps in the **AppSrv01** profile to be moved to a Liberty on OpenShift environment. 
+    
+    For each app, you can see these results:
 
     - Name
 
@@ -450,14 +440,11 @@ previous section.
     <br/>
 
     For example, if you want to move the **modresorts-1\_0\_war.ear**
-    application to Open Liberty, the complexity level is Simple, which
+    application to Open Liberty, the complexity level is **Simple**, which
     indicates that the application code does not need to be changed before
-    it can be moved to cloud. The application has no dependency, has two
-    minor level issue and the estimated development effort is zero day
-    because no code change is required.
+    it can be moved to Open Liberty. The application has no dependency, has two minor level issue and the estimated development effort is zero day because no code change is required.
  
-    As you can see the default move to cloud environment is **Liberty
-    Runtimes**, however Transformation Advisor can also provide migration
+    As you can see the default target environment is **Liberty    Runtimes**, however Transformation Advisor can also provide migration
     options if you want to migrate your application to different target
     environments as shown below:
  
@@ -494,24 +481,21 @@ previous section.
  
     The first section in the detail analysis summary page is the
     **Complexity section**. The overall complexity for the application is
-    **simple**, indicating that the application can be directly moved to cloud
-    without any code change.
+    **simple**, indicating that the application can be directly moved to Open Liberty without any code change.
  
     ![](./images/media/image31.png)
 
     <br/>
 
-5.  Scroll down to **Complexity Rules** section. You can see although
-    there is no code change required and no development cost, the
-    estimate migration over all develop cost is **0 days**. This estimate is
-    based on data from IBM Services engagements, which includes
-    migrating management, server configuration, and testing.
+5.  Scroll down to **Complexity Rules** section. 
+ 
+    You can see there is no code change required, so there is **0 days** for the migration development cost. This estimate is based on data from IBM Services engagements, which includes application code migration, but does not include many additional migration project costs such as testing, Runtime Server configuration, etc. 
 
     ![](./images/media/image32.png)
  
     <br/>
 
-6.  Expand the **Issues and issues details** section. You can see the
+8.  Expand the **Issues and issues details** section. You can see the
     only minor potential issue listed is on configuring the application
     in Docker container.
 
@@ -521,7 +505,7 @@ previous section.
 
     <br/>
 
-7.  Next, scroll down to the bottom of the page and click the
+9.  Next, scroll down to the bottom of the page and click the
     **Technology Report** link, this opens a new browser window to show
     the application Evaluation Report.
 
@@ -529,11 +513,7 @@ previous section.
  
     <br/>
  
-    The **Technology report** lists all java technologies the application
-    used and whether these technologies are supported by a specific
-    WebSphere platform from Liberty for Java on IBM Cloud to WebSphere
-    traditional for z/OS. It is used to determine whether a particular
-    WebSphere product is suitable for an application.
+    The **Technology report** lists all Java EE technologies the application used and whether these technologies are supported by a specific WebSphere platform from Liberty for Java on IBM Cloud to WebSphere traditional for z/OS. It is used to determine whether a particular WebSphere product is suitable for an application.
  
     ![](./images/media/image36.png)
  
@@ -558,7 +538,7 @@ previous section.
  
     > ![](./images/media/image39.png)
  
-    > This is the deep-dive report which shows all issue found at the code level.
+    > This is the deep-dive report which shows all issue found in the java application binary (WAR).
  
     b. Scroll down to **Detailed Results by Rule** section, you can see
     all the java technology issues identified based on different migration
@@ -598,17 +578,12 @@ previous section.
     The **Inventory Report** shows up. This report helps you examine what
     is in your application, including the number of modules, their
     relationships, and the technologies in those modules. It also gives
-    you a view of all the utility JAR files in the application that tend
-    to accumulate over time. Potential deployment problems and performance
-    considerations are also included.
+    you a view of all the utility JAR files, and the classes in the jar files. 
  
     ![ta inventory report](./images/media/image45.png)
  
     a. Scroll down to view this report which serves as good
-       decision-making tool to info you what is inside your application
-       runtime, and to help you to have a better understanding of the
-       application runtime, the components it has and the relationships among
-       them.
+       decision-making tool to info you what is inside your Java application deployment binaries, and to help you to have a better understanding of the application components and the relationships among them.
  
     > ![ta inventory report 2](./images/media/image46.png)
  
@@ -616,12 +591,11 @@ previous section.
     > Resorts application is supported by Open Liberty which is the target
     > environment, and the issue that the tool identified would not affect
     > the application migration. You can confidently select the application
-    > as a good candidate for moving to Open Liberty in containers in the
-    > repackage process with minimum effort.
+    > as a good candidate for moving (re-platfoming) to Open Liberty in containers with minimum effort.
 
 10. Now you know that the Mod Resorts application can be moved to
     Liberty, you want to know if it is also a good candidate for
-    re-platform with traditional WebSphere in containers. To do that
+    modernization to traditional WebSphere in containers. To do that
     switch the target environment from **Compatible Liberty Runtime** to
     **WebSphere traditional**.
 
@@ -631,8 +605,9 @@ previous section.
  
     As you can see from the TA recommendation that the Mod Resorts
     application is also a good candidate for re-hosting in WAS Base
-    container on cloud. If you want to review the recommendation details,
-    you can follow the same steps you did before to go over them.
+    container in containers. 
+    
+    If you want to review the recommendation details, you can follow the same steps you did before to go over them.
  
     ![](./images/media/image48.png)
 
@@ -646,7 +621,7 @@ previous section.
     **CustomerOrderServicesApp.ear** application.
  
     As you can see from the Summary list, the recommendations for the
-    application to move to cloud are as follows:
+    application to modernize this application to containers are as follows:
 
     - The complexity level is Simple, for WebSphere Liberty and WebSphere
       Traditional, which means that the application code can be deployed
@@ -712,15 +687,17 @@ Now, let’s quickly explore a Migration Plan for the Mod Resorts
 application to see the artifacts that Transformation Advisor creates to
 expedite the app deployment to OpenShift Platform.
 
-1.  Click on the menu with the **hamburger icon** next to the ModResorts
-    application analysis to display the menu choices and choose **View
-    migration plan**:  
+1.  Set the **Migration targets** back to **Liberty Runtimes**
+
+
+2. Click on the menu with the **hamburger icon** next to the ModResorts
+    application analysis to display the menu choices and choose **View    migration plan**:  
       
     ![](./images/media/image53.png)
 
     <br/>
 
-2.  Notice the contents of the migration bundle for the **Source code**
+3.  Notice the contents of the migration bundle for the **Source code**
     option.  
       
     To accelerate the application modernization, the artifacts produced
@@ -763,11 +740,4 @@ continue with the rest of the lab series.
 
 **Congratulations\! You have successfully completed the lab “Evaluate
 On-Premises Java Apps with Transformation Advisor”.**
-
-
-
-## Next
-Please follow the link to do the next lab **Operational Modernization**:
-
-  - [Operational Modernization](https://ibmtechsales.github.io/was-appmod/appmod-labs/OperationalModernization/)
 

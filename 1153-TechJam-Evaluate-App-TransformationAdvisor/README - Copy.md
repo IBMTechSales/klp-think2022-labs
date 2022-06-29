@@ -638,7 +638,7 @@ previous section.
 
     <br/>
 
-11. **OPTIONAL:** Evaluate the PlantsByWebSphere Application
+11. **OPTIONAL:** Evaluate the CustomerOrderServicesApp.ear Application
 
     You can follow the same procedure you did for the Mod Resorts
     application to view the analysis results for any of the other
