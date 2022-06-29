@@ -9,8 +9,6 @@ In this lab, we will introduce you to the basics of container Orchestration usin
 ## Prerequisite
 
 - For background on basic Openshift concepts, read [Openshift Concepts for WebSphere Administrators](https://github.com/IBM/openshift-workshop-was/blob/master/OpenshiftConcepts.md)
-- You have the access to OpenShift Web Console with IBM Cloud account ID login. 
-- You have cloned the lab into your working directory through the web terminal session. 
 
 <a name="Login_VM"> </a>
 
@@ -26,10 +24,10 @@ In this lab, we will introduce you to the basics of container Orchestration usin
    
      <br/>
    
-3. Login with **ibmdemo** ID.
+3. Login with **ibmuser** ID.
    
-    * Click on the **ibmdemo** icon on the Ubuntu screen.
-    * When prompted for the password for **ibmdemo**, enter "**passw0rd**" as the password:
+    * Click on the **ibmuser** icon on the Ubuntu screen.
+    * When prompted for the password for **ibmuser**, enter "**engageibm**" as the password:
          
 	  <br/>
 		 
@@ -67,7 +65,7 @@ In this lab, we will introduce you to the basics of container Orchestration usin
 4. Log in to the account using the following credentials:
    
      * Username: **ibmadmin**
-     * Password: **passw0rd**
+     * Password: **engageibm**
 
      ![console](images/loginconsole3.png)
 
@@ -114,7 +112,9 @@ It is common for artifacts related to different applications to be assigned to d
 
 	 <br/>
 	 
-3. After creation, click on each of the tabs of myproject you just created. Note that:
+3. After creation, click on each of the tabs of myproject you just created. 
+
+   Note the following:
 
     - The `YAML` tab shows you the YAML representation of your project. Every resource in Openshift is represented as a REST data structure. We'll be working with YAML files a lot more when we interact with Openshift via the command line.
     - The `Role Bindings` tab shows you the security configurations that apply to your project. For now, just take notice that there are many different roles already defined when a project is created. Each of these **roles** is used for a different purpose, and already mapped to different **users** and **groups**, or **service accounts**.
@@ -334,7 +334,7 @@ A **service** enables the pods we just created to be load balanced within the Op
     b. Under spec.ports:
 	
       - change `80` to `8080` and 
-      - change `9376` to `8080` (the same ports we used previously).
+      - change `9376` to `8080` (the same ports we used in the containers lab).
     
 	<br/>
 	
@@ -492,16 +492,17 @@ The `oc` command is already installed on your VM's terminal.
     <br/>
    
 2. If you have not yet cloned the GitHub repo with the lab artifacts, in a previous lab, run the following command on your terminal:
-   
-        cd /home/ibmdemo
-		
-		git clone https://github.com/IBMTechSales/openshift-workshop-was 
 
+```   
+  cd /home/ibmuser
+		
+  git clone https://github.com/IBMTechSales/openshift-workshop-was.git 
+```
 
 3. Change directory to:  `openshift-workshop-was/labs/Openshift/IntroOpenshift`
 
 
-        cd /home/ibmdemo/openshift-workshop-was/labs/Openshift/IntroOpenshift
+        cd /home/ibmuser/openshift-workshop-was/labs/Openshift/IntroOpenshift
     
 
 ### Login to OpenShift
@@ -512,13 +513,17 @@ The `oc` command is already installed on your VM's terminal.
 
     <br/>
 
-2. In the new window that pops up, click on `Display Token`:
+2. OpenShift may require to login via the web UI to get the login token. 
+   
+   If so, login via the verify **htpasswd** option as user **ibmadmin** and password **engageibm**
+
+4. In the new window that pops up, click on `Display Token`:
 
     ![Display Token](images/DisplayToken.jpg)
 
     <br/>
 
-3. Copy the `oc login` command and paste it into your web terminal.
+5. Copy the `oc login` command and paste it into your terminal window.
 
     ```
     oc login --token=<TOKEN> --server=<SERVER Address>
@@ -527,7 +532,7 @@ The `oc` command is already installed on your VM's terminal.
     ![Login2](images/login2.png)
     
 
-4. After login, the project last accessed is displayed, and it may or may not be the `default` project shown below:
+6. After login, the project last accessed is displayed, and it may or may not be the `default` project shown below:
 
     ```
     Logged into "<SERVER address" as "<USER>" using the token provided.
@@ -540,14 +545,14 @@ The `oc` command is already installed on your VM's terminal.
 ### Listing resources
 
 Use `oc api-resources` to list all available resource kinds. 
-<br/>
+
 Note that resources in Openshift have a `group`, `version`, and `kind`. 
 Some resources are global (not in a namespace), while others are scoped to a `namespace`.
-<br/>
+
 Many resources also have short names to save typing when using the command line tool.
-<br/>
+
 For example, you may use `cm` instead of ConfigMap as a command line parameter when the parameter is for a `KIND`.
-<br/><br/>
+
 **Example output:**
 
 ```
@@ -639,11 +644,11 @@ nodes                                 no                                        
 oc new-project  project1
 ```   
 
-    The output from creating a new project:
+The output from creating a new project:
 
-    ```
-    Now using project "project1" on server "https://c100-e.us-south.containers.cloud.ibm.com:32541".
-    ```
+ ```
+  Now using project "project1" on server "https://c100-e.us-south.containers.cloud.ibm.com:32541".
+```
 
 4. Switch to the `default` project: 
 ```
@@ -661,9 +666,9 @@ oc project project1
 oc get project project1 -o yaml
 ```
 
-    The output of the resource specification in **yaml**
+  The output of the resource specification in **yaml**
 
-    ```
+  ```yaml
     apiVersion: project.openshift.io/v1
     kind: Project
     metadata:
@@ -684,13 +689,13 @@ oc get project project1 -o yaml
       - kubernetes
     status:
       phase: Active
-    ```
+  ```
 
 ### First Application
 
 #### First Deployment
 
-1. In your web terminal session, under the directory where you cloned the labs repository `(/home/ibmdemo/openshift-workshop-was/labs/Openshift/IntroOpenshift)`, you will find **Deployment.yaml**;  
+1. In your terminal window, under the directory where you cloned the labs repository `(/home/ibmuser/openshift-workshop-was/labs/Openshift/IntroOpenshift)`, you will find **Deployment.yaml**;  
 
      For example:
      ```
@@ -705,13 +710,15 @@ oc get project project1 -o yaml
 2. Review the contents of `Deployment.yaml` and note that it is identical to the to the deployment from the last section except for the namespace. 
 
      ```
+     clear
+     
      cat Deployment.yaml
      ```
 
      This allows us to deploy the same image in a different project. Using the same image customized for different environments is an important concept that will be covered further in future labs.
 
 
-     ```
+     ```yaml
       apiVersion: apps/v1
       kind: Deployment
       metadata:
@@ -755,7 +762,7 @@ oc get project project1 -o yaml
 
     If the status does not show available **replica count of 2**, wait a few seconds, then rerun the command.
 
-    ```
+    ```yaml
     apiVersion: extensions/v1beta1
     kind: Deployment
     metadata:
@@ -832,22 +839,22 @@ oc get project project1 -o yaml
 oc get pods
 ```
 
-    The pods should be in the **Running** state
+  The pods should be in the **Running** state
 
-    ```
+  ```
     NAME                      READY   STATUS    RESTARTS   AGE
     example-75778c488-7k7q2   1/1     Running   0          3m37s
     example-75778c488-c9jhd   1/1     Running   0          3m37s
-    ```
+  ```
 
 6. List the details for one of the pods: 
 ```
 oc get pods <pod name> -o yaml
 ```
 
-    **Note:** `<pod name>` is listed under `NAME` in the previous command's output.
+  **Note:** `<pod name>` is listed under `NAME` in the previous command's output.
 	
-    ```
+  ```yaml
     apiVersion: v1
     kind: Pod
     metadata:
@@ -960,7 +967,7 @@ oc get pods <pod name> -o yaml
       - ip: 172.30.26.229
       qosClass: BestEffort
       startTime: "2020-01-30T20:37:28Z"
-    ```
+  ```
 
 7. Show the logs of one of the pods: `oc logs <pod name>`
 
@@ -972,10 +979,14 @@ oc get pods <pod name> -o yaml
 8. Take a look at `Service.yaml` and note that it's for the `project1` namespace:
 
     ```
+    clear
+    
     cat Service.yaml
     ```
+
     Example output:
-    ```
+
+    ```yaml
     apiVersion: v1
     kind: Service
     metadata:
@@ -991,8 +1002,10 @@ oc get pods <pod name> -o yaml
       type: ClusterIP
     ```
 
-9. Create the service so that it's accessible and load balanced for pods with label `app: hello-openshift` within the `project1` namespace: 
+    Notice tha **selector** set to **app: hello-openshift** which means the service willload balance pods with label `app: hello-openshift` within the `project1` namespace: 
 
+9. Create the service. 
+    
     ```
     oc apply -f Service.yaml
     ```
@@ -1005,10 +1018,15 @@ oc get pods <pod name> -o yaml
 
 10. Examine Route.yaml:
     ```
+    clear
+    
     cat Route.yaml
     ```
+   
+    Notice the route targets the **exmple** Service  
     Output:
-    ```
+   
+    ```yaml
     apiVersion: route.openshift.io/v1
     kind: Route
     metadata:
@@ -1034,14 +1052,17 @@ oc get pods <pod name> -o yaml
     route.route.openshift.io/example created
     ```
 
-12. Generate the URL for the route, and point your browser to it: 
-   ```
-   echo http://$(oc get route example --template='{{ .spec.host }}')
-   ```
-   Output:
-   ```
-   http://example-project1.apps.demo.ibmdte.net
-   ```
+12. Use the following command to get the URL for the route. Then open the URL in the Browseer on the VM: 
+   
+    ```
+    echo http://$(oc get route example --template='{{ .spec.host }}')
+    ```
+    Output:
+   
+    ```
+    http://example-project1.apps.demo.ibmdte.net
+    ```
+
 13. Open your Firefox browser again and visit the URL outputted by the previous command. You should see a web page displaying the following message:
 
     ![firstapplication1](images/firstapplication1.png)
@@ -1103,7 +1124,7 @@ oc get pods <pod name> -o yaml
 
       <br/>
 
-5. List the pods to show 2 pods runing afer issueing the previous commands: 
+5. List the pods to show 2 pods runing after issueing the previous commands: 
 
     ```
     oc get pods
@@ -1116,10 +1137,16 @@ oc get pods <pod name> -o yaml
     ```
 
 
-8. Cleanup:
-    - `oc delete route example`
-    - `oc delete service example`
-    - `oc delete deployment example`
-    - `oc get pods`  **Note:** You may have to do this a few times, to wait for the pods to be deleted.
+6. Cleanup:
+    
+   ```
+   oc delete route example
+   oc delete service example
+   oc delete deployment example
+   
+   oc get pods  
+   ``` 
+   
+   **Note:** You may have to run the **oc get pods** command a few times, to wait for the pods to be deleted.
 
 Congratulations, you have deployed your first application to Openshift via the command line.
