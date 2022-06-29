@@ -640,35 +640,36 @@ nodes                                 no                                        
 
 
 4. Create a new project and make it the current project: 
-```
-oc new-project  project1
-```   
+     ```
+     oc new-project  project1
+     ```   
 
-The output from creating a new project:
+    The output from creating a new project:
 
- ```
-  Now using project "project1" on server "https://c100-e.us-south.containers.cloud.ibm.com:32541".
-```
-
-4. Switch to the `default` project: 
-```
-oc project default
-```
+    ```
+    Now using project "project1" on server "https://c100-e.us-south.containers.cloud.ibm.com:32541".
+    ```
 
 
-5. Switch back to `project1`: 
-```
-oc project project1
-```
+5. Switch to the `default` project: 
+   ```
+   oc project default
+   ```
 
-6. View the REST specification of the project: 
-```
-oc get project project1 -o yaml
-```
 
-  The output of the resource specification in **yaml**
+6. Switch back to `project1`: 
+   ```
+   oc project project1
+   ```
 
-  ```yaml
+7. View the REST specification of the project: 
+   ```
+   oc get project project1 -o yaml
+   ```
+
+   The output of the resource specification in **yaml**
+
+   ```yaml
     apiVersion: project.openshift.io/v1
     kind: Project
     metadata:
@@ -689,7 +690,7 @@ oc get project project1 -o yaml
       - kubernetes
     status:
       phase: Active
-  ```
+   ```
 
 ### First Application
 
