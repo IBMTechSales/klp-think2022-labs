@@ -75,9 +75,9 @@ One (1) Linux VM has been provided for this lab.
 
   - The login credentials for the **Worksation...”** VM are:
 
-> User ID: **ibmdemo**
-> 
-> Password: **passw0rd (That is a numeric zero in passw0rd)**
+    > User ID: **ibmdemo**
+    > 
+    > Password: **passw0rd (That is a numeric zero in passw0rd)**
 
 
 ###  **Login to the "Workstation..." VM and Get Started**
@@ -98,7 +98,7 @@ One (1) Linux VM has been provided for this lab.
 
       ![](./images/media/image7.png)
 
-    b. When prompted for the password for “ibmdemo” user, enter
+    b. When prompted for the password for “**ibmdemo**” user, enter
     “**passw0rd**” as the password:
 
     Password: **passw0rd** (lowercase with a zero instead of the o)
@@ -198,8 +198,7 @@ the Maven **liberty:run** goal:
         mvn liberty:stop
 
 
-5.  View the **pom.xml** file to see the liberty-maven-plugin that was
-    > used by the previous steps.
+5.  View the **pom.xml** file to see the liberty-maven-plugin that was used by the previous steps.
     
     a.  From a Terminal window, navigate to the following directory
      
@@ -271,7 +270,7 @@ quicker turnarounds and an improved developer experience.
 
         gedit index.html
         
-    c.  Make the following minor change to the index.html page
+    c.  Make the following minor change to the index.html page on or about line number 25.
 
     **Change the highlighted line:**
  
@@ -287,8 +286,7 @@ quicker turnarounds and an improved developer experience.
 
 4.  Access the **System Properties Sample** microservice that was deployed to the Liberty server.
 
-    a.  From the Firefox Web Browser inside of the VM and go to the URL
-    below to display the main application web page
+    a.  From the Firefox Web Browser inside of the VM, and go to the URL below to display the main application web page
 
         http://localhost:9080/
 
@@ -378,8 +376,7 @@ because the **/health** endpoint does not yet exist:
 
     The **/health** endpoint reports whether the server is running, but the endpoint doesn’t provide any details on the microservices that are running inside of the server.
 
-    **MicroProfile Health** offers health checks for both readiness and
-liveness.
+    **MicroProfile Health** offers health checks for both readiness and liveness.
 
       - A **readiness** check allows third-party services, such as Kubernetes, to know if the microservice is ready to process requests.
 
@@ -388,7 +385,7 @@ liveness.
    **Note:** Working with MicroProfile Health is beyond the scope of
     this lab and is introduced in a subsequent lab.
 
-   <br/>
+
 
 ## Developing and Running the application in a Docker Container and in Liberty Dev Mode
 
@@ -437,7 +434,9 @@ To run the application in a container, Docker needs to be installed and
 the Docker daemon running. In this lab environment, these prerequisites
 have been configured.
 
-1.  Open a Terminal window and verify that Docker is running
+1. From the terminal window, use **CTL-C** to stop the Liberty server that was runing in the previous steps. 
+
+2.  In the Terminal window, verify that Docker is running
 
         docker --version
 
@@ -445,15 +444,15 @@ have been configured.
 
     <br/>
 
-2. Run the hello-world docker sample. The docker image will be pulled from Dockerhub if it is not already on the local machine. If Docker is functioning properly, you will see the highlighted message illustrated below, stating that Docker is working properly.
+3. Run the **hello-world** docker sample. The docker image will be pulled from Dockerhub if it is not already on the local machine. If Docker is functioning properly, you will see the highlighted message illustrated below, stating that Docker is working properly.
 
-        docker run --name hello-world hello-world |
+        docker run --name hello-world hello-world 
 
     ![](./images/media/image28.png)
 
     <br/>
 
-3.  Use the **docker images** command to find out which Docker images are in the local docker repository
+4.  Use the **docker images** command to find out which Docker images are in the local docker repository
 
         docker images
 
@@ -461,7 +460,7 @@ have been configured.
 
     <br/>
 
-4.  Use the docker history command to view the layers that make up the Docker image
+5.  Use the docker history command to view the layers that make up the Docker image
 
         docker history hello-world
 
@@ -469,7 +468,7 @@ have been configured.
 
     <br/>
 
-5.  Let’s run a Liberty image Docker container. Docker will check if there is an image in the repository. If not, it will download the latest image, then run it
+6.  Let’s run a Liberty image Docker container. Docker will check if there is an image in the repository. If not, it will download the latest image, then run it
 
         docker run -d -p 9086:9080 --name wlp websphere-liberty
 
@@ -477,11 +476,11 @@ have been configured.
 
     <br/>
 
-6.  Review the containers information.
+7.  Review the containers information.
     
     a.  The **docker ps** command lists only **running** containers. The docker **ps -a** command shows all containers, running or     stopped.
 
-        docker ps
+        docker ps | grep liberty
 
     ![](./images/media/image32.png)
 
@@ -493,31 +492,31 @@ have been configured.
 
     <br/>
 
-7.  Open the Firefox browser on the VM and access Liberty running in the container: **http://localhost:9086**
+8.  Open the Firefox browser on the VM and access Liberty running in the container: **http://localhost:9086**
 
     ![](./images/media/image34.png)
 
     <br/>
 
-8.  Look at the Liberty logs in the running container
+9.  Look at the Liberty logs in the running container
 
-        docker logs -f wlp
+        docker logs wlp
 
     ![](./images/media/image35.png)
 
     <br/>
 
-9.  **Stop** and **remove** the docker containers used in this section of the lab. Then use the **docker ps -a** command to verify the containers are removed.
+10.  **Stop** and **remove** the docker containers used in this section of the lab. Then use the **docker ps -a** command to verify the "**wlp**" and "**hello-world**" containers are removed.
 
-        docker stop wlp
+         docker stop wlp
 
-        docker rm wlp</p>
+         docker rm wlp
 
-        docker rm hello-world</p>
+         docker rm hello-world
 
-         docker ps -a</p></td>
+         docker ps -a
 
-    <br/>
+    
 
 ### **Running the application in a container**
 
@@ -551,7 +550,7 @@ preconfigured Open Liberty server.
 
     b.  Investigate the Dockerfile
 
-        cat Dockerfile |
+        cat Dockerfile
 
 
     **The Dockerfile performs the following tasks:**
@@ -568,19 +567,19 @@ preconfigured Open Liberty server.
     
         The **kernel** image contains just the Liberty kernel and no additional runtime features. This image is the recommended basis for custom built images, so that they can contain only the features required for a specific application
 
-        <br/>
+        
 
     - **ARG VERSION=1.0 and ARG REVISION=SNAPSHOT**
     
         The ARG instruction defines variables that can be passe at build time. Once it is defined in the Dockerfile, you can pass it with the flag **--build-arg**.
 
-        <br/>
+    
 
     - **LABEL**
     
         Labels are used in Dockerfile to help organize your Docker Images. Labels are key-value pairs and simply adds custom metadata to your Docker Images.
 
-        <br/>
+    
 
     - **COPY --chown=1001:0 src/main/liberty/config/ /config/**
     
@@ -590,13 +589,13 @@ preconfigured Open Liberty server.
 
         All Liberty images from IBM contain a non- root user defined as **1001:0**. So the copy command copies the files as the non-root user that is known to exist on the LIBERTY image.
 
-        <br/>
+        
 
     - **COPY --chown=1001:0 target/\*.war /config/apps/**
     
         The COPY command copies the application WAR file to the /config/apps directory on the image.
 
-        <br/>
+        
 
     - **RUN configure.sh**
     
@@ -645,7 +644,7 @@ preconfigured Open Liberty server.
 
 6.  To verify that the image is built, run the **docker images** command to list all local Docker images
 
-        docker images
+        docker images | grep getting-started
 
     Your image should be listed as “**openliberty-getting-started**” with the TAG of “**1.0-SNAPSHOT**”
 
@@ -668,7 +667,7 @@ preconfigured Open Liberty server.
 
 8.  Run the **docker ps** command to verify your docker container is  running
 
-        docker ps
+        docker ps | grep getting-started
 
     ![](./images/media/image44.png)
 
@@ -719,7 +718,7 @@ restarts the container as necessary.
 
 2.  Open another Terminal window and run the **docker ps** command to verify that the container is started.
 
-        docker ps
+        docker ps | grep getting-started
 
     ![](./images/media/image47.png)
 
@@ -739,10 +738,9 @@ restarts the container as necessary.
 4.  Run the integration test that is included in the application project.
     
     **Note:** The test case simply creates a client and invokes the
-    <http://localhost:9080/sste/properties> endpoint. The expected HTTP
-    response code is 200, which indicates a successful http response
-    from the system/properties service. The test case will fail if the
-    response code is anything other than 200.
+    <http://localhost:9080/system/properties> endpoint. 
+    
+    The expected HTTP response code is 200, which indicates a successful http response from the system/properties service. The test case will fail if the response code is anything other than 200.
     
     a.  From the Terminal window that the **mvn liberty:devc** is
         running, press the **ENTER** key to run the tests. You will see
@@ -818,7 +816,7 @@ restarts the container as necessary.
     
     b.  To check that the container was stopped, run the **docker ps**  command.
 
-        docker ps
+        docker ps | grep getting-started
 
     ![](./images/media/image55.png)
 
