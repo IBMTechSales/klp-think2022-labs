@@ -57,7 +57,7 @@ In this lab, you'll learn about managing your running applications efficiently u
 
 3. If you have not yet cloned the GitHub repo with the lab artifacts, then run the following command on your terminal:
     ```
-    git clone https://github.com/IBMTechSales/openshift-workshop-was
+    git clone https://github.com/IBMTechSales/openshift-workshop-was.git
     ```
 
 
@@ -65,35 +65,44 @@ In this lab, you'll learn about managing your running applications efficiently u
 
 1. Change to the lab's directory:
    ```
-   cd openshift-workshop-was/labs/Openshift/OperationalModernization
+   cd /home/ibmuser/openshift-workshop-was/labs/Openshift/OperationalModernization
    ```
 
-2. Create and switch over to the project `apps-was`. 
+2. Create a new project `apps-was`. 
     
-	**Note:** The first step `oc new-project` may fail if the project already exists. If so, proceed to the next command.
+	**Note:** The  `oc new-project` command may fail if the project already exists from running the operational modernization lab. If so, proceed to the next step.
     ```
     oc new-project apps-was
-    oc project apps-was
     ```
 
- 3. Build and deploy the application by running the commands in the following sequence. 
+3. Switch over to the project `apps-was`. 
+    
+	```
+     oc project apps-was
+    ```   
+
+4. Build and deploy the application by running the commands in the following sequence. 
  
     **Reminder:** The `.` at the end of the first command is required. 
     ```
     docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was .
+
     docker login -u openshift -p $(oc whoami -t) default-route-openshift-image-registry.apps.demo.ibmdte.net
+
     docker push default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was
+
     oc apply -f deploy
     ```
+    
     Example output listing the resources that were created. 
-    ```
+     ```
     deployment.apps/cos-was created
     route.route.openshift.io/cos-was created
     secret/authdata created
     service/cos-was created
     ```
 
-4. Wait for the pod to be available, check status via `oc get pod` command
+5. Wait for the pod to be available, check status via `oc get pod` command
     
     The output should be: 
     ```
@@ -101,7 +110,7 @@ In this lab, you'll learn about managing your running applications efficiently u
     cos-was-7d5ff6945-4hjzr   1/1     Running   0          88s
     ```
 
-5. Get the URL to the application:
+6. Get the URL to the application:
    ```
    echo http://$(oc get route cos-was  --template='{{ .spec.host }}')/CustomerOrderServicesWeb
    ```
@@ -110,17 +119,17 @@ In this lab, you'll learn about managing your running applications efficiently u
    http://cos-was-apps-was.apps.demo.ibmdte.net/CustomerOrderServicesWeb
    ```
 
-6. Open a Firefox web browser window from within the VM.
+7. Open a Firefox web browser window from within the VM.
 
      ![firefox](extras/images/analysis1.png)
 
      <br/>
 
-7. Go to the URL outputted by the command run in the previous step.
+8. Go to the URL outputted by the command run in the previous step.
 
      <br/>
 
-8. You will be prompted to login in order to access the application. Enter the following credentials:
+9. If prompted to login into the applicarion, enter the following credentials:
     - Username: **skywalker**
     - Password: **force**
 
@@ -128,19 +137,19 @@ In this lab, you'll learn about managing your running applications efficiently u
 
      <br/>
 
-9. After login, the application page titled _Electronic and Movie Depot_ will be displayed. From the `Shop` tab, click on an item (a movie) and on the next pop-up panel, drag and drop the item into the shopping cart. 
+10. After login, the application page titled _Electronic and Movie Depot_ will be displayed. From the `Shop` tab, click on an item (a movie) and on the next pop-up panel, drag and drop the item into the shopping cart. 
 
     ![accessapplication2](extras/images/accessapplication2.png)
 
      <br/>
 
-10. Add a few items to the cart. As the items are added, they’ll be shown under _Current Shopping Cart_ (on the upper right) with _Order Total_.
+11. Add a few items to the cart. As the items are added, they’ll be shown under _Current Shopping Cart_ (on the upper right) with _Order Total_.
 
     ![accessapplication3](extras/images/accessapplication3.png)
 
      <br/>
 
-11. Close the browser.
+12. Close the browser.
 
 
 ## Build and deploy the Liberty application 
@@ -162,7 +171,9 @@ In this lab, you'll learn about managing your running applications efficiently u
      **Note:** The first step `oc new-project` may fail if the project already exists. If so, proceed to the next command.
      ```
      oc new-project apps
+
      oc project apps
+
      oc label namespace apps app-monitoring=true
      ```
 
@@ -171,8 +182,11 @@ In this lab, you'll learn about managing your running applications efficiently u
      **Reminder:** The `.` at the end of the first command:
      ```
      docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps/cos .
+
      docker login -u openshift -p $(oc whoami -t) default-route-openshift-image-registry.apps.demo.ibmdte.net
+
      docker push default-route-openshift-image-registry.apps.demo.ibmdte.net/apps/cos
+
      oc apply -k deploy/overlay-apps
      ```
      Example output:
@@ -214,7 +228,7 @@ In this lab, you'll learn about managing your running applications efficiently u
 
 7. Return to your Firefox browser window and go to the URL outputted by the command run in the previous step.
 
-8. You will be prompted to login in order to access the application. Enter the following credentials:
+8. If prompted to login to the application, enter the following credentials:
     - Username: **skywalker**
     - Password: **force**
 
@@ -276,7 +290,8 @@ Let's look at application logging with log aggregation using EFK **(Elasticsearc
 
     ![applogging1](extras/images/applogging1.png)
 
-    <br/>
+    
+    **Note:** If prompted to re-authenicate in OpenShift, use the **htpasswd** option and login with user **ibmadmin** and password **engageibm**
 
 6. This will open a new tab asking you to authorize access. Click on `Allow selected permissions`.
 
@@ -584,7 +599,7 @@ The volume can be shared by all Liberty applications that are in the same namesp
      oc patch olapp cos -n apps --patch '{"spec":{"serviceability":{"volumeClaimName":"liberty"}}}' --type=merge
      ```
     
- 	   - This patches the definition of `olapp` (shortname for `OpenLibertyApplication`) instance `cos` in namespace `apps` (indicated by `-n` option). 
+ 	 - This patches the definition of `olapp` (shortname for `OpenLibertyApplication`) instance `cos` in namespace `apps` (indicated by `-n` option). 
        - The `--patch` option specifies the content to patch with. In this case, we set the value of `spec.serviceability.volumeClaimName` field to `liberty`, which is the name of the Persistent Volume Claim you created earlier. 
        - The `--type=merge` option specifies to merge the previous content with the newly specified field and its value.
 
@@ -603,9 +618,11 @@ The volume can be shared by all Liberty applications that are in the same namesp
     ```
     The value under `RECONCILED` should be `True`. 
     
-	|         |  
-| ------------- |
-|<strong>NOTE: </strong> <br> If the `REONCILED` value is `False`, then an error occurred. <br> <br>The `REASON` and `MESSAGE` columns will display the cause of the failure. <br> <br>A common mistake is creating the Persistent Volume Claim in another namespace. Ensure that it is created in the `apps` namespace.|
+   
+    >**Note:** If the `REONCILED` value is `False`, then an error >occurred. 
+    >The `REASON` and `MESSAGE` columns will display the cause of the failure. 
+    >
+    >A common mistake is creating the Persistent Volume Claim in another namespace. Ensure that it is created in the `apps` namespace.
 
 	
 3. In the OpenShift console, from the left-panel, click on **Workloads** > **Pods**. Wait until there is only 1 pod on the list and its **Ready** column says 1/1.
@@ -698,9 +715,9 @@ Use the following steps to request a server trace, which is also illustrated in 
    - Changing the `podName` will first stop the tracing on the old Pod before enabling traces on the new Pod. 
    - Maximum trace file size (in MB) and the maximum number of files before rolling over can be specified using `maxFileSize` and `maxFiles` parameters.
 
-    ![requesting server trace](extras/images/day2-trace-operation.gif)
+   ![requesting server trace](extras/images/day2-trace-operation.gif)
 
-    <br/> 
+  
 
 ### Accessing the generated files (Hands-on)
 
@@ -721,11 +738,11 @@ The following steps to access the files are illustrated in the screen recording 
       oc rsh <pod-name>
       ```
   
-    - From OpenShift console: click on **Workloads** > **Pods**. Click on the pod and then click on **Terminal** tab. 
+    - OR, From OpenShift console: click on **Workloads** > **Pods**. Click on the pod and then click on **Terminal** tab. 
 
       <br/>
  
-2. Enter the following command to list the files:
+2. Enter the following command to list the files inside of the container runinng in the pod:
     ```
     ls -R serviceability/apps
     ```
@@ -747,11 +764,6 @@ The following steps to access the files are illustrated in the screen recording 
 ## Summary
 
 Congratulations! You've completed **Application Management** lab! 
-
-## Next
-Please follow the link to do the next lab **Devops - Pipelines**:
-
-  - [Devops - OpenShift Pipelines](https://ibmtechsales.github.io/was-appmod/devops-labs/pipelines/)
 
 
 
