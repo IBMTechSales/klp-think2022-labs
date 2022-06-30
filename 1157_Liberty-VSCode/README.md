@@ -103,13 +103,13 @@ One (1) Linux VM has been provided for this lab.
 
 ![](./images/media/image7a.png)
 
-The **“Liberty vPOT … Desktop”** VM has the following software   available:
+The **“Workstation”** VM has the following software available:
 
 - Application Project with Liberty
 
 - Maven 3.6.0
 
-The login credentials for the **Liberty vPOT … Desktop”** VM are:
+The login credentials for the **Workstation”** VM are:
 
     User ID: **ibmdemo**
  
@@ -123,7 +123,7 @@ The login credentials for the **Liberty vPOT … Desktop”** VM are:
 | ![](./images/media/image8.png?cropResize=100,100)   | <p><strong>IMPORTANT:</strong></p><p>Using the lab environment provided, all the required VS code extensions and dependencies have been installed for you.</p><p>This allows you to focus on the value of using the capabilities of the tools for fast, efficient inner-loop development, test, debug, of Java based applications and Microservices using Open Liberty in dev mode.</p></p> |
 
 
-###  **Login to the "Liberty vPOT … Desktop" VM and Get Started**
+###  **Login to the "Workstation" VM and Get Started**
 
 1.  If the VM is **<span class="underline">not</span>** already started, start it by clicking the **Play** button.
 
@@ -131,7 +131,7 @@ The login credentials for the **Liberty vPOT … Desktop”** VM are:
 
     <br/>
 
-2.  After the VM is started, click the **“Liberty vPOT … Desktop”** VM
+2.  After the VM is started, click the **“Workstation”** VM
     icon to access it.
 
      ![](./images/media/image10a.png)
@@ -188,6 +188,8 @@ From a developer perspective, this is a huge gain in efficiency, as all
 these iterative inner-loop development activities occur without ever
 leaving the integrated development environment (IDE).
 
+<br/>
+
 ### **Review the VS Code extensions and projects pom.xm file used for this project**
 
 The sample application used in this lab is configured to be built with
@@ -206,7 +208,6 @@ First, add the project folder to a VS Code Workspace
 
 1.  **Close** all **Terminal** windows and **Brower** Tabs used in any previous lab.
 
-    <br/>
 
 2.  Navigate to the project directory and launch VS Code from the **start**” folder of the project.
     
@@ -214,7 +215,7 @@ First, add the project folder to a VS Code Workspace
 
         cd /home/ibmdemo/Student/labs/devmode/guide-getting-started/start
 
-    <br/>
+    
 
 3.  Launch VS Code using the current directory as the root folder for
     the workspace
@@ -336,7 +337,7 @@ can get immediate feedback on your changes.
     ![](./images/media/image28.png)
     
     d.  The Terminal view opens, and you see the server log messages as
-        the server starts. When the following message spear in the     Terminal, the Liberty server is started.
+        the server starts. When the following message appears in the Terminal, the Liberty server is started.
         
     ![](./images/media/image29.png)
 
@@ -389,7 +390,7 @@ To learn more about the MicroProfile mpHealth feature, visit:
     
     c.  Add the **mpHealth-2.2** feature to the server.xml file using the text below:
 
-        <feature\>mpHealth-2.2\</feature\>
+        <feature>mpHealth-2.2</feature>
 
     ![](./images/media/image32.png)
  
@@ -414,7 +415,7 @@ To learn more about the MicroProfile mpHealth feature, visit:
 
 3.  From the Firefox browser in the VM access the **/health** endpoint to view the health status of the application.
 
-        **http://localhost:9080/health**
+        http://localhost:9080/health
 
     ![](./images/media/image34.png)
 
@@ -608,7 +609,7 @@ to pass.
     
     a.  In VS Code Explorer view, expand **START** -> **src** -> **main -> java / io / openliberty / sample / system**
     
-    b.  Click on **SystemResources.java** to open it in the editor
+    b.  Click on **SystemResource.java** to open it in the editor
         
     ![](./images/media/image46.png)
 
@@ -616,7 +617,7 @@ to pass.
 
 3.  Update the **@Path** to the system properties service to specify a different service path
     
-    a.  From the editor, make the following change to the **systemResources.java** file:
+    a.  From the editor, make the following change to the **systemResource.java** file:
 
     **Change the highlighted line:**
  
@@ -695,7 +696,7 @@ to pass.
 
     <br/>
 
-8.  Modify the test case that is included in the application project> to invoke the updated path to the service.
+8.  Modify the test case that is included in the application project to invoke the updated path to the service.
     
     a.  From the Explorer view in VS Code, navigate to **START** -> **src** -> **test / java / it /io /openliberty / sample**
     
@@ -876,7 +877,7 @@ debugging</span>**
     
     ![](./images/media/image70.png)
 
-    <br?>
+    <br/>
 
 7.  From the Firefox Browser in the VM, run the **/health** endpoint to view the health status of the application. The application will stop at the breakpoint in the SystemLivenessCheck.java code.
 
