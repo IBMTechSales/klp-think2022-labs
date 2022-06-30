@@ -2,16 +2,24 @@
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Analysis](#analysis) (Hands-on)
-- [Build](#build) (Hands-on)
-- [Deploy](#deploy) (Hands-on)
-- [Access the Application](#access-the-application-hands-on) (Hands-on)
-- [Review Deployment](#review-deployment)
-- [Cleanup](#cleanup-hands-on) (can be skipped if the next lab Application Management is included in the same session)
-- [Extra Credit](#extra-credit)
-- [Summary](#summary)
-- [Next](#next)
+- [Runtime Modernization](#runtime-modernization)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Login to the VM](#login-to-the-vm)
+  - [Analysis (Hands-on)](#analysis-hands-on)
+    - [Clone the GitHub repo for this workshop](#clone-the-github-repo-for-this-workshop)
+    - [Use TA to facilitate your runtime modernization](#use-ta-to-facilitate-your-runtime-modernization)
+  - [Liberty server configuration (for reading only)](#liberty-server-configuration-for-reading-only)
+  - [Build image (Hands-on)](#build-image-hands-on)
+  - [Deploy (Hands-on)](#deploy-hands-on)
+  - [Access the application (Hands-on)](#access-the-application-hands-on)
+  - [Review the application workload flow with Open Liberty Operator (Hands-on)](#review-the-application-workload-flow-with-open-liberty-operator-hands-on)
+  - [Review Deployment](#review-deployment)
+  - [Secrets](#secrets)
+  - [Configmap](#configmap)
+  - [Open Liberty Operator](#open-liberty-operator)
+  - [Cleanup (Hands-on) (Skip this step if you're going to run the next lab Application Management on the same assigned cluster)](#cleanup-hands-on-skip-this-step-if-youre-going-to-run-the-next-lab-application-management-on-the-same-assigned-cluster)
+  - [Summary](#summary)
 
 ## Introduction
 
@@ -50,7 +58,7 @@ Click [here](extras/application.md) to get to know the application, including it
    
 3. Login with **ibmuser** ID.
    
-    * Click on the **ibmuser** icon on the Ubuntu screen.
+    * Click on the **ibmuser** icon on the screen.
     * When prompted for the password for **ibmuser**, enter "**engageibm**" as the password: 
      
     ![login VM](extras/images/loginvm3.png)
@@ -73,7 +81,7 @@ The steps needed to analyze the existing Customer Order Services application are
 	
 1. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
     
-        git clone https://github.com/IBMTechSales/openshift-workshop-was
+        git clone https://github.com/IBMTechSales/openshift-workshop-was.git
 	
 	
 ### Use TA to facilitate your runtime modernization	
@@ -103,19 +111,21 @@ The steps needed to analyze the existing Customer Order Services application are
 
     <br/>
 
-4. From the Red Hat OpenShift Container Platform console, go to the **Networking** tab and click on **Routes**. Ensure that you are in the **ta** project by using the project drop down and click on the Location URL next to `ta-ui-route`.
+4. From the Red Hat OpenShift Container Platform console, go to the **Networking** tab and click on **Routes**. 
+ 
+   Ensure that you are in the **ta** project by using the project drop down and click on the Location URL next to `ta-ui-route`.
 
     ![ta](extras/images/analysis4.png)
 
-    <br/>
+   **Note:** You may be prompted to re-authenticate using your OpenShift credentials. If so use **htpasswd** login with username: **ibmadmin** and password: **engageibm**  
 
-5. This will open the Transformation Advisor user interface. Click **Create new** under **Workspaces** to create a new workspace. 
+7. This will open the Transformation Advisor user interface. Click **Create new** under **Workspaces** to create a new workspace. 
 
     ![TA starting page](extras/images/ta-create-collection.png)
 
     <br/>
 
-6. Name it **RuntimeModernization** and click **Next**. 
+8. Name it **RuntimeModernization** and click **Next**. 
 
     You'll be asked to create a new `collection` to store the data collected from the **Customer Order Services** application. Name the new collection **CustomerOrderServices**. Click **Create**. 
     
@@ -226,6 +236,7 @@ Building this image could take around ~3 minutes so let's kick that process off 
 3. Change directory to where this lab is located, from the cloned Github repo directory:
    ```
    cd /home/ibmuser/openshift-workshop-was/labs/Openshift/RuntimeModernization
+
    ls
    ```
 
@@ -242,7 +253,7 @@ Eclipse **MicroProfile** is a modular set of technologies designed so that you c
 
 ### Determine application's availability (for reading only)
 
-In the last lab, we used `/CustomerOrderServicesWeb/index.html` for readiness and liveness probes, which is not the best indication that an application is ready to handle traffic or is healthy to process requests correctly within a reasonable amount of time. 
+It is possible to simply attempt to access the  `/CustomerOrderServicesWeb/index.html` application page for readiness and liveness probes, which is not the best indication that an application is ready to handle traffic or is healthy to process requests correctly within a reasonable amount of time. 
 
 What if the database is down? What if the application's security layer is not yet ready/unable to handle authentication? The Pod would still be considered ready and healthy and traffic would still be sent to it. All of those requests would fail or queue up, leading to bigger problems.
 
@@ -298,17 +309,18 @@ For this lab, instead of using a single server.xml, the configurations have been
 ## Build image (Hands-on)
 
 1. Go back to your terminal to check the build you started earlier.
-   You should see the following message if the image was built successfully. Please wait if it's still building:
+
+    You should see the following message if the image was built successfully. Please wait if it's still building:
 
     ```
     Successfully tagged default-route-openshift-image-registry.apps.demo.ibmdte.net/apps/cos:latest
     ```
 
-2. Validate that the image is in the repository via the command line:
-
+2.  Validate that the Docker image with name **cos** has been created by the "docker build" command that you executed in the previous step:
     ```
-    docker images
+    docker images | grep '\<apps/cos\>\|openliberty'
     ```
+    
 
     - You should see the following images on the output. Notice that the base image, `openliberty/open-liberty`, is also listed. It was pulled as the first step of building application image.
 
@@ -1229,8 +1241,4 @@ Congratulations! You've completed **Runtime Modernization** lab!
 
 This application has been modified from the initial WebSphere ND v8.5.5 version to run on modern & cloud-native runtime Open Liberty and deployed to RedHat OpenShift.
 
-## Next
-Please follow the link to do the next lab **Application Management**:
-
-  - [Application Management](https://ibmtechsales.github.io/was-appmod/appmod-labs/ApplicationManagement/)
 

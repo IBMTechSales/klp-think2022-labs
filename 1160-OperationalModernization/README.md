@@ -106,7 +106,7 @@ Click [here](extras/application.md) and get to know the application, its archite
 
 	 <br/>
 
-   **Note:** You may be prompted to re-authenticate using your OpenShift credentials. If so use **htpasswd** login with username: **ibmadmin** and passpord: **engageibm** 
+   **Note:** You may be prompted to re-authenticate using your OpenShift credentials. If so use **htpasswd** login with username: **ibmadmin** and password: **engageibm** 
 
 5. This will open the Transformation Advisor user interface. Click **Create new** under **Workspaces** to create a new workspace. 
 
