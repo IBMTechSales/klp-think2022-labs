@@ -240,7 +240,7 @@ Building this image could take around ~3 minutes so let's kick that process off 
    ls
    ```
 
-4 Run the following command to start building the image. Make sure to copy the entire command, including the `"."` at the end (indicated as the location of current directory). While the image is building (which takes ~3 minutes), continue with rest of the lab:
+4. Run the following command to start building the image. Make sure to copy the entire command, including the `"."` at the end (indicated as the location of current directory). While the image is building (which takes ~3 minutes), continue with rest of the lab:
    ```
    docker build --tag default-route-openshift-image-registry.apps.demo.ibmdte.net/apps/cos .
    ```
