@@ -2,14 +2,14 @@
 
 ## Table of Contents
 
-- [Operational Modernization](#operational-modernization)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Login to the VM](#login-to-the-vm)
-  - [Analysis (Hands-on)](#analysis-hands-on)
-    - [Clone the GitHub repo for this workshop](#clone-the-github-repo-for-this-workshop)
-    - [Let's get started using TA to analyze the existing Customer Order Services application:](#lets-get-started-using-ta-to-analyze-the-existing-customer-order-services-application)
-  - [Summary](#summary)
+- [Introduction](#introduction)
+- [Analysis](#analysis) (Hands-on)
+- [Build](#build) (Hands-on)
+- [Deploy without operator](#deploy) (Hands-on)
+- [Access the Application without operator](#access-the-application) (Hands-on)
+- [Alternate Deployment via Runtime Component Operator](#deploy-rco) (Hands-on)
+- [Summary](#summary)
+- [Next](#next)
 
 <a name="introduction"></a>
 ## Introduction
@@ -70,10 +70,10 @@ Click [here](extras/application.md) and get to know the application, its archite
 	
 1. If you have not yet cloned the GitHub repo with the lab artifacts, run the following command on your terminal:
     
-        git clone https://github.com/IBMTechSales/openshift-workshop-was.git
+        git clone https://github.com/IBMTechSales/openshift-workshop-was
 	
 
-### Let's get started using TA to analyze the existing Customer Order Services application:
+#### Let's get started using TA to analyze the existing Customer Order Services application:
 
 **IBM Cloud Transformation Advisor (TA)** can be used to analyze the Customer Order Service Application running in the WebSphere ND environment. The Transformation Advisor helps you to analyze your on-premises workloads for modernization. It determines the complexity of your applications, estimates a development cost to perform the move to the cloud, and recommends the best target environment. 
 
@@ -105,8 +105,6 @@ Click [here](extras/application.md) and get to know the application, its archite
     ![ta](extras/images/analysis4.png)
 
 	 <br/>
-
-   **Note:** You may be prompted to re-authenticate using your OpenShift credentials. If so use **htpasswd** login with username: **ibmadmin** and passpord: **engageibm** 
 
 5. This will open the Transformation Advisor user interface. Click **Create new** under **Workspaces** to create a new workspace. 
 
@@ -237,7 +235,6 @@ Building this image could take around ~8 minutes. So, let's kick that process of
 4. Change directory to where this lab is located, from the cloned Github repo. 
     ```
     cd openshift-workshop-was/labs/Openshift/OperationalModernization
-
     ls
     ```
 
@@ -285,9 +282,9 @@ Building this image could take around ~8 minutes. So, let's kick that process of
      <br/>
 
 
-4. Validate that the Docker image with name **cos-was** has been created by the "docker build" command that you executed in the previous step:
+4. Validate that image is in the repository by running the command:
    ```
-   docker images | grep '\<cos-was\>\|websphere'
+   docker images
    ```
 
      - Notice that the base image, websphere-traditional, is also listed. It was pulled as the first step of building application image.
@@ -296,7 +293,6 @@ Building this image could take around ~8 minutes. So, let's kick that process of
        ```
        REPOSITORY                                                             TAG                 IMAGE ID            CREATED             SIZE
        default-route-openshift-image-registry.apps.demo.ibmdte.net/apps-was/cos-was      latest              9394150a5a15        10 minutes ago      2.05GB
-       
        ibmcom/websphere-traditional                                           latest              898f9fd79b36        12 minutes ago      1.86GB
        ```
 
@@ -368,11 +364,11 @@ Building this image could take around ~8 minutes. So, let's kick that process of
      
 	 <br/>
 	 
-    **Example output:**
+       **Example output:**
     
- 	  ```
+ 	   ```
        image-registry.openshift-image-registry.svc:5000/apps-was/cos-was@sha256:bc072d3b78ae6adcd843af75552965e5ed863bcce4fc3f1bc5d194570bc16953
-    ```
+       ```
 
 
 7. OpenShift uses `ImageStream` to provide an abstraction for referencing container images from within the cluster. When an image is pushed to registry, an _ImageStream_ is created automatically, if one doesn't already exist. Run the following command to see the _ImageStream_ that's created:
@@ -438,7 +434,7 @@ Since migrating the database is not the focus of this particular workshop and to
 
      **The `Deployment.yaml` looks like:**
 
-     ```yaml
+     ```
      apiVersion: apps/v1
      kind: Deployment
      metadata:
@@ -484,23 +480,23 @@ Since migrating the database is not the focus of this particular workshop and to
 
      **Note the following about the deployment yaml**
 	 
-     - The `liveness probe` is used to tell Kubernetes when the application is live. Due to the size of the traditional WAS image, the initialDelaySeconds attribute has been set to 90 seconds to give the container time to start.
-     - The `readiness probe` is used to tell Kubernetes whether the application is ready to serve requests. 
-     - You may store property file based configuration files such as `configmaps` and `secrets`, and bind their contents into the `/etc/websphere` directory. 
-     - When the container starts, the server startup script will apply all the property files found in the `/etc/websphere` directory to reconfigure the server.
-     - For our example, the `volumeMounts` and `volumes` are used to bind the contents of the secret `authdata` into the directory `/etc/websphere` during container startup. 
-     - After it is bound, it will appear as the file `/etc/websphere/authdata.properties`. 
-        - For **volumeMounts:**
+       - The `liveness probe` is used to tell Kubernetes when the application is live. Due to the size of the traditional WAS image, the initialDelaySeconds attribute has been set to 90 seconds to give the container time to start.
+       - The `readiness probe` is used to tell Kubernetes whether the application is ready to serve requests. 
+       - You may store property file based configuration files such as `configmaps` and `secrets`, and bind their contents into the `/etc/websphere` directory. 
+       - When the container starts, the server startup script will apply all the property files found in the `/etc/websphere` directory to reconfigure the server.
+       - For our example, the `volumeMounts` and `volumes` are used to bind the contents of the secret `authdata` into the directory `/etc/websphere` during container startup. 
+       - After it is bound, it will appear as the file `/etc/websphere/authdata.properties`. 
+          - For **volumeMounts:**
             - The mountPath, `/etc/websphere`, specifies the directory where the files are bound.
             - the name, `authdata`, specifies the name of the volume
-       - For **volumes:**
+          - For **volumes:**
             - the secretName specifies the name of the secret whose contents are to be bound.
 
        <br/> 
  
      **The `Secret.yaml` looks like:**
 
-     ```yaml
+     ```
      apiVersion: v1
      kind: Secret
      metadata:
@@ -588,12 +584,14 @@ Since migrating the database is not the focus of this particular workshop and to
    
      Example output:
      ```
-     http://cos-was-apps-was.apps.demo.ibmdte.net/CustomerOrderServicesWeb	 
+     http://cos-was-apps-was.apps.demo.ibmdte.net/CustomerOrderServicesWeb
+	 
      ```
 
 4. Return to your Firefox browser window and go to the URL outputted by the command run in the previous step.
 
- 
+    <br/>
+
 5. You will be prompted to login in order to access the application. Enter the following credentials:
     - Username: **skywalker**
     - Password: **force**
@@ -682,46 +680,45 @@ Since migrating the database is not the focus of this particular workshop and to
      
 6. View `secret` details:
 
-   - Click on the **Secrets** tab under **Workloads** from the left menu and select the `authdata` secret.
+       - Click on the **Secrets** tab under **Workloads** from the left menu and select the `authdata` secret.
      
-     ![app-was secret1](extras/images/workload-secret1.jpg)
+         ![app-was secret1](extras/images/workload-secret1.jpg)
       
-	   <br/>
+	     <br/>
 	  
-   - Scroll down to the **Data** section and click on **Reveal Values** to view the content.
+       - Scroll down to the **Data** section and click on **Reveal Values** to view the content.
      
-     ![app-was secret2](extras/images/workload-secret2.jpg)
+         ![app-was secret2](extras/images/workload-secret2.jpg)
 		 
-		![app-was secret2](extras/images/workload-secret-reveal.jpg)
+		 ![app-was secret2](extras/images/workload-secret-reveal.jpg)
       
-	  <br/>
+	     <br/>
       
 7. View `service` details:
 
-    - Click on the **Services** tab under **Networking** from the left menu and select the `cos-was` service.
+       - Click on the **Services** tab under **Networking** from the left menu and select the `cos-was` service.
 
-      ![service](extras/images/reviewapplication1.png)
+         ![service](extras/images/reviewapplication1.png)
 
-     <br/>
+         <br/>
 
-    - Review service information including **address** and **port** mapping details.
+       - Review service information including **address** and **port** mapping details.
    
-      ![app-was service](extras/images/network-service.jpg)
+         ![app-was service](extras/images/network-service.jpg)
       
-	  <br/>
+	     <br/>
       
 8. View `route` details:
 
-     - Click on the **Routes** tab under **Networking** from the left menu and select the `cos-was` route. Here you see the route location to access the application.
+       - Click on the **Routes** tab under **Networking** from the left menu and select the `cos-was` route.
 
-       ![app-was route](extras/images/network-route.jpg)
+         ![app-was route](extras/images/network-route.jpg)
 
-     <br/>
+       <br/>
 	 
 	 <a name="db project resource"></a>
 
-
-###     View the resources in the project that contains the DB2 database used by the application
+###     View the resources in the project that contains the DB2 databse used by the application`
 
 1. View the resources in the project `db`:
  
@@ -731,40 +728,41 @@ Since migrating the database is not the focus of this particular workshop and to
 
 2. View `deployment` details:   
       
- 	 - Click on the **Deployments** tab under **Workloads** from the left menu and select `cos-db-was`
+ 	   - Click on the **Deployments** tab under **Workloads** from the left menu and select `cos-db-was`
        
-	   ![db deploy1](extras/images/db_deploy_1.jpg)
+	    <br/>
+	   
+         ![db deploy1](extras/images/db_deploy_1.jpg)
 
-     
+         <br/> 
 
-   - Navigate to the `YAML` tab to view the content of yaml
+       - Navigate to the `YAML` tab to view the content of yaml
        
-     ![db deploy2](extras/images/db_deploy_2.jpg)
+         ![db deploy2](extras/images/db_deploy_2.jpg)
         
 3. View `pod` details:
   
-   - Click on the **Pods** tab under **Workloads** from the left menu and select the pod with name starting with `cos-db-was`
+       - Click on the **Pods** tab under **Workloads** from the left menu and select the pod with name starting with `cos-db-was`
        
-     ![db pod1](extras/images/db_pod_1.jpg)
+         ![db pod1](extras/images/db_pod_1.jpg)
        
-	     
-   - Navigate to the `Logs` tab to view the database logs
-	 
-   - Navigate to the `Terminal` tab to view the files inside the container: 
+	    <br/>   
+	    
+       - Navigate to the `Logs` tab to view the database logs
+	   - Navigate to the `Terminal` tab to view the files inside the container: 
         	  
-	      ls -lt
-		
-    	  ls -l /opt/ibm/db2
+	          ls -lt
+			  ls -l /opt/ibm/db2
 			  
-     ![db pod2](extras/images/db_pod_2.jpg)
+          ![db pod2](extras/images/db_pod_2.jpg)
         
 4. View `service` details for the project **db**:
 
-   - Click on the **Services** tab under **Networking** from the left menu and select the `cos-db-was` service.
+       - Click on the **Services** tab under **Networking** from the left menu and select the `cos-db-was` service.
        
-     ![db service1](extras/images/db_net_service_1.jpg)
+         ![db service1](extras/images/db_net_service_1.jpg)
 
-     ![db service2](extras/images/db_net_service_2.jpg)
+         ![db service2](extras/images/db_net_service_2.jpg)
 
 
 
@@ -787,8 +785,6 @@ Since migrating the database is not the focus of this particular workshop and to
     secret "authdata" deleted
     service "cos-was" deleted
     ```
-
-    The **oc delete** command specified the `-f` parameter which runs the "delete" action using all of the YAML files located in the "deploy" directory. 
 
 <a name="deploy-rco"></a>
 
@@ -842,7 +838,7 @@ For more information, see: [https://github.com/application-stacks/runtime-compon
 
       And the output:
       
-      ```yaml
+      ```
       apiVersion: app.stacks/v1beta1
       kind: RuntimeComponent
       metadata:
@@ -881,12 +877,12 @@ For more information, see: [https://github.com/application-stacks/runtime-compon
 
       Note that:
 	  
-      - The kind is `RuntimeComponent`
-      - The `expose` attribute is set to `true` to expose a route for the service
-      - The attributes within the yaml file are essentially the same information that you provided for the `Service`, `Route`, and `Deployment` resources in the `deploy` directory.
-      - The controller for the RuntimeComponent custom resource reacts to changes in the above specification, and creates the corresponding `Service`, `Route`, and `Deployment` objects. 
+       - The kind is `RuntimeComponent`
+       - The `expose` attribute is set to `true` to expose a route
+       - The attributes within the yaml file are essentially the same information that you provided for the `Service`, `Route`, and `Deployment` resources in the `deploy` directory.
+       - The controller for the RuntimeComponent custom resource reacts to changes in the above specification, and creates the corresponding `Service`, `Route`, and `Deployment` objects. 
 	   
-	  <br/>
+	   <br/>
 	   
 5. Issue the following commands to view what the controller has created:
       ```
@@ -932,7 +928,7 @@ For more information, see: [https://github.com/application-stacks/runtime-compon
 
      **Note:** The steps to access the application are the same as those used when deploying without the operator.
 
-     
+     <br/>
 
 5. You will be prompted to login in order to access the application. Enter the following credentials:
     - Username: **skywalker**
@@ -971,35 +967,40 @@ For more information, see: [https://github.com/application-stacks/runtime-compon
 
 1. View the resources in the project `openshift-operators`:
 
-   - Select the `openshift-operators` project from the project drop down menu.
+       - Select the `openshift-operators` project from the project drop down menu.
 
-   
+       <br/>
 
 2. View operator `deployment` details:
 
-   - Click on the **Deployments** tab under **Workloads** from the left menu and select `runtime-component-operator`
+       - Click on the **Deployments** tab under **Workloads** from the left menu and select `runtime-component-operator`
              
-      ![rco deploy1](extras/images/rco-deploy1.jpg)
+         ![rco deploy1](extras/images/rco-deploy1.jpg)
          
-			 
-   - Navigate to the `YAML` tab to view the content of yaml
+		 <br/>
+		 
+       - Navigate to the `YAML` tab to view the content of yaml
        
-      ![rco deploy2](extras/images/rco-deploy2.jpg)
+         ![rco deploy2](extras/images/rco-deploy2.jpg)
    
 3. View operator `pod` details:
    
-   - Click on the **Pods** tab under **Workloads** from the left menu and select the pod with name starting with `runtime-component-operator`
+       - Click on the **Pods** tab under **Workloads** from the left menu and select the pod with name starting with `runtime-component-operator`
        
-     ![rco pod1](extras/images/rco-pod1.jpg)
+         ![rco pod1](extras/images/rco-pod1.jpg)
          
-	- Navigate to `Logs` to view the runtime-component-operator container log
-       
-      ![rco pod2](extras/images/rco-pod2.jpg)
+		 <br/>
 		 
-	
-  
+       - Navigate to `Logs` to view the runtime-component-operator container log
+       
+         ![rco pod2](extras/images/rco-pod2.jpg)
+		 
+		 <br/>
+         
+       
  
-###  View the resources in the project apps-was
+ 
+####  View the resources in the project apps-was
 
    
 1. View the resources in the project `apps-was`:
@@ -1012,7 +1013,7 @@ For more information, see: [https://github.com/application-stacks/runtime-compon
           
 		    **Note:** The operator is installed at cluster level and is visible to all existing projects, but Runtime Component instance is created under the project `apps-was`.
      
-          ![rco op1](extras/images/rco-op1.jpg)
+         ![rco op1](extras/images/rco-op1.jpg)
 
          <br/>
 	 
@@ -1028,14 +1029,15 @@ For more information, see: [https://github.com/application-stacks/runtime-compon
      
 2. View `deployment` details:
    
-    - Click on the **Deployments** tab under **Workloads** from the left menu and select `cos-was-rco`.
+       - Click on the **Deployments** tab under **Workloads** from the left menu and select `cos-was-rco`.
        
-      ![rc workload deploy1](extras/images/rc-workload-deploy1.jpg)  
+         ![rc workload deploy1](extras/images/rc-workload-deploy1.jpg)  
        
-	    	   
-    - Navigate to the `YAML` tab to view the content of yaml.    
+	     <br/>
+	   
+       - Navigate to the `YAML` tab to view the content of yaml.    
           
-		 **Note:** the deployment is created through the controller of RuntimeComponent custom resource.
+		   **Note** the deployment is created through the controller of RuntimeComponent custom resource.
        
          ![rc workload deploy2](extras/images/rc-workload-deploy2.jpg)
          
@@ -1043,56 +1045,61 @@ For more information, see: [https://github.com/application-stacks/runtime-compon
 		 
 3. View `pod` details:   
  
-   - Click on the **Pods** tab under **Workloads** from the left menu and select the pod starting with `cos-was-rco`
+       - Click on the **Pods** tab under **Workloads** from the left menu and select the pod starting with `cos-was-rco`
        
-     ![rc workload pod1](extras/images/rc-workload-pod1.jpg)  
+         ![rc workload pod1](extras/images/rc-workload-pod1.jpg)  
 
-          
-   - Navigate to the `Logs` tab to view the WebSphere Application Server log
+         <br/>
        
-     ![rc workload pod2](extras/images/rc-workload-pod2.jpg)  
+       - Navigate to the `Logs` tab to view the WebSphere Application Server log
+       
+         ![rc workload pod2](extras/images/rc-workload-pod2.jpg)  
          
-		
+		 <br/>
 		 
 4. View `service` details:
   
-   - Click on the **Services** tab under **Networking** from the left menu and select `cos-was-rco`
+       - Click on the **Services** tab under **Networking** from the left menu and select `cos-was-rco`
        
-     ![rc network service1](extras/images/rc-net-service1.jpg) 
+         ![rc network service1](extras/images/rc-net-service1.jpg) 
 
-         
+         <br/>   
 	  
-   - Navigate to the `YAML` tab to view the content of yaml.    
+       - Navigate to the `YAML` tab to view the content of yaml.    
  
-     **Note** the service is created through the controller of RuntimeComponent custom resource.
+           **Note** the service is created through the controller of RuntimeComponent custom resource.
          
-     ![rc network service2](extras/images/rc-net-service2.jpg) 
+         ![rc network service2](extras/images/rc-net-service2.jpg) 
        
-	   	   
+	     <br/>
+	   
 5. View `route` details:
    
-   - Click on the **Routes** tab under **Networking** from the left menu and select `cos-was-rco`
+       - Click on the **Routes** tab under **Networking** from the left menu and select `cos-was-rco`
        
-    ![rc network route1](extras/images/rc-net-route1.jpg) 
+         ![rc network route1](extras/images/rc-net-route1.jpg) 
     
-     
+         <br/> 
 	
-   - Navigate to the `YAML` tab to view the content of yaml.  
+       - Navigate to the `YAML` tab to view the content of yaml.  
           
-		**Note** the route is created through the controller of RuntimeComponent custom resource.
+		   **Note** the route is created through the controller of RuntimeComponent custom resource.
          
-     ![rc network route2](extras/images/rc-net-route2.jpg)   
+         ![rc network route2](extras/images/rc-net-route2.jpg)   
        
-	   
+	     <br/>
 	   
 6. View `secret` details:
 	  
-   - Click on the **Secrets** tab under **Workloads** from the left menu and select `authdata-rco`
+       - Click on the **Secrets** tab under **Workloads** from the left menu and select `authdata-rco`
         
-     ![rc workload secret1](extras/images/rc-workload-secret1.jpg) 
+          ![rc workload secret1](extras/images/rc-workload-secret1.jpg) 
         
-		 		
+		  <br/>
+		
+7. Resources in the project `db`: 
 
+      - The Database resources are the **Same** as listed in the section above in **Review the application workload flow without operator**.
          
          
 ## Cleanup (the deployment with Runtime Component Operator) (Hands-on)
@@ -1128,3 +1135,9 @@ For more information, see: [https://github.com/application-stacks/runtime-compon
 ## Summary
 
 Congratulations! You've completed the **Operational Modernization** lab. You containerized and deployed a monolith application to cloud!
+
+<a name="next"></a>
+## Next
+Please follow the link to do the next lab **Runtime Modernization**:
+
+  - [Runtime Modernization](https://ibmtechsales.github.io/was-appmod/appmod-labs/RuntimeModernization/)
