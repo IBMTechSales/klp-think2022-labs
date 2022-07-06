@@ -90,7 +90,7 @@ Currently, this is a very manual, time-consuming process, and you'd like
 to automate this process to direct valuable time and resource elsewhere.
 This is where **IBM WebSphere Automation will help\!**
 
-You would like to have:
+**You would like to have:**
 
   - **Management dashboard:** Consolidated dashboard increases awareness
     and response time to the health of your WebSphere and Liberty
@@ -230,9 +230,9 @@ VMs.
 # **Part 1: Register WAS/Liberty Servers with WSA**
 
 To use the WSA for health check of WAS and Liberty servers, WAS and
-Liberty servers need to be registered with WSA first. The detail WSA
-registration process is can be find in **Lab1 - Strengthen Operational
-Security with IBM WebSphere Automation** documentation. In this lab, you are going to use a script to register the WAS server and the Liberty server with WSA.
+Liberty servers need to be registered with WSA first. 
+
+The detailed WSA registration process is can be find in **Lab1 - Strengthen Operational Security with IBM WebSphere Automation** documentation. However, in this lab, you are going to use a script to register the WAS server and the Liberty server with WSA.
 
 1.  Double-click Firefox icon to launch the web browser
 
@@ -292,7 +292,7 @@ generated](./images/media/image17.png)
  **WAS-Automation-LabFiles** to the local directory under
  /**home/ibmuser/WAS-Automation-LabFiles** directory.
 
-9.  Run script **register\_was\_liberty** in the
+9.  Run the script named **register_was_liberty** in the
     **WAS-Automation-LabFiles/ lab2-MemoryLeak** directory to register
     WAS server and Liberty server to WSA.
 
@@ -398,9 +398,9 @@ generated](./images/media/image22.png)
 
         sudo gedit /opt/instana/agent/etc/instana/configuration.yaml
 
-    b. Change the Hardware and Zone section as the follows
+    b. Change the **Hardware & Zone** section as the follows
 
-        # Hardware &amp; Zone
+        # Hardware & Zone
         com.instana.plugin.generic.hardware:
           enabled: true # disabled by default
           availability-zone: 'WebSphere'
