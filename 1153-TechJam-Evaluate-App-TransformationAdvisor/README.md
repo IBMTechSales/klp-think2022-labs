@@ -40,7 +40,7 @@ deployed to WebSphere Application Server (WAS) environment.
 ![](./images/media/image1.png)
 
 Your company wants to move these applications to a lightweight WebSphere
-Liberty server on a Kbernetes container-based platfrom. However, you are not sure how much effort the migration process might take. You decide to use the IBM Transformation Advisor to do a quick evaluation of these applications without their source code to identify good candidate application to move to your target OpenShift container-based platform.
+Liberty server on a Kubernetes container-based platform. However, you are not sure how much effort the migration process might take. You decide to use the IBM Transformation Advisor to do a quick evaluation of these applications without their source code to identify good candidate application to move to your target OpenShift container-based platform.
 
 ## 2. Objective
 
@@ -185,7 +185,7 @@ Here are the activities involved in this process:
 In this task, you look at the sample applications deployed to the local
 WebSphere Application Server (WAS) environment. Through the application
 assessment phase, you are going to identify which applications would be
-the good candidate to modernize and potentially re-platfrom to WebSPhere Liberty and containers.
+the good candidate to modernize and potentially re-platform to WebSphere Liberty and containers.
 
 1.  Start WebSphere Application Server
 
@@ -353,7 +353,7 @@ applications and their configuration data from WAS server.
 
 3. Extract the data collector utility using the following command:
 
-        tar xvfz transformationadvisor-Linux\_Evaluation\_Server1.tgz
+        tar xvfz transformationadvisor-Linux_Evaluation_Server1.tgz
 
     - The data collector utility is extracted to  **/home/ibmuser/Downloads/transformationadvisor-X.Y.Z** directory, where X.Y.Z is the version of the tool downloaded.
 
@@ -466,8 +466,8 @@ previous section.
     <br/>
    
     For this lab, you will focus on the modernization of
-    **moderesorts-1.0\_war.ear** to Open Liberty. Next, you will look at
-    the analysis results for **moderesorts-1.0\_war.ear** application in
+    **modresorts-1.0\_war.ear** to Open Liberty. Next, you will look at
+    the analysis results for **modresorts-1.0\_war.ear** application in
     detail.
 	
 	<br/>
