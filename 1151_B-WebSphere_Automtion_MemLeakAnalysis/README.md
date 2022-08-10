@@ -667,26 +667,7 @@ generated](./images/media/image31-a.png)
 
 
 
-    f. Test connection
-
-        MANAGER_POD=$(oc get pod -l app.kubernetes.io/component=runbook-manager -o name | head -n 1)
- 
-        oc rsh $MANAGER_POD runcli testConnection student.demo.ibmdte.net linux
- 
-     The output is looking like:
-
-    <table>
-    <tbody>
-    <tr class="odd">
-    <td><p>[root@dns ~]# oc rsh $MANAGER_POD runcli testConnection student.demo.ibmdte.net linux</p>
-    <p>Mar 09, 2022 6:46:06 PM com.ibm.ws.automation.core.runbook.manager.RunbookManagerCLI clientMode</p>
-    <p>INFO: starting</p>
-    <p>Created job: test-connection-1646851568775</p>
-    <p>To see the job logs run: oc logs --tail=100 -l job-name=test-connection-1646851568775</p></td>
-    </tr>
-    </tbody>
-    </table>
-
+   
 
 
 
