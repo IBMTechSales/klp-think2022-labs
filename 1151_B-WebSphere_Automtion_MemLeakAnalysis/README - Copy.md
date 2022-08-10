@@ -2,9 +2,9 @@
 
 ![banner](./images/media/image1.jpeg)
 
-**Last updated:** August 2022
+**Last updated:** July 2022
 
-**Duration:** 60 mins
+**Duration:** 45 mins
 
 Need support? Contact **Yi Tang** and **Kevin Postreich**
 
@@ -591,57 +591,64 @@ following steps walk you through the integration process.
 
     In order for WebSphere Automation to be able to collect data for you WAS instances, you need to create a SSH key for their communications.
 
-    
-    a. Issue command to create a new SSH key with passphrase. In the lab the passphrase used is: **passw0rd**
+    > **Note:** To save time, this task is already completed for you in this lab environment, so you do not need to do anything in this task. All the task steps used in the lab environment are listed below for your reference only.
+
+    a. Access the WebSphere Automation server to create a new SSH key.
+
+        ssh root@dns
+
+    When prompted, type **yes** and enter the **root** user password as: **passw0rd**
+
+    b. Issue command to create a new SSH key with passphrase. In the lab the passphrase used is: **passw0rd**
 
         ssh-keygen -f ~/.ssh/wsa
 
     ![Text, letter Description automatically
-generated](./images/media/image31-a.png)
+generated](./images/media/image31.png)
 
-    b. Copy the key over to the WAS server to be monitored. In this lab the following command is used:
+    c. Copy the key over to the WAS server to be monitored. In this lab the following command is used:
 
          ssh-copy-id -i ~/.ssh/wsa ibmuser@student.demo.ibmdte.net
  
     When prompted, type **yes** and enter the **ibmuser** user password
  as: **engageibm!**
 
-    c. Test the login to the WAS server from the WebSphere Automation
+    d. Test the login to the WAS server from the WebSphere Automation
     server via ssh key with the key passphrase.
 
         ssh -i ~/.ssh/wsa ibmuser@student.demo.ibmdte.net
  
         exit
 
-    d. Setting up WebSphere Automation for SSH to Linux or UNIX servers
+    e. Setting up WebSphere Automation for SSH to Linux or UNIX servers
 
-        oc login -u ibmadmin -p engageibm
+        KUBECONFIG=/root/install/auth/kubeconfig
  
         oc project websphere-automation
  
         oc create secret generic wsa-ansible \
           --from-literal=ansible_user=ibmuser \
           --from-literal=ansible_port=22 \ 
-          --from-file=ssh_private_key_file=/home/ibmuser/.ssh/wsa \
+          --from-file=ssh_private_key_file=/root/.ssh/wsa \
           --from-literal=ssh_private_key_password=passw0rd
  
-        ssh-keyscan student.demo.ibmdte.net >> /home/ibmuser/wsa_known_hosts
+        ssh-keyscan student.demo.ibmdte.net >> /root/wsa_known_hosts
  
         oc create configmap wsa-ansible-known-hosts
-          --from-file=known_hosts=/home/ibmuser/wsa_known_hosts
+          --from-file=known_hosts=/root/wsa_known_hosts
 
     f. Test connection
 
         MANAGER_POD=$(oc get pod -l app.kubernetes.io/component=runbook-manager -o name | head -n 1)
  
-        oc rsh $MANAGER_POD runcli testConnection student.demo.ibmdte.net linux
+        oc rsh $MANAGER_POD runcli testConnection student linux
  
      The output is looking like:
 
     <table>
     <tbody>
     <tr class="odd">
-    <td><p>[root@dns ~]# oc rsh $MANAGER_POD runcli testConnection student.demo.ibmdte.net linux</p>
+    <td><p>[root@dns ~]# oc rsh $MANAGER_POD runcli testConnection student linux</p>
     <p>Mar 09, 2022 6:46:06 PM com.ibm.ws.automation.core.runbook.manager.RunbookManagerCLI clientMode</p>
     <p>INFO: starting</p>
     <p>Created job: test-connection-1646851568775</p>
@@ -650,6 +657,9 @@ generated](./images/media/image31-a.png)
     </tbody>
     </table>
 
+    g. Exit the ssh session using the following command.
+
+        exit
 
 
 
