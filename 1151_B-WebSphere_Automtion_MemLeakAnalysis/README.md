@@ -630,6 +630,43 @@ generated](./images/media/image31-a.png)
         oc create configmap wsa-ansible-known-hosts
           --from-file=known_hosts=/home/ibmuser/wsa_known_hosts
 
+
+4. Test the ssh connection from IBM WebSphere Automation to the WAS environment, using the following commands: 
+
+        MANAGER_POD=$(oc get pod -l app.kubernetes.io/component=runbook-manager -o name | head -n 1)
+
+        oc rsh $MANAGER_POD runcli testConnection student.demo.ibmdte.net linux
+
+
+    The output is looking like:
+
+    <table>
+    <tbody>
+    <tr class="odd">
+    <td><p>[root@dns ~]# oc rsh $MANAGER_POD runcli testConnection student.demo.ibmdte.net linux</p>
+    <p>Mar 09, 2022 6:46:06 PM com.ibm.ws.automation.core.runbook.manager.RunbookManagerCLI clientMode</p>
+    <p>INFO: starting</p>
+    <p>Created job: test-connection-1646851568775</p>
+    <p>To see the job logs run: oc logs --tail=100 -l job-name=test-connection-1646851568775</p></td>
+    </tr>
+    </tbody>
+    </table>        
+
+    a. Run the `oc log` command that is outputted from the "**oc rsh**" command
+
+       **Example:**   
+       oc logs --tail=100 -l job-name=test-connection-######        
+
+    ![](./images/media/image94.png)
+
+    b. A successful connection should look similar to this output: 
+
+    ![](./images/media/image95.png)
+
+    ![](./images/media/image95-cont.png)
+
+
+
     f. Test connection
 
         MANAGER_POD=$(oc get pod -l app.kubernetes.io/component=runbook-manager -o name | head -n 1)
