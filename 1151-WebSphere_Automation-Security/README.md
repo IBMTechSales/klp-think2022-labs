@@ -1,4 +1,4 @@
-# Strengthen Operational Security with IBM WebSphere Automation
+# Proactive CVE protection for WebSphere with IBM WebSphere Automation
 
 ![banner](./lab1-media/media/image1.jpeg)
 
