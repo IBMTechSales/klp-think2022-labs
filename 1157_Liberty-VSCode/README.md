@@ -111,9 +111,9 @@ The **“Workstation”** VM has the following software available:
 
 The login credentials for the **Workstation”** VM are:
 
-    User ID: **ibmdemo**
+    User ID: ibmdemo
  
-    Password: **passw0rd (That is a numeric zero in passw0rd)**
+    Password: passw0rd (That is a numeric zero in passw0rd)
 
 
 
@@ -167,7 +167,7 @@ The login credentials for the **Workstation”** VM are:
 
 |         |           |  
 | ------------- |:-------------|
-| ![](./images/media/image8.png?cropResize=100,100)   | <p><strong>Important:</strong> <p><strong>Click CANCEL</strong>…. If, at any time during the lab, you get a pop-up asking to install updated software onto the Ubuntu VM.</p> <p>The one we experience is an update available for VS Code.</p><p><strong>CLICK CANCEL!</strong></p><p>![](./images/media/image15 .png?cropResize=100,100)</p> |
+| ![](./images/media/image8.png?cropResize=100,100)   | <p><strong>Important:</strong> <p><strong>Click CANCEL</strong>…. If, at any time during the lab, you get a pop-up asking to install updated software onto the Ubuntu VM.</p> <p>The one we experience is an update available for VS Code.</p><p><strong>CLICK CANCEL!</strong></p><p>![](./images/media/image15.png?cropResize=100,100)</p> |
 
 
 ## Getting Started with Open Liberty Tools in VS Code
@@ -345,7 +345,7 @@ can get immediate feedback on your changes.
 
 2.  Run the system Properties sample application from a web browser
     
-    a.  Open the Firefox Browser from inside of the VM
+    a.  Open the Web Browser from inside of the VM
     
     b.  Go to <http://localhost:9080> to verify the application is     running.
         
@@ -413,7 +413,7 @@ To learn more about the MicroProfile mpHealth feature, visit:
 
     <br/>
 
-3.  From the Firefox browser in the VM access the **/health** endpoint to view the health status of the application.
+3.  From the Web browser in the VM access the **/health** endpoint to view the health status of the application.
 
         http://localhost:9080/health
 
@@ -440,7 +440,7 @@ To learn more about the MicroProfile mpHealth feature, visit:
 
     |         |           |  
     | ------------- |:-------------|
-    | ![](./images/media/image8.png?cropResize=100,100)   | <<p><strong>Information:</strong></p><p>For the purposes of the lab, the copy command above copies a fully implemented Readiness check from the “finished” project, into the current working project.</p> |
+    | ![](./images/media/image8.png?cropResize=100,100)   | <p><strong>Information:</strong></p><p>For the purposes of the lab, the copy command above copies a fully implemented Readiness check from the “finished” project, into the current working project.</p> |
 
 
 5.  Review the **SystemReadinessCheck.java i**mplementation
@@ -465,7 +465,7 @@ To learn more about the MicroProfile mpHealth feature, visit:
 
     <br/>
 
-6.  From the Firefox Browser in the VM, rerun the **/health** endpoint to view the health status of the application.
+6.  From the Web Browser in the VM, rerun the **/health** endpoint to view the health status of the application.
 
         http://localhost:9080/health
 
@@ -511,7 +511,7 @@ To learn more about the MicroProfile mpHealth feature, visit:
 
     <br/>
 
-9.  From the Firefox Browser in the VM, rerun the **/health** endpoint to view the health status of the application.
+9.  From the Web Browser in the VM, rerun the **/health** endpoint to view the health status of the application.
 
         http://localhost:9080/health
 
@@ -541,7 +541,7 @@ To learn more about the MicroProfile mpHealth feature, visit:
 
     <br/>
 
-11. From the Firefox Browser in the VM, rerun the **/health** endpoint to view the health status of the application.
+11. From the Web Browser in the VM, rerun the **/health** endpoint to view the health status of the application.
 
         http://localhost:9080/health
 
@@ -634,7 +634,7 @@ to pass.
 
     <br/>
 
-4.  From the Firefox browser, run the service using the NEW endpoint URL
+4.  From the Web browser, run the service using the NEW endpoint URL
 
     **http://localhost:9080/system/all-properties**
 
@@ -879,7 +879,7 @@ debugging</span>**
 
     <br/>
 
-7.  From the Firefox Browser in the VM, run the **/health** endpoint to view the health status of the application. The application will stop at the breakpoint in the SystemLivenessCheck.java code.
+7.  From the Web Browser in the VM, run the **/health** endpoint to view the health status of the application. The application will stop at the breakpoint in the SystemLivenessCheck.java code.
 
         http://localhost:9080/health
 
@@ -905,12 +905,14 @@ debugging</span>**
 
 10. Use the Liberty Dev Dashboard to **STOP** the Liberty Server in dev mode
     
-    a.  In VS Code, expand the LIBERTY DEV DASHBOARD section
+    a. In VS Code, switch back to the **Explorer** view
     
-    b.  Right-mouse click on the **guide-getting-started** Liberty
+    b.  Expand the LIBERTY DEV DASHBOARD section
+    
+    c.  Right-mouse click on the **guide-getting-started** Liberty
         Server
     
-    c.  Select **Stop** from the menu to stop the server
+    d.  Select **Stop** from the menu to stop the server
         
     ![](./images/media/image74.png)
 

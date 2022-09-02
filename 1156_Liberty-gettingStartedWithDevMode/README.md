@@ -177,7 +177,7 @@ the Maven **liberty:run** goal:
 2.  Access the “system” microservice that was deployed to the Liberty
     server.
     
-    a.  Open the Firefox Web Browser from inside of the VM and go to the URL below. The microservice lists various system properties of
+    a.  Open the Web Browser from inside of the VM and go to the URL below. The microservice lists various system properties of
         your JVM.
 
         http://localhost:9080/system/properties
@@ -250,7 +250,7 @@ quicker turnarounds and an improved developer experience.
 
 2.  Access the “system” microservice that was deployed to the Liberty server.
     
-    a.  Open the Firefox Web Browser from inside of the VM and go to the URL below to display the main application web page
+    a.  Open the Web Browser from inside of the VM and go to the URL below to display the main application web page
 
         http://localhost:9080/ 
 
@@ -286,11 +286,11 @@ quicker turnarounds and an improved developer experience.
 
 4.  Access the **System Properties Sample** microservice that was deployed to the Liberty server.
 
-    a.  From the Firefox Web Browser inside of the VM, and go to the URL below to display the main application web page
+    a.  From the Web Browser inside of the VM, and go to the URL below to display the main application web page
 
         http://localhost:9080/
 
-    b.  **IMPORTANT**: Click the **RELOAD** icon in the Firefox browser to reload the page. Browsers cache content, so you need to reload the page.
+    b.  **IMPORTANT**: Click the **RELOAD** icon in the browser to reload the page. Browsers cache content, so you need to reload the page.
     
     ![](./images/media/image20.png)
 
@@ -321,9 +321,11 @@ configuration
 If you try to access this /health endpoint now, you see a 404 error
 because the **/health** endpoint does not yet exist:
 
-1.  From the Firefox browser in the VM, try to access the applications /health endpoint at:
+1.  From the Web browser in the VM, try to access the applications /health endpoint at:
 
-        <http://localhost:9080/health/>
+        http://localhost:9080/health
+
+    > Note: you see a 404 error because the **/health** endpoint does not yet exist
  
     ![](./images/media/image22.png)
 
@@ -339,7 +341,7 @@ because the **/health** endpoint does not yet exist:
 
         gedit server.xml
 
-    c.  Add the Make the following minor change to the server.xml file
+    c.  Make the following minor change to the server.xml file
 
     **Change the highlighted line:**
  
@@ -355,7 +357,7 @@ because the **/health** endpoint does not yet exist:
 
 3.  Access the new **Health Endpoint** for the application.
 
-    a.  Open the Firefox Web Browser from inside of the VM and go to the URL below to display the health endpoint.
+    a.  Open the Web Browser from inside of the VM and go to the URL below to display the health endpoint.
 
         http://localhost:9080/health
 
@@ -382,9 +384,12 @@ because the **/health** endpoint does not yet exist:
 
       - A **liveness** check allows third-party services to determine if the microservice is running.
     
-   **Note:** Working with MicroProfile Health is beyond the scope of
+     **Note:** Working with MicroProfile Health is beyond the scope of
     this lab and is introduced in a subsequent lab.
 
+    <br/>
+
+5. From the terminal window that is running "mvn:liberty:dev", use **CTL-C** to stop the Liberty server. 
 
 
 ## Developing and Running the application in a Docker Container and in Liberty Dev Mode
@@ -434,7 +439,7 @@ To run the application in a container, Docker needs to be installed and
 the Docker daemon running. In this lab environment, these prerequisites
 have been configured.
 
-1. From the terminal window, use **CTL-C** to stop the Liberty server that was runing in the previous steps. 
+1. From the terminal window, use **CTL-C** to stop the Liberty server, if it is still running from the previous section. 
 
 2.  In the Terminal window, verify that Docker is running
 
@@ -492,7 +497,7 @@ have been configured.
 
     <br/>
 
-8.  Open the Firefox browser on the VM and access Liberty running in the container: **http://localhost:9086**
+8.  Open the Web browser on the VM and access Liberty running in the container: **http://localhost:9086**
 
     ![](./images/media/image34.png)
 
