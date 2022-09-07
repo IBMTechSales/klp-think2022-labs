@@ -2751,7 +2751,7 @@ Using copy / Paste capabilities between the lab document (PDF) on your
 
     ![](./images/media/image135.png)
 
-**Note:** The very first time you do this, if the text does not paste,
+    **Note:** The very first time you do this, if the text does not paste,
 you may have to paste the contents into the Skytap clipboard twice. This
 is a known Skytap issue. It only happens on the 1<sup>st</sup> attempt
 to copy / paste into Skytap.
