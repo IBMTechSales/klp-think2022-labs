@@ -114,11 +114,11 @@ The **Workstation** VM has the following software installed:
 
 
 
-  - The **Workstation** is VM Linux CentOS version 7
+  - The **Workstation** is Linux VM
 
   - The login credentials for the **Workstation** VM are:
  
-    > User ID: **ibmadmin**
+    > User ID: **ibmdemo**
     >
     > Password: **passw0rd (That is a numeric zero in passw0rd)**
     > 
@@ -136,19 +136,23 @@ The **Workstation** VM has the following software installed:
 
     ![](./images/media/image10a.png)
 
-3.  If you see a screen displaying only “**ibmadmin**”, or a Time/Date .
-    Click on the screen to get to the password prompt to login. The
-    password for the ibmadmin user is “**passw0rd**”
 
-    ![](./images/media/image11.png)
+3.  Login with **ibmdemo** ID.
+    
+    a.  Click on the “**ibmdemo**” icon on the Ubuntu screen.
+
+      ![](./images/media/image11.png)
+
+    b. When prompted for the password for “**ibmdemo**” user, enter
+    “**passw0rd**” as the password:
+
+    Password: **passw0rd** (lowercase with a zero instead of the o)
  
-    ![](./images/media/image12.png)
+      ![](./images/media/image12.png)
 
-The login credentials for the **Workstation** VM are:
+    <br/>
 
-> User ID: **ibmadmin**
-> 
-> Password: **passw0rd (That is a numeric zero in passw0rd)**
+
 
 ###  **Resize the Skytap lab environment window to fit to size**
 
@@ -214,7 +218,7 @@ The **GitHub repository** contains all the source code and files needed
 to perform all the steps for using Mono2micro to transform the monolith
 application used in this lab, to microservices.
 
-The filesystem structure of the m2m-ws-sample GitHub repository is shown below: (details are in the README within the GitHub repo):
+The filesystem structure of the **m2m-ws-sample** GitHub repository is shown below: (details are in the README within the GitHub repo):
 
 **Monolith source code:** ./defaultapplication/monolith
 
@@ -249,9 +253,9 @@ on your local workstation.
     
     a.  Open a Terminal window and run the following commands:
 
-        cd /home/ibmadmin
+        cd /home/ibmdemo
 
-        git clone https://github.com/kpostreich/m2m-ws-sample
+        git clone https://github.com/kpostreich/m2m-ws-sample.git
     
     ![](./images/media/image18.png)
 
@@ -259,7 +263,7 @@ on your local workstation.
 
 2.  Change to the workshop directory that contains the cloned repository artifacts. Then list the directory contents.
 
-        cd /home/ibmadmin/m2m-ws-sample
+        cd /home/ibmdemo/m2m-ws-sample
         
         ls -l
     
@@ -354,7 +358,7 @@ source code for the monolith application is already available in a
 single directory structure cloned from GitHub.
 
 For this lab, the monolith source files tree can then be found in
-**/home/ibmadmin/m2m-ws-sample/defaultapplication/monolith** directory.
+**/home/ibmdemo/m2m-ws-sample/defaultapplication/monolith** directory.
 
 Let’s begin with the static data collection phase by running
 Mono2Micro’s **Bluejay** tool to analyze the Java source code,
@@ -362,9 +366,9 @@ instrument it, and produce the analysis in two .json files.
 
 1.  Run the Bluejay analysis using the following commands:
 
-        cd /home/ibmadmin/m2m-ws-sample
+        cd /home/ibmdemo/m2m-ws-sample
         
-        docker run --rm -it -e LICENSE=accept -v /home/ibmadmin/m2m-ws-sample/:/var/application ibmcom/mono2micro-bluejay /var/application/defaultapplication/monolith out
+        docker run --rm -it -e LICENSE=accept -v /home/ibmdemo/m2m-ws-sample/:/var/application ibmcom/mono2micro-bluejay /var/application/defaultapplication/monolith out
 
 
     <table>
@@ -372,7 +376,7 @@ instrument it, and produce the analysis in two .json files.
     <tr class="odd">
     <td><img src="./images/media/image3.png" style="width:0.74167in;height:0.65833in" alt="sign-info" /></td>
     <td><p><strong>Note:</strong> The command displays the directory where the output files were generated, as illustrated below.</p>
-    <p>In this example: /home/ibmadmin/m2m-ws-sample/ defaultapplication/<strong>monolith-klu</strong></p></td>
+    <p>In this example: /home/ibmdemo/m2m-ws-sample/ defaultapplication/<strong>mono2micro</strong></p></td>
     </tr> 
     </tbody>
     </table>
@@ -383,15 +387,15 @@ instrument it, and produce the analysis in two .json files.
 
 2.  Review the output from Bluejay:
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-klu
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/monolith-mono2micro
         
         ls -al
 
     ![](./images/media/image22.png)
  
-    Bluejay creates a mirror copy of the input source directory in its parent directory with a “**-klu**” extension where all the Java files within the entire directory tree will be instrumented to log entry and exit times in each method.
+    Bluejay creates a mirror copy of the input source directory in its parent directory with a “**-mono2micro**” extension where all the Java files within the entire directory tree will be instrumented to log entry and exit times in each method.
 
-    In addition to instrumenting the source, Bluejay creates two **.json** files in the in the **monolith-klu** directory:
+    In addition to instrumenting the source, Bluejay creates two **.json** files in the in the **monolith-mono2micro** directory:
 
     - refTable.json
     - symTable.json
@@ -414,9 +418,9 @@ instrument it, and produce the analysis in two .json files.
 
 3.  Look at an example of the instrumentation in the monolith code.
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-klu/DefaultWebApplication/src/main/java
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/monolith-mono2micro/DefaultWebApplication/src/main/java
 
-        gedit /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-klu/DefaultWebApplication/src/main/java/HitCount.java
+        gedit /home/ibmdemo/m2m-ws-sample/defaultapplication/monolith-mono2micro/DefaultWebApplication/src/main/java/HitCount.java
 
     As illustrated below, you will find “**System.out.println…**” statements for the entry and exit of each method in the classes.
  
@@ -428,16 +432,15 @@ instrument it, and produce the analysis in two .json files.
 
 4.  Close the gedit editor window
 
-5.  Change the permissions on **monolith-klu** directory, so that it can
-    be updated by the current user.
+5.  Change the permissions on **monolith-mono2micro** directory, so that it can be updated by the current user.
 
     Bluejay runs in a Docker container. By default, Docker runs as “root”user, and therefore all the files in the instrumented monolith directory are owned by root.
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication
 
-        sudo chmod -R 777 ./monolith-klu
+        sudo chmod -R 777 ./monolith-mono2micro
 
-        *When prompted for a password, enter: <strong>passw0rd</strong> (That is a numeric zero in passw0rd)
+            When prompted for a password, enter: passw0rd (That is a numeric zero in passw0rd)
 
     The next step is to run test cases against the instrumented monolith application to capture runtime data for analysis.
 
@@ -474,7 +477,7 @@ achieve maximum code coverage in the tests.
 ## 2.3.1 Deploy the instrumented application to Liberty for testing
 
 The test cases (use cases) that you will run must be executed on the
-instrumented code base, which is in the “**monolith-klu**” directory.
+instrumented code base, which is in the “**monolith-mono2micro**” directory.
 
 As such, the instrumented code needs to be compiled, new deployment
 binaries generated, and redeployed to the local Liberty server that you
@@ -486,9 +489,9 @@ has been verified to work in this lab.
 
 1.  Build and package the instrumented version of the DefaultApplication
 
-    The top-level pom.xml that is used to build and package the application is in the “**monolith-klu”** folder. You will change to that directory and run the Maven build.
+    The top-level pom.xml that is used to build and package the application is in the “**monolith-mono2micro”** folder. You will change to that directory and run the Maven build.
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-klu
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/monolith-mono2micro
 
         mvn clean install
 
@@ -503,9 +506,9 @@ has been verified to work in this lab.
 
     As a convenience, we have provided simple scripts for you to use to start and stop the Liberty server, as well as check the status of the server.
 
-        /home/ibmadmin/m2m-ws-sample/defaultapplication/scripts/startServer.sh
+        /home/ibmdemo/m2m-ws-sample/defaultapplication/scripts/startServer.sh
 
-        /home/ibmadmin/m2m-ws-sample/defaultapplication/scripts/serverStatus.sh
+        /home/ibmdemo/m2m-ws-sample/defaultapplication/scripts/serverStatus.sh
 
     ![](./images/media/image25.png)
 
@@ -516,7 +519,7 @@ has been verified to work in this lab.
     <tr class="odd">
     <td><img src="./images/media/image3.png" style="width:0.74167in;height:0.65833in" alt="sign-info" /></td>
     <td><p><strong>Tip:</strong> The Liberty server is in the folder:</p>
-    <p>/home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer</p></td>
+    <p>/home/ibmdemo/m2m-ws-sample/defaultapplication/monolith-monolith/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer</p></td>
     </tr> 
     </tbody>
     </table>
@@ -539,7 +542,10 @@ has been verified to work in this lab.
 
 Since this is a simple application, you will run the test cases manually
 using the applications web UI. There are only two use cases for this
-simple application.: **Snoop** and **Hit Count**.
+simple application.: 
+  
+  - **Snoop**
+  - **Hit Count**.
 
 As these use cases are run on the instrumented monolith application, you
 will use Mono2Micro’s **Flicker** tool to record use case labels and the
@@ -562,7 +568,7 @@ monolith.
     a.  Open a new Terminal window
     b.  Run the Flicker tool from the new terminal window
 
-        cd /home/ibmadmin/m2m-ws-sample/Flicker
+        cd /home/ibmdemo/m2m-ws-sample/Flicker
 
         java -cp commons-net-3.6.jar:json-simple-1.1.jar:. Flicker -no_ntp
 
@@ -668,7 +674,7 @@ monolith.
 
     As a convenience, we have provided simple scripts for you to use to start and stop the Liberty server, as well as check the status of the server.
 
-        /home/ibmadmin/m2m-ws-sample/defaultapplication/scripts/stopServer.sh
+        /home/ibmdemo/m2m-ws-sample/defaultapplication/scripts/stopServer.sh
 
     ![](./images/media/image35.png)
 
@@ -693,7 +699,7 @@ snoop and hit count test cases
 
     The name of the context json file contains timestamp in its name. So view the files in the Flicker directory, and then view the “**context*.json**” file.
 
-        cd /home/ibmadmin/m2m-ws-sample/Flicker
+        cd /home/ibmdemo/m2m-ws-sample/Flicker
 
         ls *.json
 
@@ -708,7 +714,7 @@ snoop and hit count test cases
 2.  View the Liberty log file to ensure the log contains the trace
     statements from the instrumented version of the application.
 
-        cat /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/messages.log
+        cat /home/ibmdemo/m2m-ws-sample/defaultapplication/monolith-mono2micro/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/messages.log
 
     As illustrated in the screenshot below, the Liberty server log file (messages.log) will include trace data that captures the entry and  exit of each Java method called, along with the timestamp of the invocation.
 
@@ -792,7 +798,7 @@ common folder structure before running the AIPL tool.
 For this lab, the input directories have been placed into the following
 directory structure for you.
 
-The **/home/ibmadmin/m2m-ws-sample/defaultapplication/application-data/**
+The **/home/ibmdemo/m2m-ws-sample/defaultapplication/application-data/**
 directory contains the subdirectories within which the data files are placed:
 
   > - **contexts/** One or more **context .json** files generated while running the **Flicker** tool alongside the use case runs
@@ -812,11 +818,11 @@ generate microservices recommendations.
 
 1.  Change directory to application-data directory
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/application-data
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/application-data
 
 2.  Run the AIPL tool, using the following command:
 
-        docker run --rm -it -e LICENSE=accept -v /home/ibmadmin/m2m-ws-sample/defaultapplication/application-data:/var/application ibmcom/mono2micro-aipl
+        docker run --rm -it -e LICENSE=accept -v /home/ibmdemo/m2m-ws-sample/defaultapplication/application-data:/var/application ibmcom/mono2micro-aipl
 
     ![](./images/media/image40.png)
  
@@ -835,22 +841,21 @@ generate microservices recommendations.
 
     **Cardinal-Report**.html is a detailed report of all the application partitions, their member classes, outward facing classes, etc
 
-        /home/ibmadmin/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-output/Cardinal-Report.html
+        /home/ibmdemo/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-output/Cardinal-Report.html
 
     **Oriole-Report.html** is a summary report of all the application partitions and their associated business use cases
 
-        /home/ibmadmin/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-output/Oriole-Report.html
+        /home/ibmdemo/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-output/Oriole-Report.html
 
     **final_graph.json** is the full set of application partition recommendations (natural seams and business logic) and associated details, viewable in the Mono2Micro UI
 
-        /home/ibmadmin/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-output/oriole/final_graph.json
+        /home/ibmdemo/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-output/oriole/final_graph.json
 
     **cardinal/\*** is a folder that contains a complete set of input files (based on the partitioning) for the next and last stage of the Mono2Micro pipeline, running the code generator
 
-        /home/ibmadmin/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-output/cardinal/*
+        /home/ibmdemo/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-output/cardinal/*
 
-4.  Continue to the next section. You will explore the generated reports
-    later in the lab.
+4.  Continue to the next section. You will explore the generated reports later in the lab.
 
     <br/>
 
@@ -861,10 +866,10 @@ generated by loading the **final_graph.json** in the graph UI.
 
 1.  Launch the Mono2Micro UI using the following command:
 
-        docker run -d -e LICENSE=accept -p 3000:3000 --name=m2mgui ibmcom/mono2micro-ui:21.0.1.1
+        docker run -d -e LICENSE=accept -p 3001:3000 --name=m2mgui ibmcom/mono2micro-ui:21.0.1.1
 
 2.  From a web browser, navigate to
-    [**http://localhost:3000/**](http://localhost:3000/)
+    [**http://localhost:3001/**](http://localhost:3001/)
 
     ![](./images/media/image41.png)
 
@@ -877,7 +882,7 @@ generated by loading the **final_graph.json** in the graph UI.
     b.  From the “File Upload” dialog window, navigate to the following
         **final_graph.json** file
 
-        Home -> ibmadmin -> m2m-ws-sample -> defaultapplication -> mono2micro-analysis -> oriole -> final_graph.json
+        Home -> ibmdemo -> m2m-ws-sample -> defaultapplication -> mono2micro-analysis -> oriole -> final_graph.json
 
     c.  Click the “**Open**” button on the **File Upload** dialog, to load the file into the UI
 
@@ -1153,9 +1158,9 @@ Additionally, the AIPL tool must reference the customized version of the final_g
 
     a.  Run the following commands to copy the file, change to the target directory, and list the files and ensure the custom_graph.json has been copied to the desired directory
 
-        cp /home/ibmadmin/Downloads/final_graph.json /home/ibmadmin/m2m-ws-sample/defaultapplication/application-data/custom_graph.json
+        cp /home/ibmdemo/Downloads/final_graph.json /home/ibmdemo/m2m-ws-sample/defaultapplication/application-data/custom_graph.json
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/application-data
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/application-data
 
         ls -l
 
@@ -1172,7 +1177,7 @@ Additionally, the AIPL tool must reference the customized version of the final_g
 
         sudo chmod 777 ./config.ini
 
-        When prompted, enter the sudo password for ibmadmin: passw0rd
+        When prompted, enter the sudo password for ibmdemo: passw0rd
 
 
 3.  Edit the **config.ini** file to reference the new
@@ -1194,7 +1199,7 @@ Additionally, the AIPL tool must reference the customized version of the final_g
 4.  Rerun the AIPL tool with the **regen_p** option to generate the
     partitioning recommendations based on the updated graph file.
 
-        docker run --rm -it -e LICENSE=accept -v /home/ibmadmin/m2m-ws-sample/defaultapplication/application-data:/var/application ibmcom/mono2micro-aipl regen_p
+        docker run --rm -it -e LICENSE=accept -v /home/ibmdemo/m2m-ws-sample/defaultapplication/application-data:/var/application ibmcom/mono2micro-aipl regen_p
 
     ![](./images/media/image64.png)
 
@@ -1205,11 +1210,11 @@ Additionally, the AIPL tool must reference the customized version of the final_g
 1.  The AIPL created a new folder based on the user modified graph in
     the following directory:
 
-    **/home/ibmadmin/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-user-modified**
+    **/home/ibmdemo/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-user-modified**
 
     a.  List the files and folders of the generated directory
 
-        ls -l /home/ibmadmin/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-user-modified
+        ls -l /home/ibmdemo/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-user-modified
 
     ![](./images/media/image65.png)
 
@@ -1218,7 +1223,7 @@ Additionally, the AIPL tool must reference the customized version of the final_g
 2.  View the generated Cardinal report to verify the partitions and
     exposed services are defined as expected.
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-user-modified
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-user-modified
 
         firefox ./Cardinal-Report-Modified.html
 
@@ -1340,30 +1345,30 @@ and is referenced in the cardinal command for proper execution:
   - The parent folder of the **original DefaultApplication monolith**
     application.
 
-    > **/home/ibmadmin/m2m-ws-sample/defaultapplication/monolith**
+    > **/home/ibdemo/m2m-ws-sample/defaultapplication/monolith**
 
     <br/>
 
   - The **cardinal** folder from the mono2micro-user-modified directory
     that was generated by the AIPL tool using the regen\_p option.
 
-    > **/home/ibmadmin/m2m-ws-sample/defaultapplication/mono2micro-analysis-custom/cardinal**
+    > **/home/ibmdemo/m2m-ws-sample/defaultapplication/mono2micro-analysis-custom/cardinal**
 
 <table>
 <tbody>
 <tr class="odd">
 <td><img src="./images/media/image2.png" style="width:1.60625in;height:1.60625in" alt="sign-caution" /></td>
 <td><p>For the lab, you will reference a saved version of the cardinal folder when running the cardinal tool. This is just to ensure a known good dataset is used for the code generation.</p>
-<p>/home/ibmadmin/m2m-ws-sample/defaultapplication/<strong>mono2micro-analysis-custom/cardinal</strong></p>
+<p>/home/ibmdemo/m2m-ws-sample/defaultapplication/<strong>mono2micro-analysis-custom/cardinal</strong></p>
 <p>If you would rather use the cardinal folder that was generated during the lab, use:</p>
-<p>/home/ibmadmin/m2m-ws-sample/defaultapplication/application-data/mono2micro/<strong>mono2micro-user-modified/cardinal</strong></p></td>
+<p>/home/ibmdemo/m2m-ws-sample/defaultapplication/application-data/mono2micro/<strong>mono2micro-user-modified/cardinal</strong></p></td>
 </tr>
 </tbody>
 </table>
 
 1.  Run Cardinal code generation tool using the following command:
 
-        docker run --rm -it -e LICENSE=accept -v /home/ibmadmin/m2m-ws-sample/defaultapplication:/var/application ibmcom/mono2micro-cardinal /var/application/monolith /var/application/mono2micro-analysis-custom/cardinal
+        docker run --rm -it -e LICENSE=accept -v /home/ibmdemo/m2m-ws-sample/defaultapplication:/var/application ibmcom/mono2micro-cardinal /var/application/monolith /var/application/mono2micro-analysis-custom/cardinal
 
     <br/>
 
@@ -1386,11 +1391,11 @@ generated.
 
     In this case, the **cardinal-codegen** folder and **associated reports** are generated here:
 
-    > **/home/ibmadmin/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-user-modified/cardinal**
+    > **/home/ibmdemo/m2m-ws-sample/defaultapplication/application-data/mono2micro/mono2micro-user-modified/cardinal**
 
     a.  Open the CardinalFileSummary.txt file using an available editor
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/mono2micro-analysis-custom/cardinal/cardinal-codegen
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/mono2micro-analysis-custom/cardinal/cardinal-codegen
 
         gedit CardinalFileSummary.txt
 
@@ -1476,7 +1481,7 @@ input paths specified when running the cardinal tool.
 In this case, the monolith-web and monolith-partitio0 folders are
 generated here:
 
-> **/home/ibmadmin/m2m-ws-sample/defaultapplication**
+> **/home/ibmdemo/m2m-ws-sample/defaultapplication**
 
 <table>
 <tbody>
@@ -1590,7 +1595,7 @@ functionality in each partition.
 
 1.  Review the **moveResourcesToPartitions.sh** shell script.
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/scripts
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/scripts
 
         gedit moveResourcesToPartitions.sh
 
@@ -1616,7 +1621,7 @@ functionality in each partition.
 
     a. Run the script to copy the non-java resources to the partitions
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/scripts
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/scripts
 
         ./moveResourcesToPartitions.sh
 
@@ -1628,8 +1633,8 @@ functionality in each partition.
     
     a.  Navigate to the following directories to explore the newly added **non-Java** resources. Refer to the shell script to see what exactly was copied.
 
-    - **/home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-web**
-    - **/home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-partition0**
+    - **/home/ibmdemo/m2m-ws-sample/defaultapplication/monolith-web**
+    - **/home/ibmdemo/m2m-ws-sample/defaultapplication/monolith-partition0**
 
     <br/>
 
@@ -1714,7 +1719,7 @@ Server in separate Docker containers.
 1.  Run the **refactorPartitions.sh** shell script to perform the
     partition refactoring
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/scripts
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/scripts
 
         ./refactorPartitions.sh
 
@@ -1756,7 +1761,7 @@ partition will require unique configurations for its Microservice.
 1.  Navigate to the **Dockerfile** in the **web** **partition** to view
     this update.
 
-        gedit /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-web/Dockerfile
+        gedit /home/ibmdemo/m2m-ws-sample/defaultapplication/monolith-web/Dockerfile
 
     ![](./images/media/image79.png)
  
@@ -1818,7 +1823,7 @@ partition will require unique configurations for its Microservice.
 2.  Navigate to the **Dockerfile** in the **partition0 partition** to
     view this update.
 
-        gedit /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-partition0/Dockerfile
+        gedit /home/ibmdemo/m2m-ws-sample/defaultapplication/monolith-partition0/Dockerfile
 
     **Build Image stage:**
 
@@ -1869,7 +1874,7 @@ and observe any compilation errors.
     
     a.  Change to the **monolith-web** directory, which contains the  top-level pom.xml for building the monolith-web microservice
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-web
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/monolith-web
 
     b.  Run the Maven Build to compile and package the microservice
 
@@ -1885,7 +1890,7 @@ and observe any compilation errors.
     
     a.  Change to the **monolith-partition0** directory, which contains the top-level pom.xml for building the monolith-web microservice
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-partition0 
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/monolith-partition0 
 
     b.  Run the Maven Build to compile and package the microservice
 
@@ -1954,17 +1959,7 @@ transformation process yourself.
     <br/>
 
 
-2.  Start Docker
-    
-    a.  The Workstation VM does not automatically start Docker at        startup.
-
-        sudo systemctl start docker
-
-            when prompted, enter sudo password as: passw0rd
-            **** That is a numeric zero in passw0rd<
-
-
-3.  Create a **Docker Network** for the two containers to communicate
+2.  Create a **Docker Network** for the two containers to communicate
 
     You will use Docker to build and run the microservices based application. For the Docker containers to communicate, a local Docker network is required.
 
@@ -1982,13 +1977,13 @@ transformation process yourself.
     | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | ![sign-info](./images/media/image3.png) | **Note:** When using a Kubernetes based platform like RedHat OpenShift, the service to service communication is automatically handled by the underlying Kubernetes platform. |
 
-4.  Build the **defaultapplication-web** **(front-end)** container
+3.  Build the **defaultapplication-web** **(front-end)** container
 
     This container is the web front end service. It contains the html, jsp, and servlets.
 
     The **defaultapp-web** folder contains the Dockerfile used to build the front-end microservice.
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/microservices/defaultapp-web
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/microservices/defaultapp-web
 
         docker build -t defaultapp-web . | tee web.out
 
@@ -2002,7 +1997,7 @@ transformation process yourself.
 
     <br/>
 
-5.  Start the **partition-web (front-end)** docker container
+4.  Start the **partition-web (front-end)** docker container
 
     Notice the command line options that are required for the microservice to run properly.
 
@@ -2012,7 +2007,7 @@ transformation process yourself.
 
           docker run --name=defaultapp-web --hostname=defaultapp-web --network=defaultappNetwork -d -p 9095:9080 defaultapp-web:latest
 
-          docker ps
+          docker ps | grep defaultapp
 
     > **Note:** The application is exposed on port **9095** and running on port 9080 in the container.
 
@@ -2020,15 +2015,15 @@ transformation process yourself.
 
     <br/>
 
-6.  Build the **defaultapplication-partition0 (back-end)** container
+5.  Build the **defaultapplication-partition0 (back-end)** container
 
     This container is the back-end service. It contains EJB and JPA components that persists data to the Derby database, when the user executes the HitCount service with the EJB option.
  
-    > **Tip:** Ensure you are in the **/home/ibmadmin/m2m-ws-sample/defaultapplication/microservices/defaultapp-partition0** folder before running the docker build.
+    > **Tip:** Ensure you are in the **/home/ibmdemo/m2m-ws-sample/defaultapplication/microservices/defaultapp-partition0** folder before running the docker build.
 
     The **default-partition0** folder contains the dockerfile used to build the back-end microservice.
 
-        cd /home/ibmadmin/m2m-ws-sample/defaultapplication/microservices/defaultapp-partition0
+        cd /home/ibmdemo/m2m-ws-sample/defaultapplication/microservices/defaultapp-partition0
 
         docker build -t defaultapp-partition0 . | tee partition0.out
 
@@ -2044,7 +2039,7 @@ transformation process yourself.
 
     <br/>
 
-7.  Start the **partition-partition0 (back-end)** docker container
+6.  Start the **partition-partition0 (back-end)** docker container
 
     Notice the command line options that are required for the microservice to run properly.
 
@@ -2056,7 +2051,7 @@ transformation process yourself.
 
           docker run --name=defaultapp-partition0 --hostname=defaultapp-partition0 --network=defaultappNetwork -d -p 9096:9080 defaultapp-partition0:latest
 
-          docker ps
+          docker ps | grep defaultapp
 
     ![](./images/media/image89.png)
 
@@ -2065,7 +2060,7 @@ transformation process yourself.
 
     <br/>
 
-8.  Inspect Docker’s **defaultappNetwork** and ensure both microservices are joined in the network
+7.  Inspect Docker’s **defaultappNetwork** and ensure both microservices are joined in the network
 
         docker inspect defaultappNetwork
 
@@ -2299,7 +2294,7 @@ Fully exploring all the resources in detail is beyond the scope of this lab. You
  
      The **app_config.txt** file is located here:
  
-    **/home/ibmadmin/m2m-ws-sample/defaultapplication/mono2micro-analysis-custom/cardinal**
+    **/home/ibmademo/m2m-ws-sample/defaultapplication/mono2micro-analysis-custom/cardinal**
 
     <br/>
 
@@ -2366,7 +2361,7 @@ Fully exploring all the resources in detail is beyond the scope of this lab. You
  
     **<u>user_defined.txt</u>**
  
-    A related file that you might notice is the presence of a user_defined.txt file in /home/ibmadmin/m2m-ws-sample/defaultapplication/mono2micro-analysis-custom/cardinal which the Cardinal tool reads on start-up**, if one exists**.
+    A related file that you might notice is the presence of a user_defined.txt file in /home/ibmademo/m2m-ws-sample/defaultapplication/mono2micro-analysis-custom/cardinal which the Cardinal tool reads on start-up**, if one exists**.
  
     This is a way to provide a list of one or more monolith classes that are to be treated as “external facing”, where classes outside its partition might call into it. These external facing classes are also called “service classes” in Mono2Micro nomenclature.
 
@@ -2429,7 +2424,7 @@ then including it as an additional module in the partition .ear file):
     its contents in the web partition. This file was created in ALL
     partitions.
 
-        gedit /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-web/application/pom.xml
+        gedit /home/ibmademo/m2m-ws-sample/defaultapplication/monolith-web/application/pom.xml
 
     This pom.xml file will build a **Cardinal Utilities jar** file and be included in the partition. The top level pom.xml file was also refactored to include this module for Maven to build
 
@@ -2446,7 +2441,7 @@ monolith was modified to include the new cardinal-utils module.
     to view this update. This update was made to all the top-level
     pom.xml in each partition.
 
-        gedit /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-web/pom.xml
+        gedit /home/ibmademo/m2m-ws-sample/defaultapplication/monolith-web/pom.xml
 
     The included module to build the Cardinal Utilities must match the “**artifactID**” in the Cardinal Utils **pom.xml** that you explored above.
 
@@ -2480,7 +2475,7 @@ IncrementActionService class.
 1.  Navigate to the **JAXRSConfiguration** java file in the
     **partition0** **partition** to view this update.
 
-        gedit /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-partition0/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/JAXRSConfiguration.java
+        gedit /home/ibmademo/m2m-ws-sample/defaultapplication/monolith-partition0/DefaultWebApplication/src/main/java/com/ibm/defaultapplication/JAXRSConfiguration.java
 
     You must specify the package for the class based on where you place the file in the project.
 
@@ -2528,7 +2523,7 @@ generated code’s JAX-RS webservice service and client code:
 1.  Navigate to the server.xml file in the **web** **partition** to view
     this update.
 
-        gedit /home/ibmadmin/m2m-ws-sample/defaultapplication/monolith-web/DefaultApplication-ear/src/main/liberty/config/server.xml
+        gedit /home/ibmademo/m2m-ws-sample/defaultapplication/monolith-web/DefaultApplication-ear/src/main/liberty/config/server.xml
 
     ![](./images/media/image117.png)
 
@@ -2543,7 +2538,7 @@ Skytap environment provided.
 section of the lab MUST be installed on your local environment.
 
 There were only 3 changes that we had to do, in addition to the
-obviously issuing commands using my own path instead of /home/ibmadmin:
+obviously issuing commands using my own path instead of /home/ibmademo:
 
  
 
@@ -2556,10 +2551,10 @@ obviously issuing commands using my own path instead of /home/ibmadmin:
 
 > **OR** run the commands manually
 > 
-> $LAB_HOME/m2m-ws-sample/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/bin/server
+> $LAB_HOME/m2m-ws-sample/defaultapplication/monolith-mono2micro/DefaultApplication-ear/target/liberty/wlp/bin/server
 > start DefaultApplicationServer
 > 
-> $LAB_HOME/m2m-ws-sample/defaultapplication/monolith-klu/DefaultApplication-ear/target/liberty/wlp/bin/server
+> $LAB_HOME/m2m-ws-sample/defaultapplication/monolith-mono2micro/DefaultApplication-ear/target/liberty/wlp/bin/server
 > status DefaultApplicationServer
 
  
