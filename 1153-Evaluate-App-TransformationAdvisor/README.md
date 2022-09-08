@@ -238,9 +238,11 @@ VM. Launch the Transformation Advisor tool using the steps below.
 
         cd /home/ibmdemo
 
-        git clone https://github.com/IBMTechSales/student-tech-academy-platform.git
+        git clone https://github.com/IBMTechSales/openshift-workshop-was.git
 
-    Once completed, the local lab artifacts repo is cloned at **/home/ibmdemo/student-tech-academy-platform** directory on the  **Workstation** desktop.
+    Once completed, the local lab artifacts repo is cloned at the following directory on the desktop VM. 
+    
+    > **/home/ibmdemo/openshift-workshop-was/labs/Liberty/TA-labs** directory on the  **Workstation** desktop.
 
 3.  Launch the **Transformation Advisor** with commands:
 
