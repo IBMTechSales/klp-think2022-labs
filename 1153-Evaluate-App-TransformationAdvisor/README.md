@@ -568,9 +568,9 @@ previous section.
     costs associated with migration all 5 applications in the workspace
     to the various migration target environments.
 
-    Here you can see that moving the applications in the collection to  **WebSphere traditional** requires zero development costs, meaning there is no code changes necessary.
+    Here you can see that moving the applications in the collection to  **WebSphere traditional** requires **0 days** of development costs, meaning there is no code changes necessary.
  
-    However, moving to WebSphere Liberty may require 2.5 days and Open  Liberty may take 6 days of development time to update the application code to run on those target runtimes.
+    However, moving to WebSphere Liberty may require **2.5 days** and Open  Liberty may take **10.5 days** of development time to update the application code to run on those target runtimes.
  
     ![](./images/media/image35.png)
  
