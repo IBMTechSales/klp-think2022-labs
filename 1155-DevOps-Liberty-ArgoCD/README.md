@@ -740,7 +740,9 @@ the Customer Order Services application using Argo CD.
 
      <br/>
 
-5.  This new application will now be listed among available apps, but it
+5. Click the **Create** Button to create the app
+
+6.  This new application will now be listed among available apps, but it
     will initially be out of sync. Because we set a **Manual** sync
     policy, you will need to sync it for deployment.
 
@@ -748,7 +750,7 @@ the Customer Order Services application using Argo CD.
 
      <br/>
 
-6.  In order to sync the application with your Git repository, click on
+7.  In order to sync the application with your Git repository, click on
     **Sync** within the **cos** application's panel and then click
     **Synchronize** in the resulting pop-up window.
 
@@ -769,7 +771,7 @@ the Customer Order Services application using Argo CD.
 
 
 
-7.  Once the sync is complete, Argo CD will begin the deployment process
+8.  Once the sync is complete, Argo CD will begin the deployment process
     of the application. When it is done, the STATUS should be
     **Healthy** and **Synched** as illustrated below
 
@@ -777,7 +779,7 @@ the Customer Order Services application using Argo CD.
 
     <br/>
 
-8.  Click on the **cos** application to view additional details. Hover
+9. Click on the **cos** application to view additional details. Hover
     over the **cos** pod block to see the image used for deployment. We
     know this is the same image as the one we built before because of
     the corresponding hash value.
