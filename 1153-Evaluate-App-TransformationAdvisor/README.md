@@ -650,7 +650,7 @@ To do that, we need to drill into some of the details and reports.
 
     *In this example, there is 1 critical issue reported:*
 
-    - **The 3rd party Apache Wink APIs must be configured.**  
+    - **The use of system provided Apache Wink APIs requires configuration.**  
 
     There are some minor issues that require configuration to external resources, configuring security, minor behavior changes to EJB lookups. 
 
