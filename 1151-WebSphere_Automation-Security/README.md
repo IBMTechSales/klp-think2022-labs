@@ -288,10 +288,12 @@ You will do these steps in this section of the lab, to become familiar with conf
 
         oc rsh $MANAGER_POD runcli testConnection student.demo.ibmdte.net linux
 
-    a. Run the `oc log` command that is outputted from the "**oc rsh**" command
+    a. Run the `oc log` command that is outputted from the "**oc rsh**" command. 
 
        **Example:**   
-       oc logs --tail=100 -l job-name=test-connection-######        
+       oc logs --tail=100 -l job-name=test-connection-######     
+
+       >  **Note:** Run the command multiple times until you see the exected output as shown below.    
 
     ![](./lab1-media/media/image94.png)
 
@@ -302,9 +304,11 @@ You will do these steps in this section of the lab, to become familiar with conf
      ![](./lab1-media/media/image95-cont.png)
 
 
-11. Create the **wsa-secure-fixcentral-creds secret** that contains the credentials to access IBM Fix Central
+11. Create the **wsa-secure-fixcentral-creds secret** that contains the credentials to access IBM Fix Central. 
 
-        oc create secret generic wsa-secure-fixcentral-creds --from-literal=user=wsa@ibm.com --from-literal=password=WeQR9nVnagqqyqn
+    > **Note!** The password in the command below expires on or around November 13, 2022.
+
+        oc create secret generic wsa-secure-fixcentral-creds --from-literal=user=wsa@ibm.com --from-literal=password=iHGLKuMumdb424S
 
     ![](./lab1-media/media/image81.png) 
 
@@ -319,7 +323,7 @@ You will do these steps in this section of the lab, to become familiar with conf
     oc get pods | grep '\<fix\>\|installation'
     ```
     
-    > **Note:** It will take a few minutes for both pods to be created and running. These pods are only created and started once the **wsa-secure-fixcentral-creds** secret is created in the OCP cluster. 
+    > **Note:** It will take a few minutes for both pods to be created and listed in the `oc get pods` command. It will also take a couple of minutes for the ods to get to the running state. These pods are only created and started once the **wsa-secure-fixcentral-creds** secret is created in the OCP cluster. 
 
 
     ![](./lab1-media/media/image82.png)
