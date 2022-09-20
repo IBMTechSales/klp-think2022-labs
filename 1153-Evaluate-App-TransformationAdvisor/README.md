@@ -1201,9 +1201,20 @@ installed.
 
     At this point you have an Open Liberty Server running with a defaultserver configuration. However, there are no applications installed(deployed).
 
-    Next, you will copy the Open Liberty server configuration file that TA generated for the Mod Resorts application. Then you will copy the Mod Resorts binary (WAR) to the Open Liberty server, in which case the application will be deployed and started.
+    Next, you will copy the Mod Resorts binary (WAR) to the Open Liberty server, in which case the application will be deployed and started. Then copy the Open Liberty server configuration file that TA generated for the Mod Resorts application. The Liberty server will automatically detect and apply these changes in the running server. 
+   
 
-5.  Copy the **server.xml** file that Transformation Advisor, which
+5.	Install the modresorts application to the Open Liberty server, using
+    the WAR file that is included in the Transformation Advisor
+    migration bundle.
+
+        cp ~/modresorts-bundle/target/modresorts-1.0.war ~/Liberty/wlp/usr/servers/modresorts_server/apps
+
+    The command above copied the modresorts application WAR file to the  Open Liberty “**apps**” folder, which where the server.xml file is  configured to run the application.
+ 
+    ![](./images/media/image73.png)
+
+6.  Copy the **server.xml** file that Transformation Advisor, which
     includes the Open Liberty server configuration for the modresorts
     application
 
@@ -1217,20 +1228,7 @@ installed.
 
      > **Note:** You will see messages that specific Liberty features being removed, and others being added, based on the new server.xml file that is loaded.
 
-6.  Install the modresorts application to the Open Liberty server, using
-    the WAR file that is included in the Transformation Advisor
-    migration bundle.
-
-        cp ~/modresorts-bundle/target/modresorts-1.0.war ~/Liberty/wlp/usr/servers/modresorts_server/apps
-
-    The command above copied the modresorts application WAR file to the  Open Liberty “**apps**” folder, which where the server.xml file is  configured to run the application.
- 
-    ![](./images/media/image73.png)
-
-7.  In the Terminal window running the “**tail**” command on the Open  Liberty log file, notice that the server is being updated to reflect the modresorts application being started.
-
-
-8.  Run the modresorts application from the Chrome browser on the VM.
+7.  Run the modresorts application from the Chrome browser on the VM.
     The context root for the application is “/resorts” and is defined in
     the Open Liberty server.xml file.
 
@@ -1253,7 +1251,7 @@ installed.
 
     ![](./images/media/image75.png)
 
-9.  Stop the Open Liberty server
+8.  Stop the Open Liberty server
 
 
     a.  Return to the Terminal window where you started the Open Liberty  Server
@@ -1265,7 +1263,7 @@ installed.
     ![](./images/media/image76.png)
 
 
-10.  Use **CTL-C** to Stop the “**tail**” command in the 2<sup>nd</sup>
+9.  Use **CTL-C** to Stop the “**tail**” command in the 2<sup>nd</sup>
     Terminal window
 
 
