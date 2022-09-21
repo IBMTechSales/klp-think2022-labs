@@ -627,7 +627,7 @@ generated](./images/media/image31-a.png)
  
         ssh-keyscan student.demo.ibmdte.net >> /home/ibmuser/wsa_known_hosts
  
-        oc create configmap wsa-ansible-known-hosts
+        oc create configmap wsa-ansible-known-hosts \
           --from-file=known_hosts=/home/ibmuser/wsa_known_hosts
 
 
