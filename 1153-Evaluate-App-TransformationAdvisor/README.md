@@ -1211,8 +1211,7 @@ installed.
         cp ~/modresorts-bundle/target/modresorts-1.0.war ~/Liberty/wlp/usr/servers/modresorts_server/apps
 
     The command above copied the modresorts application WAR file to the  Open Liberty “**apps**” folder, which where the server.xml file is  configured to run the application.
- 
-    ![](./images/media/image73.png)
+
 
 6.  Copy the **server.xml** file that Transformation Advisor, which
     includes the Open Liberty server configuration for the modresorts
@@ -1226,7 +1225,9 @@ installed.
 
     c.  In the Terminal window running the “**tail**” command on the Open Liberty log file, notice that the server is being updated to reflect the updates in the new server.xml file that we copied into the Liberty runtime configuration.
 
-     > **Note:** You will see messages that specific Liberty features being removed, and others being added, based on the new server.xml file that is loaded.
+     > Note: You will see a message stating the modresorts application is started.  
+
+       ![](./images/media/image73.png)
 
 7.  Run the modresorts application from the Chrome browser on the VM.
     The context root for the application is “/resorts” and is defined in
