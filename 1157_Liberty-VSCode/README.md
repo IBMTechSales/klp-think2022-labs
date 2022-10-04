@@ -111,9 +111,9 @@ The **“Workstation”** VM has the following software available:
 
 The login credentials for the **Workstation”** VM are:
 
-    User ID: ibmdemo
+  > User ID: **ibmdemo**
  
-    Password: passw0rd (That is a numeric zero in passw0rd)
+  > Password: **passw0rd** (That is a numeric zero in passw0rd)
 
 
 
