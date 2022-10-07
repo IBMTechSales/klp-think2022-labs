@@ -2,7 +2,7 @@
 
 ![banner](./lab1-media/media/image1.jpeg)
 
-**Last updated:** August 2022
+**Last updated:** September 2022
 
 **Duration:** 90 mins
 
@@ -306,11 +306,30 @@ You will do these steps in this section of the lab, to become familiar with conf
 
 11. Create the **wsa-secure-fixcentral-creds secret** that contains the credentials to access IBM Fix Central. 
 
-    > **Note!** The password in the command below expires on or around December 12, 2022.
+    > **Note!**  The command for creating the Kubernetes secret contains sensitive information and cannot be shared in this public document.
+    >
+    > The command to use is provided by the IBM instructor.  
+    > 
+    >**IBMers and IBM lab Instructors:** The command to run for creating the secret can be obtained from IBM BOX: https://ibm.box.com/v/WSLab-Secret-Details
+    >
+    > Or, contact the lab owner, **Kevin Postreich** (IBM)
+    >
+    > email:  kevinlp@us.ibm.com
+    > 
+    > IBM slack: **@kevinlp**
 
-        oc create secret generic wsa-secure-fixcentral-creds --from-literal=user=wasngi@ca.ibm.com --from-literal=password=Dec12was
+    Syntax for the command is shown below. 
+    YOU MUST OBTAIN THE ACTUAL COMMAND FROM THE LAB INSTRUCTOR
 
-    ![](./lab1-media/media/image81.png) 
+        oc create secret generic <NAME_OF_SECRET> --from-literal=user=<USER> --from-literal=password=<PASSWORD>
+
+     
+    |         |           |  
+    | ------------- |:-------------|
+    | ![](./lab1-media/media/image47.png?cropResize=50,50)   | <strong>IMPORTANT:</strong> <br><br> DO NOT CONTINUE TO THE NEXT STEP UNTIL THE SECRET HAS BEEN SUCCESSFULLY CREATED! 
+
+
+    <!-- ![](./lab1-media/media/image81.png) -->
 
 12. Wait for the following two pods to be created and started, using the oc get pods command below: 
  

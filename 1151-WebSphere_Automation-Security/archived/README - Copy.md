@@ -778,6 +778,11 @@ After you select the fix, WebSphere Automation provides two options:
 
     b. From the **Select fix** page, select the **PH42728** iFix. Then click the **Fetch fix** button. 
 
+    
+    |         |           |  
+    | ------------- |:-------------|
+    | ![](./lab1-media/media/image47.png?cropResize=50,50)   | <strong>IMPORTANT:</strong> <br><br> If the **PH42728** iFix is not listed under the **"resolution"** column as illustrated in the screen shot below, give WebSphere Automation a few more minutes to load the fix meta-data into its database.  <br><br>  To avoid overloading WebSphere Automation, it only loads the meta-data for unresolved CVEs when a WebSphere or Liberty server is registered. And, WSA only loads the meta-data for the unresolved CVEs of the registered server(s). <br><br>  WSA does this using a background process that spins up several threads. Because there are more unresolved CVEs than number of threads loading the meta-data,  it will take a WSA a couple of iterations to load all of the meta-data for the fixes. <br><br>   Typically, the process will complete within 8-10 minutes after the server has been registered with WebSphere Automation. <br><br> WSA will continue to load fix meta-data as new unresolved CVEs are detected for registered servers. 
+
     ![](./lab1-media/media/image87.png)
 
 
