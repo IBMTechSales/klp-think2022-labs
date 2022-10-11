@@ -766,11 +766,11 @@ restarts the container as necessary.
 
         cd /home/ibmdemo/Student/labs/devmode/demo-project/src/main/liberty/config 
 
-    b.  Use the gedit editor to open the **index.html** file in edit mode
+    b.  Use the gedit editor to open the **server.xml** file in edit mode
 
         gedit server.xml
 
-    c.  Make the following minor change to the index.html page
+    c.  Make the following minor change to the server.xml file
 
     **Change the highlighted line:**
  
