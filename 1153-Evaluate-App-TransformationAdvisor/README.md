@@ -426,24 +426,35 @@ connectivity, the data collector could be run as follows.
     the deployed applications information on the WebSphere Application
     server.
 
-        ./bin/transformationadvisor -w /opt/ibm/WebSphere/AppServer -p AppSrv01
+    **Again, DO NOT EXECUTE the following command**
+
+        ./bin/transformationadvisor -w <WEBSPHERE_HOME_DIR> -p <PROFILE_NAME>
 
 2.  Type **1** to accept the license agreement and press **Enter**, as
-    illustrated below
+    illustrated below. 
+
+    **Again, for reference only, DO NOT EXECUTE the commands**
 
     ![A screenshot of a cell phone Description automatically generated](./images/media/image24.png)
  
-    The utility will start to collect application data.
+  
+    This is an example of the output from the data collector, showing the progress of the analysis of the WebSphere profiles. 
+
+    **Again, for reference only!**
  
     ![](./images/media/image25.png)
+
+    **NOTE: The following details are for reference only!**
+    
+    **NOTE: You will NOT run the data collector in this lab.**
  
     This process takes time to complete, depending on how many applications are deployed on the WebSphere Application server.
  
-    When the collection utility completes, you will see the following message; 
+    When the collection utility completes, the following message is displayed; 
     
     “**Thank you for uploading your data. You can proceed to the application UI for  doing further analysis.”**
  
-    Your application data is collected, it is saved as a zip file  “**AppSrv01.zip”**, named based on the WebSphere profile that was  analyzed.
+    Your application data is collected, it is saved as a zip file.   
  
     In general, if your application server and the **Transformation  Advisor** are in the same network infrastructure, the collected data  will be automatically uploaded to **Transformation Advisor** for you  to view the analysis results.
  
