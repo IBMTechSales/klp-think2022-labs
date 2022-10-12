@@ -395,20 +395,16 @@ Now, let’s simulate the steps to run the data collector.
  
     ![](./images/media/image21.png)
 
-6.  Review the data collector command that is shown based on your
-    selections.
+6.  Review, but **DO NOT EXECUTE** the data collector command shown below, which is based on the selected options.
+
+    **Note: There’s no tWAS server in this lab environment, so you cannot run the data collector.** 
 
     ![](./images/media/image22.png)
 
-    If you were going to run the command, there are a few additional things that need to happen.
-
-    - Replace the \<WEBSPHERE\_HOME\_DIR\> and \<PROFILE\_NAME\> variables
-    with the values from the WebSphere environment
-
-    - If the WebSphere environment is not connected to the VM where
-    Transformation Advisor is running, then the data collector utility
-    that was downloaded must be copied and unpacked to the WebSphere
-    environment.
+    **IMPORTANT!**
+    
+    >For this lab, we have already executed the the collector on a WebSphere Application Server. And the resulting data collection archive (zip file) named AppSrv01.zip is provided for you to upload into Transformation Advisor UI. 
+   
 
 ### **6.5.1 FOR ILLUSTRATIVE PURPOSES ONLY: Simulation of running the Transformation Advisor Data Collector utility**
 
