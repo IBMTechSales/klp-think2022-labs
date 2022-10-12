@@ -162,7 +162,7 @@ In this section of the lab, you will clone the GitHub repo to the **Workstation*
 
     a. Upload the **bulk_data_3.zip** using the following command in a terminal window on the **Workstation** VM:
 
-        curl -v -k -X POST "http://10.0.0.1:2220/lands_advisor/advisor/v2/collectionArchives/bulkImport" -H "accept: */*" -H "archiveName: bulk_data_3.zip" -H "Content-Type: application/octet-stream" --data-binary "@/home/ibmdemo/openshift-workshop-was/labs/Liberty/TA-labs/bulk_data_3.zip" |
+        curl -v -k -X POST "http://10.0.0.1:2220/lands_advisor/advisor/v2/collectionArchives/bulkImport" -H "accept: */*" -H "archiveName: bulk_data_3.zip" -H "Content-Type: application/octet-stream" --data-binary "@/home/ibmdemo/openshift-workshop-was/labs/Liberty/TA-labs/bulk_data_3.zip" 
 
     - TA’s REST APIs are exposed through the endpoint “**lands\_advisor/advisor/v2**” on **port 2220.**
      
