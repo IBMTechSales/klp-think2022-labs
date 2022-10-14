@@ -2,11 +2,11 @@
 
 ![banner](./lab1-media/media/image1.jpeg)
 
-**Last updated:** October 2022
+**Last updated:** September 2022
 
 **Duration:** 90 mins
 
-Need support? Contact **Kevin Postreich** - kevinlp@us.ibm.com
+Need support? Contact **Kevin Postreich**
 
 ## Introduction to WebSphere Automation
 
@@ -221,8 +221,6 @@ You will do these steps in this section of the lab, to become familiar with conf
     
     > **Note:** That is a numeric zero in **passw0rd**
 
-    > This is the password you are assigning for the new ssh key that is being reated
-
     ![](./lab1-media/media/image73.png)
 
     Additional documentation can be found here: [https://www.ibm.com/docs/en/ws-automation?topic=servers-setting-up-ssh-linux-unix](https://www.ibm.com/docs/en/ws-automation?topic=servers-setting-up-ssh-linux-unix)
@@ -238,11 +236,9 @@ You will do these steps in this section of the lab, to become familiar with conf
 
     Ensure the message indicates that 1 key was **added** to the users key store. 
 
-    **Note** This password is for the operating system user: **"ibmuser"** so that the ssh key can be securly copied.  
-
     ![](./lab1-media/media/image74.png)
 
-6.	Test the login to the WAS server from the WebSphere Automation server via ssh key with the key passphrase from the ssh key, which is **passw0rd** 
+6.	Test the login to the WAS server from the WebSphere Automation server via ssh key with the key passphrase from the ssh key, which is set to passw0rd. 
 
         ssh -i ~/.ssh/wsa ibmuser@student.demo.ibmdte.net
 
@@ -264,8 +260,6 @@ You will do these steps in this section of the lab, to become familiar with conf
         --from-literal=ansible_port=22 \
         --from-file=ssh_private_key_file=/home/ibmuser/.ssh/wsa \
         --from-literal=ssh_private_key_password=passw0rd
-
-    **Note:** The "wsa-ansible" secret contains the connection information required for WebSphere Automation to connect to the WebSphere server used in this lab. This connection is required for WebSphere Automation to ssh into WebSphere and execute Ansible playbooks to install WebSphere iFixes and Fixpacks. 
 
     ![](./lab1-media/media/image78.png)
 
@@ -299,7 +293,7 @@ You will do these steps in this section of the lab, to become familiar with conf
        **Example:**   
        oc logs --tail=100 -l job-name=test-connection-######     
 
-       >  **Note:** Run the command multiple times until you see the exected output as shown below. At first, you will see messages "**waiting to start**", which can take a minute or two.    
+       >  **Note:** Run the command multiple times until you see the exected output as shown below.    
 
     ![](./lab1-media/media/image94.png)
 
@@ -310,24 +304,34 @@ You will do these steps in this section of the lab, to become familiar with conf
      ![](./lab1-media/media/image95-cont.png)
 
 
-11. Verify the Kubernetes secret named **wsa-secure-fixcentral-creds** has been created in the lab environment. 
+11. Create the **wsa-secure-fixcentral-creds secret** that contains the credentials to access IBM Fix Central. 
 
-        oc get secret | grep wsa-secure-fixcentral-creds
+    > **Note!**  The command for creating the Kubernetes secret contains sensitive information and cannot be shared in this public document.
+    >
+    > The command to use is provided by the IBM instructor.  
+    > 
+    >**IBMers and IBM lab Instructors:** The command to run for creating the secret can be obtained from IBM BOX: https://ibm.box.com/v/WSLab-Secret-Details
+    >
+    > Or, contact the lab owner, **Kevin Postreich** (IBM)
+    >
+    > email:  kevinlp@us.ibm.com
+    > 
+    > IBM slack: **@kevinlp**
 
-    **Note:** This secret contains the information required for WebSphere Automation to access IBM Fix Central to fetch WebSphere and Libery fixes.   
+    Syntax for the command is shown below. 
+    YOU MUST OBTAIN THE ACTUAL COMMAND FROM THE LAB INSTRUCTOR
 
-    **Note:** The wsa-secure-fixcentral-creds secret has already been created for you in the lab environment. 
-    
-    ![](./lab1-media/media/fixcentral-secret.png)    
- 
-    When the secret is created, WebSphere Automation strarts two additional pods in OpenShift that are responsible for downloading WebSphere and Liberty fixes from IBM Fix Central and installing the fixes into WebSphere and Liberty servers that are registered with WebSphere Automation.  
+        oc create secret generic <NAME_OF_SECRET> --from-literal=user=<USER> --from-literal=password=<PASSWORD>
 
-      - wsa-secure-fix-manager-*
-      - wsa-secure-installation-manager-*
+     
+    |         |           |  
+    | ------------- |:-------------|
+    | ![](./lab1-media/media/image47.png?cropResize=50,50)   | <strong>IMPORTANT:</strong> <br><br> DO NOT CONTINUE TO THE NEXT STEP UNTIL THE SECRET HAS BEEN SUCCESSFULLY CREATED! 
 
 
-  
-12. Ensure the following two pods mentioned above are created and started, using the **oc get pods** command below: 
+    <!-- ![](./lab1-media/media/image81.png) -->
+
+12. Wait for the following two pods to be created and started, using the oc get pods command below: 
  
     - wsa-secure-fix-manager-*
     - wsa-secure-installation-manager-*
@@ -338,7 +342,7 @@ You will do these steps in this section of the lab, to become familiar with conf
     oc get pods | grep '\<fix\>\|installation'
     ```
     
-    > **Note:** These pods are only created and started once the **wsa-secure-fixcentral-creds** secret is created in the OCP cluster. If the credentials in the secret are updated, the wsa-secure-fix-manager-* pod will automatically be restarted by OpenShift based on the updated credentials. 
+    > **Note:** It will take a few minutes for both pods to be created and listed in the `oc get pods` command. It will also take a couple of minutes for the ods to get to the running state. These pods are only created and started once the **wsa-secure-fixcentral-creds** secret is created in the OCP cluster. 
 
 
     ![](./lab1-media/media/image82.png)
@@ -433,13 +437,9 @@ For this lab, WebSphere Automation is pre-installed on an OCP cluster. You have 
 
 7. The **Application runtimes – Security** page appears. There should be no data since there not any WebSphere / Liberty servers registered yet.
 
-    |         |           |  
-    | ------------- |:-------------|
-    | ![](./lab1-media/media/image47.png?cropResize=50,50)   | <strong>IMPORTANT:</strong> <br><br> If any of the labels on the page don't display properly, refresh the browser window using the web browser refresh icon.  <br><br> For example: The label for the **Fix management** tab may display as **!Fix management!** the first time. Refreshing the browser window will result in the labels being displayed correctly.  <br><br> Note: This is only a one-time action. 
-
      ![App runtime](./lab1-media/media/image17.png)
 
-    <br/>
+     <br/>
 
 8.  Before you start to register servers to the Dashboard, you need to configure an email to received notifications about CVEs.
     
@@ -800,7 +800,7 @@ After you select the fix, WebSphere Automation provides two options:
     
     |         |           |  
     | ------------- |:-------------|
-    | ![](./lab1-media/media/image47.png?cropResize=50,50)   | <strong>IMPORTANT:</strong> <br><br> If the **PH42728** iFix is not listed under the **"resolution"** column as illustrated in the screen shot below, give WebSphere Automation a few more minutes to load the fix meta-data into its database.  <br><br>  To avoid overloading WebSphere Automation, it only loads the meta-data for unresolved CVEs when a WebSphere or Liberty server is registered. And, WSA only loads the meta-data for the unresolved CVEs of the registered server(s). <br><br>  WSA does this using a background process that spins up several threads. Because there are more unresolved CVEs than number of threads loading the meta-data,  it will take a WSA a couple of iterations to load all of the meta-data for the fixes. <br><br>   Typically, the process will complete within 8-10 minutes after the server has been registered with WebSphere Automation. <br><br> WSA will continue to load fix meta-data as new unresolved CVEs are detected for registered servers.
+    | ![](./lab1-media/media/image47.png?cropResize=50,50)   | <strong>IMPORTANT:</strong> <br><br> If the **PH42728** iFix is not listed under the **"resolution"** column as illustrated in the screen shot below, give WebSphere Automation a few more minutes to load the fix meta-data into its database.  <br><br>  To avoid overloading WebSphere Automation, it only loads the meta-data for unresolved CVEs when a WebSphere or Liberty server is registered. And, WSA only loads the meta-data for the unresolved CVEs of the registered server(s). <br><br>  WSA does this using a background process that spins up several threads. Because there are more unresolved CVEs than number of threads loading the meta-data,  it will take a WSA a couple of iterations to load all of the meta-data for the fixes. <br><br>   Typically, the process will complete within 8-10 minutes after the server has been registered with WebSphere Automation. <br><br> WSA will continue to load fix meta-data as new unresolved CVEs are detected for registered servers. 
 
     ![](./lab1-media/media/image87.png)
 
