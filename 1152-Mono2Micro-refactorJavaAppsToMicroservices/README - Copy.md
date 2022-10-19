@@ -336,7 +336,7 @@ on your local workstation.
 2.  Change to the workshop directory that contains the cloned repository
     artifacts. Then list the directory contents.
 
-        cd /home/ibmdemo/m2m-ws-sample
+        cd /home/ibmdemo/m2m-ws-sample</p>
 
         ls -l
 
@@ -384,7 +384,7 @@ command line tool.
 1.  Download the Mono2Micro-CLI.zip and unzip it in the user directory
     folder:
 
-        cd /home/ibmdemo
+        cd /home/ibmdemo</p>
 
         curl https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/mono2micro/Mono2Micro-CLI.zip --output Mono2Micro-CLI.zip
 
