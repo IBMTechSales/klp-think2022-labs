@@ -489,7 +489,7 @@ and produce the analysis in two .json files.
  
     The instrumented code is in the following directory:
  
-     > /home/ibmdemo/m2m-ws-sample/defaultapplication/**mono2micro**
+     > /home/ibmdemo/m2m-ws-sample/defaultapplication/**monolith**
 
 4.  Review the output from the code analyzer:
 
@@ -631,7 +631,7 @@ to work in this lab.
 
 5.  Open the console.log file to check that the binary instrumenter was initiated:
 
-        head -25 /home/ibmdemo/m2m-ws-sample/defaultapplication/monolith/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/console.log
+        head -25 /home/ibmdemo/m2m-ws-sample/defaultapplication/monolith/DefaultApplication-ear/target/liberty/wlp/usr/servers/DefaultApplicationServer/logs/console.log | grep Minerva
 
     The console.log should include the following messages, as illustrated below. This is an indication that the application is ready to run the test cases.
 
@@ -1282,7 +1282,7 @@ Lets get started\!
     **custom_graph.json** file to be used for regenerating the
     partition recommendations. (Use any editor available)
 
-        gedit ./config.ini</p>
+        gedit ./config.ini
 
             *** Modify the config.ini as described and illustrated below.
 
