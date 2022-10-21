@@ -2,7 +2,7 @@
 
 ![banner](./images/media/image1.jpeg)
 
-**Last updated:** October 2022
+**Last updated:** September 2022
 
 **Duration:** 60 minutes
 
@@ -176,35 +176,37 @@ In this section of the lab, you will clone the GitHub repo to the **Workstation*
     <tbody>
     <tr class="odd">
     <td><blockquote>
-    <p>curl -v -k -X POST "http://10.0.0.1:2220/lands_advisor/advisor/v2/collectionArchives/bulkImport" -H "accept: */*" -H "archiveName: bulk_data_3.zip" -H "Content-Type: application/octet-stream" --data-binary "@/home/ibmdemo/openshift-workshop-was/labs/Liberty/TA-labs/bulk_data_3.zip"<br/>
-    Note: Unnecessary use of -X or --request, POST is already inferred.<br/>
-    * Trying 10.0.0.1... <br/>
-    * TCP_NODELAY set<br/>
-    * Connected to 10.0.0.1 (10.0.0.1) port 2220 (#0)<br/>
-    &gt; POST /lands_advisor/advisor/v2/collectionArchives/bulkImport HTTP/1.1<br/>
-    &gt; Host: 10.0.0.1:2220<br/>
-    &gt; User-Agent: curl/7.58.0<br/>
-    &gt; accept: */*<br/>
-    &gt; archiveName: bulk_data_3.zip<br/>
-    &gt; Content-Type: application/octet-stream<br/>
-    &gt; Content-Length: 4460706<br/>
-    &gt; Expect: 100-continue<br/>
-    &lt; HTTP/1.1 100 Continue<br/>
-    &lt; Content-Length: 0<br/>
-    &lt; Date: Mon, 29 Aug 2022 19:48:42 GMT<br/>
-    * We are completely uploaded and fine<br/>
-    &lt; HTTP/1.1 200 OK<br/>
-    &lt; Date: Mon, 29 Aug 2022 19:48:42 GMT<br/>
-    &lt; Access-Control-Allow-Origin: http://10.0.0.1:3000<br/>
-    &lt; Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH, OPTIONS<br/>
-    &lt; Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Cookie, Authorization, tenantId, profileName, taskName, appName, fileName, description, workspace, collection, uploadkey, setdecode, locale, archiveName<br/>
-    &lt; Cache-Control: no-store<br/>
-    &lt; Pragma: no-cache<br/>
-    &lt; X-Content-Type-Options: nosniff<br/>
-    &lt; Content-Type: application/json<br/>
-    &lt; Content-Language: en-US<br/>
-    &lt; Content-Length: 153<br/>
-    &lt; * Connection #0 to host 10.0.0.1 left intact<br/>
+    <p>curl -v -k -X POST "http://10.0.0.1:2220/lands_advisor/advisor/v2/collectionArchives/bulkImport" -H "accept: */*" -H "archiveName: bulk_data_3.zip" -H "Content-Type: application/octet-stream" --data-binary "@/home/ibmdemo/openshift-workshop-was/labs/Liberty/TA-labs/bulk_data_3.zip"</p>
+    <p>Note: Unnecessary use of -X or --request, POST is already inferred.</p>
+    <p>* Trying 10.0.0.1...</p>
+    <p>* TCP_NODELAY set</p>
+    <p>* Connected to 10.0.0.1 (10.0.0.1) port 2220 (#0)</p>
+    <p>&gt; POST /lands_advisor/advisor/v2/collectionArchives/bulkImport HTTP/1.1</p>
+    <p>&gt; Host: 10.0.0.1:2220</p>
+    <p>&gt; User-Agent: curl/7.58.0</p>
+    <p>&gt; accept: */*</p>
+    <p>&gt; archiveName: bulk_data_3.zip</p>
+    <p>&gt; Content-Type: application/octet-stream</p>
+    <p>&gt; Content-Length: 4460706</p>
+    <p>&gt; Expect: 100-continue</p>
+    <p>&gt;</p>
+    <p>&lt; HTTP/1.1 100 Continue</p>
+    <p>&lt; Content-Length: 0</p>
+    <p>&lt; Date: Mon, 29 Aug 2022 19:48:42 GMT</p>
+    <p>* We are completely uploaded and fine</p>
+    <p>&lt; HTTP/1.1 200 OK</p>
+    <p>&lt; Date: Mon, 29 Aug 2022 19:48:42 GMT</p>
+    <p>&lt; Access-Control-Allow-Origin: http://10.0.0.1:3000</p>
+    <p>&lt; Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH, OPTIONS</p>
+    <p>&lt; Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Cookie, Authorization, tenantId, profileName, taskName, appName, fileName, description, workspace, collection, uploadkey, setdecode, locale, archiveName</p>
+    <p>&lt; Cache-Control: no-store</p>
+    <p>&lt; Pragma: no-cache</p>
+    <p>&lt; X-Content-Type-Options: nosniff</p>
+    <p>&lt; Content-Type: application/json</p>
+    <p>&lt; Content-Language: en-US</p>
+    <p>&lt; Content-Length: 153</p>
+    <p>&lt;</p>
+    <p>* Connection #0 to host 10.0.0.1 left intact</p>
     </blockquote>
     <p><strong>{"message":"Bulk upload started. Track the status at: http://10.0.0.1:2220/lands_advisor/advisor/v2/collectionArchives/bulkImport/status/6934256291924</strong></p></td>
     </tr>
@@ -353,7 +355,7 @@ Let’s create a new group for the ACME applications.
  
     TA uses a combination of **JAR file name** and **CHECKSUM** to determine if the code is **IDENTICAL** and truly shared among applications.
 
-    ![](./images/media/image30.png)
+   ![](./images/media/image30.png)
 
 
 ## 2.3 Explore Common code discovery in TA
@@ -442,7 +444,7 @@ With these insights you will learn which common code libraries would provide the
 
     ![](./images/media/image40.png)
 
-    b. The details view for the **AcmeAnnuityCommon.jar** file reveals very important information and insights about modernizing the ACME applications, as illustrated below. 
+    b. The details view for the **AcmeAnnuityCommon.jar** file reveals very important information and insights about modernizing the ACME applications.
 
     - **AcmeAnnuityCommon.jar** is used by all **5** ACME applications
 
@@ -453,23 +455,12 @@ With these insights you will learn which common code libraries would provide the
       - **AcmeAnnuityCommon.jar** accounts for **10** days of that cost, but only needs to be incurred once.
 
     - Modernizing the **unique application code** across all **5** applications is only **3** days.
-      - 2 days for ACMEAnnuityEJBWSes.ear
-      - 1 day for ACMEAnnuityJAXRSWSes.ear
 
     The insights gained here clearly show that performing the **10** days required to modernize the **AcmeAnnuityCommon.ja**r file means that MOST of the work will be completed for all five (5) of the ACME applications.
  
     ![](./images/media/image41.png)
 
-5.  While in the **AcmeAnnuityCommon.jar** details view, scroll down to view the applications that use this common utility jar. 
-
-    As noted in the previous step, the AcmeAnnuityCommon.jar is used by all 5 ACME application. 
-
-6.  From the list of applications using this common code utility jar, click on the **ACMEAnnuityEJBWSes.ear** application to display its details. 
-
-    ![](./images/media/image41-b.png)
-
- 
-7.  While in the **ACMEAnnuityEJBWSes.ear** details view, scroll down to the **Complexity Rues** and **Issues Detail** sections, where you can begin to dig deeper into the specific issues flagged by TA.
+5.  While in the **AcmeAnnuityCommon.jar** details view, scroll down to the **Complexity Rues** and **Issues Detail** sections, where you can begin to dig deeper into the specific issues flagged by TA
     
     a. Notice that Transformation Advisor splits the Issues details into two sections making it quick and easy to get to the specific details you want to review.
 
