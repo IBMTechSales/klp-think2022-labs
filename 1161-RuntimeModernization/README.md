@@ -901,7 +901,7 @@ Customer Order Services application uses DB2 as its database. To deploy it to Li
 
 2. Make sure you are in directory `/openshift-workshop-was/labs/Openshift/RuntimeModernization` Use the following command to change directory with 
    ```
-   cd openshift-workshop-was/labs/Openshift/RuntimeModernization
+   cd /home/ibmuser/openshift-workshop-was/labs/Openshift/RuntimeModernization
    ```
 
 3. List the deploy files:
@@ -1201,7 +1201,7 @@ spec:
      a. Ensure you are in directory `openshift-workshop-was/labs/Openshift/RuntimeModernization`
        
 	  ```
-        cd openshift-workshop-was/labs/Openshift/RuntimeModernization
+        cd /home/ibmuser/openshift-workshop-was/labs/Openshift/RuntimeModernization
     ```    
    
       **Note:** The pre-installed resources such as Open Liberty Operator and DB2, are not removed.

@@ -234,14 +234,14 @@ Building this image could take around ~8 minutes. So, let's kick that process of
         ```
     -->	
 
-4. Change directory to where this lab is located, from the cloned Github repo. 
+3. Change directory to where this lab is located, from the cloned Github repo. 
     ```
-    cd openshift-workshop-was/labs/Openshift/OperationalModernization
+    cd /home/ibmuser/openshift-workshop-was/labs/Openshift/OperationalModernization
 
     ls
     ```
 
-5. Run the following command to create a new project named `apps-was` in OpenShift. 
+4. Run the following command to create a new project named `apps-was` in OpenShift. 
    
      ```
      oc new-project apps-was
