@@ -190,7 +190,7 @@ You will do these steps in this section of the lab, to become familiar with conf
     
     Use the following credentials to login: 
     > 
-    > username: ibmuser
+    > username: ibmadmin
 
     > password: engageibm
 
