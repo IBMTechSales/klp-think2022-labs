@@ -262,7 +262,7 @@ VM. Launch the Transformation Advisor tool using the steps below.
     the application URL link and select **Open Link** to launch it in a
     web browser window. 
 
-    Th URL is shdisplayed in the output from the TA command: **http://10.0.0.1:3000**
+    Th URL is displayed in the output from the TA command: **http://10.0.0.1:3000**
 
     ![](./images/media/image10.png)
  
