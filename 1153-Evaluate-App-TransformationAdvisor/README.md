@@ -181,7 +181,7 @@ Here are the activities involved in this process:
       - Click on the **ibmdemo** icon on the screen.
     
       - When prompted for the password for **ibmdemo**, enter
-        "**password**" as the password:
+        "**passw0rd**" as the password:
 
     ![](./images/media/image6.png)
 
